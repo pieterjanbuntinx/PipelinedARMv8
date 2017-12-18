@@ -1,0 +1,37 @@
+module instruction_decode(	clock, reset, RegWrite, Reg2Loc, Branchlink, instruction, 
+							write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out);
+input clock, reset, regWrite;
+input [31:0] instruction;
+input [63:0] write_back, PC_branch_link_in;
+
+output [63:0] sign_extend_out, read_data1, read_data2;
+
+//mux met Rd (instr[4:0]) en Rm (instr[20:16]) geschakeld door Reg2Loc
+reg [4:0] read_register_2;
+always @(instruction[20:16] or instruction[4:0] or Reg2Loc) begin
+	if (Reg2Loc) read_register_2 <= instruction[4:0];
+	else read_register_2 <= instruction[20:16];
+end
+
+//mux met write_back van MEM/WB pipeline register en PC_branch_link_in
+//geschakeld door Branchlink
+reg [63:0] write_data;
+always @(write_back or PC_branch_link_in or Branchlink) begin
+	if (Branchlink) write_data <= PC_branch_link;
+	else write_data <= write_back;
+end
+
+registers registers(.Read_register_1(instruction[9:5]), 
+					.Read_register_2(read_register_2), 
+					.Write_register(instruction[4:0]), 
+					.Write_data(write_data), 
+					.RegWrite(RegWrite), 
+					.Read_data_1(read_data_1), 
+					.Read_data_2(read_data_2), 
+					.clock(clock), 
+					.reset(reset));
+
+//bepaalde delen van de instructies sign extenden naar 64 bits
+sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
+
+endmodule

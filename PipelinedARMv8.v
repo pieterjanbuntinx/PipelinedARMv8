@@ -6,10 +6,10 @@ output uitgang;
 wire uitgang;
 assign uitgang = clock;
 
-wire Reg2Loc, Branch, Uncondbranch, MemRead, MemToReg, MemWrite, ALUSrc, RegWrite, or_out, alu_zero, Branchlink,Branchreg, zero_mux_out, not_zero;
+wire Reg2Loc, Branch, Uncondbranch, MemRead, MemToReg, MemWrite, ALUSrc, RegWrite, or_out, alu_zero, Branchlink, zero_mux_out, not_zero;
 wire [1:0] ALUOp;
 wire [31:0] instruction, instruction_IF_ID;
-wire [63:0] mux_rechts_van_add_out, PC_out, PC_out_IF_ID, read_data_1, read_data_2, sign_extended, mux_links_van_alu_uit, alu_uit, 
+wire [63:0] mux_rechts_van_add_out, read_data_1, read_data_2, sign_extended, mux_links_van_alu_uit, alu_uit, 
 			shift_left_2_uit, and_poort_zero_branch_out, or_poort_zero_branch_out, read_data, mux_rechts_data_memory_out, add_pc_met_shift_left_2_out, pc_in, write_data_mux;
 wire [4:0] mux_links_van_registers, mux_branch_register_links_van_registers, mux_branch_link_LR_out;
 wire [3:0] alucontrol_uit;
@@ -27,39 +27,56 @@ control control_path(.clock(clock),
 				.Uncondbranch(Uncondbranch),
 				.Branchlink(Branchlink),
 				.Branchreg(Branchreg), .not_zero(not_zero));
-
-registers registers(.Read_register_1(instruction[9:5]), 
-					.Read_register_2(mux_links_van_registers), 
-					.Write_register(mux_branch_link_LR_out), 
-					.Write_data(write_data_mux), 
-					.RegWrite(RegWrite), 
-					.Read_data_1(read_data_1), 
-					.Read_data_2(read_data_2), 
-					.clock(clock), 
-					.reset(reset));
+					
+//instruction fetch en IF_ID pipeline register
+wire Branchreg, wren_IF_ID;
+wire [31:0] instruction, instruction_IF_ID;
+wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_ID;
 					
 instruction_fetch instruction_fetch(.clock(clock), 
 									.reset(reset), 
 									.Branchreg(Branchreg), 
-									.PC_branch(PC_branch),
-									.instruction(instruction),
-									.PC_out(PC_out));
+									.PC_branch_in(PC_branch),
+									.instruction_out(instruction),
+									.PC_out(PC_out)
+									.PC_branch_link_out(PC_branch_link));
 									
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
 								.reset(reset),
-								.wren(wren), 
+								.wren(wren_IF_ID), 
 								.PC_out_in(PC_out),
 								.instruction_in(instruction), 
-								.instruction_out(instruction_out), 
-								.PC_out_out(PC_out_preg)
+								.PC_branch_link_in(PC_branch_link),
+								.instruction_out(instruction_IF_ID), 
+								.PC_out_out(PC_out_IF_ID),
+								.PC_branch_link_out(PC_branch_link_IF_ID));
 									
+//instruction decode en ID_EX pipeline register
+wire RegWrite, Reg2Loc, Branchlink, wren_ID_EX;
+wire [63:0] read_data1, read_data2, sign_extended;
+instruction_decode instruction_decode(	.clock(clock),
+										.reset(reset),
+										.RegWrite(RegWrite),
+										.Reg2Loc(Reg2Loc),
+										.Branchlink(Branchlink),
+										.instruction(instruction_IF_ID),
+										.write_back(write_back), //afkomstig van MEM/WB
+										.PC_branch_link_in(PC_branch_link_IF_ID),
+										.read_data1(read_data1),
+										.read_data2(read_data2),
+										.sign_extend_out(sign_extended));
+										
+ID_EX ID_EX_pipeline_register(	.clock(clock),
+								.reset(reset),
+								);
+										
+									
+									
+	
 						
 					
 
 					
-n_mux #(5) mux_read_reg(.in1(instruction[20:16]),.in2(instruction[4:0]),.out(mux_links_van_registers),.select(Reg2Loc));
-
-sign_extend sign_extend(.in(instruction),.out(sign_extended));
 
 n_mux mux_links_van_alu(.in1(read_data_2),.in2(sign_extended),.out(mux_links_van_alu_uit),.select(ALUSrc));
 
