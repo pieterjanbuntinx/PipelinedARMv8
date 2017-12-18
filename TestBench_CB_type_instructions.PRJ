@@ -1,0 +1,57 @@
+// Veriwell project file
+//#@@ "line number enable" "TRUE"
+//#@@ "line number color" "255,0,0"
+//#@@ "string color" "255,0,255"
+//#@@ "systask color" "255,0,0"
+//#@@ "comment color" "0,110,0"
+//#@@ "keyword color" "0,0,255"
+//#@@ "value color" "0,255,0"
+//#@@ "one color" "255,255,255"
+//#@@ "zero color" "255,255,255"
+//#@@ "edge color" "255,255,255"
+//#@@ "cursor2 color" "0,0,255"
+//#@@ "cursor1 color" "255,0,0"
+//#@@ "mixed color" "255,0,0"
+//#@@ "undefined color" "255,0,0"
+//#@@ "z color" "0,255,0"
+//#@@ "x color" "255,0,0"
+//#@@ "group file path" ""
+//#@@ "group file enable" "FALSE"
+//#@@ "wave font" "system,10"
+//#@@ "extra switches" ""
+//#@@ "editor font" "courier,9"
+//#@@ "project font" "system,10"
+//#@@ "console font" "courier,9"
+//#@@ "clear console" "FALSE"
+//#@@ "console buffer size" "65536"
+//#@@ "undo depth" "5"
+//#@@ "tab" "4"
+//#@@ "synopsis" "FALSE"
+//#@@ "trace on" "FALSE"
+//#@@ "wait on start" "TRUE"
+//#@@ "log file path" "..\tamarac_task1\testbenches\testbench_cpu\VeriWell.log"
+//#@@ "log file enable" "TRUE"
+//#@@ "key file path" "..\tamarac_task1\testbenches\testbench_cpu\VeriWell.key"
+//#@@ "key file enable" "TRUE"
+//#@@ "output path" ""
+//#@@ "prompt on save" "TRUE"
+//#@@ "unix mode" "FALSE"
+//#@S 514,1176		[Project window size]
+//#@P 204,512		[Project window position]
+//#@s 877,1471		[Console window size]
+//#@p 55,388		[Console window position]
+alu.v
+alu_add.v
+alu_control.v
+and_poort.V
+control.v
+data_memory.v
+instruction_memory.v
+n_mux.v
+pc.v
+registers.v
+reverse_mux.V
+shift_left_2.v
+sign_extend.v
+SingleCycleProcessor.v
+testbench_CB_type_instructions.V

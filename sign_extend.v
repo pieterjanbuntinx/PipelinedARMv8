@@ -1,0 +1,19 @@
+module sign_extend(in, out);
+
+input [31:0] in;
+
+output [63:0] out;
+
+reg [63:0] out;
+
+always@(in)begin
+	if(in[31:26] == 'b000101 ||in[31:26] == 'b100101 )//B en BL
+		begin out = {{38{in[25]}},in[25:0]}; end
+	else if(in[31:24] == 'b10110101 || in[31:24] == 'b10110100) //CBNZ en CBZ
+		begin out = {{45{in[23]}}, in[23:5]}; end
+	else if(in[31:21] == 'b11111000010 || in[31:21] == 'b11111000000) //LDUR en STUR
+		begin out = {{55{in[20]}},in[20:12]}; end
+	else if(in[31:21] == 'b11010011011 || in[31:21] == 'b11010011010)
+		begin out = {{58{in[15]}},in[15:10]}; end
+end
+endmodule 
