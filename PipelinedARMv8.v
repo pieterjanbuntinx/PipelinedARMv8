@@ -74,17 +74,21 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.PC_out_in(PC_out_IF_ID), 
 								.read_data1_in(read_data1), 
 								.read_data2_in(read_data2),
-								.read_data1_out(), read_data2_out 
+								.read_data1_out(read_data2_out),
 								.sign_extended_in(sign_extended), 
 								.PC_out_out(PC_out_ID_EX), 
 								.sign_extended_out(sign_extended_ID_EX));
 
 //Execution en EX/MEM pipeline register
-								
-										
-									
-									
-	
+execution execution(.pc_out(pc_out_ID_EX),
+					.sign_extend_out(sign_extended_ID_EX),
+					.read_data_1(read_data1),
+					.read_data_2(read_data2),
+					.add_out(add_pc_met_4_out),
+					.zero(zero),
+					.alu_result(alu_result),
+					.write_data(write_data),.
+					.ALUSrc(ALUSrc));
 						
 					
 

@@ -76,7 +76,11 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.read_data2_in(read_data2),
 								.read_data1_out(), read_data2_out 
 								.sign_extended_in(sign_extended), 
-								.PC_out_out, sign_extended_out);
+								.PC_out_out(PC_out_ID_EX), 
+								.sign_extended_out(sign_extended_ID_EX));
+
+//Execution en EX/MEM pipeline register
+								
 										
 									
 									
