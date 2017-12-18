@@ -1,19 +1,20 @@
 module PipelinedARMv8(clock, reset,uitgang);
 
 input clock, reset;
-
 output uitgang;
+/*output uitgang;
 wire uitgang;
 assign uitgang = clock;
 
 wire Reg2Loc, Branch, Uncondbranch, MemRead, MemToReg, MemWrite, ALUSrc, RegWrite, or_out, alu_zero, Branchlink, zero_mux_out, not_zero;
 wire [1:0] ALUOp;
-wire [31:0] instruction, instruction_IF_ID;
+
 wire [63:0] mux_rechts_van_add_out, read_data_1, read_data_2, sign_extended, mux_links_van_alu_uit, alu_uit, 
 			shift_left_2_uit, and_poort_zero_branch_out, or_poort_zero_branch_out, read_data, mux_rechts_data_memory_out, add_pc_met_shift_left_2_out, pc_in, write_data_mux;
 wire [4:0] mux_links_van_registers, mux_branch_register_links_van_registers, mux_branch_link_LR_out;
-wire [3:0] alucontrol_uit;
+wire [3:0] alucontrol_uit;*/
 
+wire Branch, MemRead,MemToReg,ALUOp,MemWrite,ALUSrc,Uncondbranch,not_zero
 control control_path(.clock(clock),
 				.instruction(instruction[31:21]),
 				.Reg2Loc(Reg2Loc),
@@ -38,7 +39,7 @@ instruction_fetch instruction_fetch(.clock(clock),
 									.Branchreg(Branchreg), 
 									.PC_branch_in(PC_branch),
 									.instruction_out(instruction),
-									.PC_out(PC_out)
+									.PC_out(PC_out),
 									.PC_branch_link_out(PC_branch_link));
 									
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
@@ -80,21 +81,50 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.sign_extended_out(sign_extended_ID_EX));
 
 //Execution en EX/MEM pipeline register
+wire [63:0] add_pc_met_4_out, alu_result, write_data;
+
 execution execution(.pc_out(pc_out_ID_EX),
 					.sign_extend_out(sign_extended_ID_EX),
 					.read_data_1(read_data1),
 					.read_data_2(read_data2),
-					.add_out(add_pc_met_4_out),
+					.add_out(add_pc),
 					.zero(zero),
 					.alu_result(alu_result),
-					.write_data(write_data),.
+					.write_data(write_data),
 					.ALUSrc(ALUSrc));
+					
+EX_MEM EX_MEM(.clock(clock),
+			  .reset(reset),
+			  .pc_in(add_pc),
+			  .pc_out(add_pc_EX_MEM),
+			  .zero_in(zero),
+			  .zero_out(zero_EX_MEM),
+			  .alu_result_in(alu_result),
+			  .alu_result_out(alu_result_EX_MEM),
+			  .read_data_2_in(read_data2),
+			  .read_data_2_out(read_data_2_EX_MEM));
+			  
+memory memory(.clock(clock),
+			  .zero(zero_EX_MEM),
+			  .alu_result(alu_result_EX_MEM),
+			  .write_data(read_data_2_EX_MEM),
+			  .read_data(read_data_data_memory),
+			  .MemWrite(MemWrite),
+			  .MemRead(MemRead),
+			  .alu_result_out(alu_result_out_memory));
+			  
+MEM_WB MEM_WB(.read_data_in(read_data_data_memory),
+			  .read_data_uit(read_data_data_memory_MEM_WB),
+			  .clock(clock),
+			  .reset(reset),
+			  .alu_result_in(alu_result_out_memory),
+			  .alu_result_uit(alu_result_out_memory_MEM_WB));
 						
 					
 
 					
 
-n_mux mux_links_van_alu(.in1(read_data_2),.in2(sign_extended),.out(mux_links_van_alu_uit),.select(ALUSrc));
+/*n_mux mux_links_van_alu(.in1(read_data_2),.in2(sign_extended),.out(mux_links_van_alu_uit),.select(ALUSrc));
 
 alu alu(.in1(read_data_1),.in2(mux_links_van_alu_uit),.out(alu_uit),.zero(alu_zero),.control(alucontrol_uit));
 
@@ -125,7 +155,7 @@ n_mux mux_rechts_van_add_pc_met_shift_left_2(.in1(add_pc_met_4_out),.in2(add_pc_
 
 wire test;
 assign or_out = test | Uncondbranch;
-assign test = Branch & zero_mux_out;
+assign test = Branch & zero_mux_out;*/
 
 endmodule
 

@@ -8,11 +8,11 @@ output zero_out;
 reg [63:0] pc_out,read_data_2_out,alu_result_out;
 reg zero_out;
 
-always @(posedge clock)
+always @(posedge clock)begin
 	if(reset)begin
-		pc_out <= 'b{64[0]};
-		read_data_2_out <= 'b{64[0]};
-		alu_result_out <= 'b{64[0]};
+		pc_out <= 64'b0;
+		read_data_2_out <=  64'b0;
+		alu_result_out <= 64'b0;
 	end
 	else begin
 		pc_out <= pc_in;

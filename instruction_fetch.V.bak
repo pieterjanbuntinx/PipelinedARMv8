@@ -4,7 +4,7 @@ input clock, reset, Branchreg;
 input [63:0] PC_branch_in;
 output [31:0] instruction_out;
 output [63:0] PC_out, PC_branch_link_out;
-
+reg [63:0] PC_in;
 wire [63:0] PC_out, PC_inc;
 wire [31:0] instruction;
 

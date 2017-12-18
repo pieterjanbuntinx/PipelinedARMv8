@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Pipelined_ARMv8
-Mon Dec 18 19:53:16 2017
+Mon Dec 18 20:36:07 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -9,7 +9,11 @@ Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
   1. Legal Notice
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
-  4. Analysis & Synthesis Messages
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. General Register Statistics
+  8. Analysis & Synthesis Messages
 
 
 
@@ -35,20 +39,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Mon Dec 18 19:53:16 2017       ;
+; Analysis & Synthesis Status        ; Successful - Mon Dec 18 20:36:07 2017   ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
 ; Top-level Entity Name              ; EX_MEM                                  ;
 ; Family                             ; Cyclone II                              ;
-; Total logic elements               ; N/A until Partition Merge               ;
-;     Total combinational functions  ; N/A until Partition Merge               ;
-;     Dedicated logic registers      ; N/A until Partition Merge               ;
-; Total registers                    ; N/A until Partition Merge               ;
-; Total pins                         ; N/A until Partition Merge               ;
-; Total virtual pins                 ; N/A until Partition Merge               ;
-; Total memory bits                  ; N/A until Partition Merge               ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge               ;
-; Total PLLs                         ; N/A until Partition Merge               ;
+; Total logic elements               ; 192                                     ;
+;     Total combinational functions  ; 192                                     ;
+;     Dedicated logic registers      ; 192                                     ;
+; Total registers                    ; 192                                     ;
+; Total pins                         ; 388                                     ;
+; Total virtual pins                 ; 0                                       ;
+; Total memory bits                  ; 0                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                       ;
+; Total PLLs                         ; 0                                       ;
 +------------------------------------+-----------------------------------------+
 
 
@@ -128,13 +132,76 @@ applicable agreement for further details.
 +----------------------------------------------------------------+--------------------+--------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                           ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                       ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+
+; EX_MEM.v                         ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 192   ;
+;                                             ;       ;
+; Total combinational functions               ; 192   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 192   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 192   ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 192   ;
+;     -- Dedicated logic registers            ; 192   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 388   ;
+; Maximum fan-out node                        ; reset ;
+; Maximum fan-out                             ; 192   ;
+; Total fan-out                               ; 960   ;
+; Average fan-out                             ; 1.24  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |EX_MEM                    ; 192 (192)         ; 192 (192)    ; 0           ; 0            ; 0       ; 0         ; 388  ; 0            ; |EX_MEM             ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 192   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Mon Dec 18 19:53:14 2017
+    Info: Processing started: Mon Dec 18 20:36:03 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Found 1 design units, including 1 entities, in source file instruction_fetch.V
     Info: Found entity 1: instruction_fetch
@@ -163,34 +230,58 @@ Info: Found 1 design units, including 1 entities, in source file shift_left_2.v
     Info: Found entity 1: shift_left_2
 Info: Found 1 design units, including 1 entities, in source file sign_extend.v
     Info: Found entity 1: sign_extend
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(33): identifier "instruction" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 33
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(33): identifier "instruction_IF_ID" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 33
-Error (10170): Verilog HDL syntax error at PipelinedARMv8.v(42) near text ".";  expecting ")", or "," File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 42
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(55): identifier "RegWrite" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 55
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(55): identifier "Reg2Loc" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 55
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(55): identifier "Branchlink" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 55
-Error (10149): Verilog HDL Declaration error at PipelinedARMv8.v(56): identifier "sign_extended" is already declared in the present scope File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 56
-Error (10170): Verilog HDL syntax error at PipelinedARMv8.v(91) near text ".";  expecting an identifier File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 91
-Error (10112): Ignored design unit "PipelinedARMv8" at PipelinedARMv8.v(1) due to previous errors File: //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v Line: 1
-Info: Found 0 design units, including 0 entities, in source file PipelinedARMv8.v
+Info: Found 1 design units, including 1 entities, in source file PipelinedARMv8.v
+    Info: Found entity 1: PipelinedARMv8
 Info: Found 1 design units, including 1 entities, in source file IF_ID.v
     Info: Found entity 1: IF_ID
 Info: Found 1 design units, including 1 entities, in source file instruction_decode.v
     Info: Found entity 1: instruction_decode
 Info: Found 1 design units, including 1 entities, in source file execution.v
     Info: Found entity 1: execution
-Error (10170): Verilog HDL syntax error at memory.v(3) near text "input";  expecting ";" File: //Mac/Home/Documents/COMAR/PipelinedARMv8/memory.v Line: 3
-Info: Found 0 design units, including 0 entities, in source file memory.v
-Error (10170): Verilog HDL syntax error at EX_MEM.v(13) near text "{" File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 13
-Error (10170): Verilog HDL syntax error at EX_MEM.v(14) near text "{" File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 14
-Error (10170): Verilog HDL syntax error at EX_MEM.v(15) near text "{" File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 15
-Error (10170): Verilog HDL syntax error at EX_MEM.v(23) near text "end"; "end" without "begin"  File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 23
-Error (10112): Ignored design unit "EX_MEM" at EX_MEM.v(1) due to previous errors File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 1
-Info: Found 0 design units, including 0 entities, in source file EX_MEM.v
-Error: Quartus II Analysis & Synthesis was unsuccessful. 15 errors, 0 warnings
-    Error: Peak virtual memory: 285 megabytes
-    Error: Processing ended: Mon Dec 18 19:53:16 2017
-    Error: Elapsed time: 00:00:02
-    Error: Total CPU time (on all processors): 00:00:01
+Info: Found 1 design units, including 1 entities, in source file memory.v
+    Info: Found entity 1: memory
+Info: Found 1 design units, including 1 entities, in source file EX_MEM.v
+    Info: Found entity 1: EX_MEM
+Info: Found 1 design units, including 1 entities, in source file MEM_WB.v
+    Info: Found entity 1: MEM_WB
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(21): created implicit net for "Branch"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(22): created implicit net for "MemRead"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(23): created implicit net for "MemToReg"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(24): created implicit net for "ALUOp"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(25): created implicit net for "MemWrite"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(26): created implicit net for "ALUSrc"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(28): created implicit net for "Uncondbranch"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(30): created implicit net for "not_zero"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(66): created implicit net for "write_back"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(78): created implicit net for "read_data2_out"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(86): created implicit net for "pc_out_ID_EX"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(90): created implicit net for "add_pc"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(91): created implicit net for "zero"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(99): created implicit net for "add_pc_EX_MEM"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(101): created implicit net for "zero_EX_MEM"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(103): created implicit net for "alu_result_EX_MEM"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(105): created implicit net for "read_data_2_EX_MEM"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(111): created implicit net for "read_data_data_memory"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(114): created implicit net for "alu_result_out_memory"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(117): created implicit net for "read_data_data_memory_MEM_WB"
+Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(121): created implicit net for "alu_result_out_memory_MEM_WB"
+Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(29): created implicit net for "read_data_1"
+Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(30): created implicit net for "read_data_2"
+Warning (10236): Verilog HDL Implicit Net warning at execution.v(14): created implicit net for "mux_out"
+Info: Elaborating entity "EX_MEM" for the top level hierarchy
+Warning (10034): Output port "zero_out" at EX_MEM.v(7) has no driver
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "zero_out" is stuck at GND
+Warning: Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "zero_in"
+Info: Implemented 580 device resources after synthesis - the final resource count might be different
+    Info: Implemented 195 input pins
+    Info: Implemented 193 output pins
+    Info: Implemented 192 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 286 megabytes
+    Info: Processing ended: Mon Dec 18 20:36:07 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:02
 
 

@@ -1,6 +1,6 @@
 module instruction_decode(	clock, reset, RegWrite, Reg2Loc, Branchlink, instruction, 
-							write_back, PC_branch_link_in, sign_extend_out, read_data1, read_data2);
-input clock, reset, regWrite;
+							write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out);
+input clock, reset, RegWrite, Reg2Loc, Branchlink;
 input [31:0] instruction;
 input [63:0] write_back, PC_branch_link_in;
 
@@ -31,5 +31,7 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.clock(clock), 
 					.reset(reset));
 
+//bepaalde delen van de instructies sign extenden naar 64 bits
+sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
 
 endmodule

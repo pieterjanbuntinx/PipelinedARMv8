@@ -1,6 +1,6 @@
 module instruction_decode(	clock, reset, RegWrite, Reg2Loc, Branchlink, instruction, 
 							write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out);
-input clock, reset, regWrite;
+input clock, reset, RegWrite, Reg2Loc, Branchlink;
 input [31:0] instruction;
 input [63:0] write_back, PC_branch_link_in;
 
@@ -17,7 +17,7 @@ end
 //geschakeld door Branchlink
 reg [63:0] write_data;
 always @(write_back or PC_branch_link_in or Branchlink) begin
-	if (Branchlink) write_data <= PC_branch_link;
+	if (Branchlink) write_data <= PC_branch_link_in;
 	else write_data <= write_back;
 end
 

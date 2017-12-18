@@ -4,11 +4,12 @@ input clock, reset;
 input [63:0] read_data_in, alu_result_in;
 
 output [63:0] read_data_uit, alu_result_uit;
+reg [63:0] read_data_uit, alu_result_uit;
 
 always @(posedge clock)begin
 	if(reset)begin
-		read_data_uit <= {'b{64[0]}};
-		alu_result_uit <= {'b{64[0]}};
+		read_data_uit <= 64'b0;
+		alu_result_uit <= 64'b0;
 	end
 	else begin
 		read_data_uit <= read_data_in;

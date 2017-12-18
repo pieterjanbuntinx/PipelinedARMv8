@@ -1,4 +1,4 @@
-module IF_ID(clock, reset, wren, PC_out_in, instruction_in, instruction_out, PC_out_out);
+module IF_ID(clock, reset, wren, PC_out_in,PC_branch_link_in,PC_branch_link_out, instruction_in, instruction_out, PC_out_out);
 input clock, reset, wren;
 input [63:0] PC_out_in, PC_branch_link_in;
 input [31:0] instruction_in;
@@ -6,6 +6,7 @@ output [31:0] instruction_out;
 output [63:0] PC_out_out, PC_branch_link_out;
 reg [31:0] instruction_out;
 reg [63:0] PC_out_out;
+reg [63:0] PC_branch_link_out;
 
 always @(posedge clock) begin
 	if (reset) begin
