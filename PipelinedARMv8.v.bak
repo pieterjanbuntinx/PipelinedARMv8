@@ -31,7 +31,7 @@ control control_path(.clock(clock),
 //instruction fetch en IF_ID pipeline register
 wire Branchreg, wren_IF_ID;
 wire [31:0] instruction, instruction_IF_ID;
-wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link;
+wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_ID;
 					
 instruction_fetch instruction_fetch(.clock(clock), 
 									.reset(reset), 
@@ -49,8 +49,35 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.PC_branch_link_in(PC_branch_link),
 								.instruction_out(instruction_IF_ID), 
 								.PC_out_out(PC_out_IF_ID),
-								.PC_branch_link_out(...));
-									//input voor ID
+								.PC_branch_link_out(PC_branch_link_IF_ID));
+									
+//instruction decode en ID_EX pipeline register
+wire RegWrite, Reg2Loc, Branchlink, wren_ID_EX;
+wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
+			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX;
+			
+instruction_decode instruction_decode(	.clock(clock),
+										.reset(reset),
+										.RegWrite(RegWrite),
+										.Reg2Loc(Reg2Loc),
+										.Branchlink(Branchlink),
+										.instruction(instruction_IF_ID),
+										.write_back(write_back), //afkomstig van MEM/WB
+										.PC_branch_link_in(PC_branch_link_IF_ID),
+										.read_data1(read_data1),
+										.read_data2(read_data2),
+										.sign_extend_out(sign_extended));
+										
+ID_EX ID_EX_pipeline_register(	.clock(clock),
+								.reset(reset),
+								.wren(wren_ID_EX), 
+								.PC_out_in(PC_out_IF_ID), 
+								.read_data1_in(read_data1), 
+								.read_data2_in(read_data2),
+								.read_data1_out(), read_data2_out 
+								.sign_extended_in(sign_extended), 
+								.PC_out_out, sign_extended_out);
+										
 									
 									
 	

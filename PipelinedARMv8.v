@@ -53,7 +53,9 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 									
 //instruction decode en ID_EX pipeline register
 wire RegWrite, Reg2Loc, Branchlink, wren_ID_EX;
-wire [63:0] read_data1, read_data2, sign_extended;
+wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
+			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX;
+			
 instruction_decode instruction_decode(	.clock(clock),
 										.reset(reset),
 										.RegWrite(RegWrite),
@@ -68,7 +70,17 @@ instruction_decode instruction_decode(	.clock(clock),
 										
 ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.reset(reset),
-								);
+								.wren(wren_ID_EX), 
+								.PC_out_in(PC_out_IF_ID), 
+								.read_data1_in(read_data1), 
+								.read_data2_in(read_data2),
+								.read_data1_out(), read_data2_out 
+								.sign_extended_in(sign_extended), 
+								.PC_out_out(PC_out_ID_EX), 
+								.sign_extended_out(sign_extended_ID_EX));
+
+//Execution en EX/MEM pipeline register
+								
 										
 									
 									
