@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon Dec 18 20:36:07 2017
+Analysis & Synthesis Status : Successful - Tue Dec 19 00:39:27 2017
 Quartus II Version : 8.1 Build 163 10/28/2008 SJ Web Edition
 Revision Name : Pipelined_ARMv8
 Top-level Entity Name : EX_MEM
 Family : Cyclone II
-Total logic elements : 192
-    Total combinational functions : 192
-    Dedicated logic registers : 192
-Total registers : 192
-Total pins : 388
+Total logic elements : 269
+    Total combinational functions : 269
+    Dedicated logic registers : 269
+Total registers : 269
+Total pins : 540
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

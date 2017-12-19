@@ -4,7 +4,7 @@ input clock, reset;
 input [63:0] read_data_in, alu_result_in;
 
 output [63:0] read_data_uit, alu_result_uit;
-reg [63:0] read_data_uit, alu_result_ui;
+reg [63:0] read_data_uit, alu_result_uit;
 
 always @(posedge clock)begin
 	if(reset)begin
