@@ -52,7 +52,732 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
+EX_MEM:EX_MEM
+}
+# macro_sequence
+
+# end
+# entity
+PipelinedARMv8
+# storage
+db|Pipelined_ARMv8.(1).cnf
+db|Pipelined_ARMv8.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+PipelinedARMv8.v
+8eba27536f27967b43cde22f794061d6
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
 |
+}
+# macro_sequence
+
+# end
+# entity
+pc
+# storage
+db|Pipelined_ARMv8.(3).cnf
+db|Pipelined_ARMv8.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+pc.v
+d2a699f78461db25a4a0699ef7cdf084
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_fetch:instruction_fetch|pc:pc
+}
+# macro_sequence
+
+# end
+# entity
+alu_add
+# storage
+db|Pipelined_ARMv8.(4).cnf
+db|Pipelined_ARMv8.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu_add.v
+b9e1483c22728bf06e3b507752fc91bd
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_fetch:instruction_fetch|alu_add:add_pc_met_4
+execution:execution|alu_add:add_pc_met_4
+}
+# macro_sequence
+
+# end
+# entity
+instruction_memory
+# storage
+db|Pipelined_ARMv8.(5).cnf
+db|Pipelined_ARMv8.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+instruction_memory.v
+95fca2947fbdf6e2cc3d1e71fd04a1e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+words
+256
+PARAMETER_SIGNED_DEC
+DEF
+logwords
+9
+PARAMETER_SIGNED_DEC
+DEF
+size
+32
+PARAMETER_SIGNED_DEC
+DEF
+addr_size
+64
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
+}
+# macro_sequence
+
+# end
+# entity
+n_mux
+# storage
+db|Pipelined_ARMv8.(6).cnf
+db|Pipelined_ARMv8.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+n_mux.v
+a032a411ab74c6e7b3da405fef989733
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+N
+64
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
+instruction_fetch:instruction_fetch|n_mux:mux_pc_is_wat
+n_mux:n_mux_na_MEM_WB
+instruction_decode:instruction_decode|n_mux:mux2
+instruction_decode:instruction_decode|n_mux:mux1
+execution:execution|n_mux:n_mux
+memory:memory|n_mux:mux_zero_not_zero
+}
+# macro_sequence
+
+# end
+# entity
+IF_ID
+# storage
+db|Pipelined_ARMv8.(7).cnf
+db|Pipelined_ARMv8.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+IF_ID.v
+2418ad2c9ee517c948d4137ba1cad52e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+IF_ID:IF_ID_pipeline_register
+}
+# macro_sequence
+
+# end
+# entity
+instruction_decode
+# storage
+db|Pipelined_ARMv8.(8).cnf
+db|Pipelined_ARMv8.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+instruction_decode.v
+9ec3be9b349dc319951be96c3e3f995
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_decode:instruction_decode
+}
+# macro_sequence
+
+# end
+# entity
+control
+# storage
+db|Pipelined_ARMv8.(9).cnf
+db|Pipelined_ARMv8.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+control.v
+ccd8fc1310c488bbcaf3108efaaa8b
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_decode:instruction_decode|control:control
+}
+# macro_sequence
+
+# end
+# entity
+registers
+# storage
+db|Pipelined_ARMv8.(10).cnf
+db|Pipelined_ARMv8.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+registers.v
+4aac10eb4da59453852e9eb6ce1b
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_decode:instruction_decode|registers:registers
+}
+# macro_sequence
+
+# end
+# entity
+sign_extend
+# storage
+db|Pipelined_ARMv8.(11).cnf
+db|Pipelined_ARMv8.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+sign_extend.v
+ed5aafadf57d1ab8ac8b9b6ecad89881
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_decode:instruction_decode|sign_extend:sign_extend
+}
+# macro_sequence
+
+# end
+# entity
+ID_EX
+# storage
+db|Pipelined_ARMv8.(12).cnf
+db|Pipelined_ARMv8.(12).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+ID_EX.v
+9af7a85447ce4d39af787d53bc1f01e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+ID_EX:ID_EX_pipeline_register
+}
+# macro_sequence
+
+# end
+# entity
+execution
+# storage
+db|Pipelined_ARMv8.(13).cnf
+db|Pipelined_ARMv8.(13).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+execution.v
+3efde2d714dc67b9ca8a691297b1bf2
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+execution:execution
+}
+# macro_sequence
+
+# end
+# entity
+alu
+# storage
+db|Pipelined_ARMv8.(14).cnf
+db|Pipelined_ARMv8.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu.v
+7f332cb89d131dcce92e715c7869ac20
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+execution:execution|alu:alu
+}
+# macro_sequence
+
+# end
+# entity
+shift_left_2
+# storage
+db|Pipelined_ARMv8.(15).cnf
+db|Pipelined_ARMv8.(15).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+shift_left_2.v
+a939775889692795b51c5743f92b5d
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+execution:execution|shift_left_2:shift_left_2
+}
+# macro_sequence
+
+# end
+# entity
+alu_control
+# storage
+db|Pipelined_ARMv8.(16).cnf
+db|Pipelined_ARMv8.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu_control.v
+7bcc7f50ee7e602579a1bb1ccee2d34a
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+execution:execution|alu_control:alu_control
+}
+# macro_sequence
+
+# end
+# entity
+memory
+# storage
+db|Pipelined_ARMv8.(17).cnf
+db|Pipelined_ARMv8.(17).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+memory.v
+89b95b4d483f9a9bb73b548721ea93
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+memory:memory
+}
+# macro_sequence
+
+# end
+# entity
+data_memory
+# storage
+db|Pipelined_ARMv8.(18).cnf
+db|Pipelined_ARMv8.(18).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+data_memory.v
+62bae6768fa6bfa1b67c9f515c749f0
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+words
+8192
+PARAMETER_SIGNED_DEC
+DEF
+logwords
+14
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+memory:memory|data_memory:data_memory
+}
+# macro_sequence
+
+# end
+# entity
+MEM_WB
+# storage
+db|Pipelined_ARMv8.(19).cnf
+db|Pipelined_ARMv8.(19).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+MEM_WB.v
+f94a79a59c263787b10efdb5c42c9a1
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+MEM_WB:MEM_WB
+}
+# macro_sequence
+
+# end
+# entity
+instruction_fetch
+# storage
+db|Pipelined_ARMv8.(2).cnf
+db|Pipelined_ARMv8.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+instruction_fetch.V
+76af895b4c5ed5f9c0396f43356f51f
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_fetch:instruction_fetch
 }
 # macro_sequence
 

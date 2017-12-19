@@ -1,5 +1,5 @@
 module execution(pc_out,sign_extend_out,read_data_1,read_data_2,add_out, zero, alu_result,write_data, 
-					ALUSrc, ALUOp, instruction, forwardA, forwardB);
+					ALUSrc, ALUOp, instruction, forwardA, forwardB, EX_MEM_alu_result, WB_write_back);
 
 input [63:0] pc_out, read_data_1,read_data_2, sign_extend_out, EX_MEM_alu_result, WB_write_back;
 input ALUSrc;
@@ -23,7 +23,7 @@ n_mux n_mux(read_data_2, sign_extend_out, alu_mux_in_2, ALUSrc);
 // 3 way mux voor waarden pipeline registers naar input 1 ALU te brengen
 reg [63:0] alu_in1; 
 always @(read_data_1 or EX_MEM_alu_result or WB_write_back or forwardA) begin
-	case (forwardA) begin
+	case (forwardA)
 		00: alu_in1 <= read_data_1;
 		10: alu_in1 <= EX_MEM_alu_result;
 		01: alu_in1 <= WB_write_back;
@@ -34,11 +34,11 @@ end
 // 3 way mux voor waarden pipeline registers naar input 1 ALU te brengen
 reg [63:0] alu_in2;
 always @(alu_mux_in_2 or EX_MEM_alu_result or WB_write_back or forwardB) begin
-	case (forwardB) begin
+	case (forwardB)
 		00: alu_in2 <= alu_mux_in_2;
 		10: alu_in2 <= EX_MEM_alu_result;
 		01: alu_in2 <= WB_write_back;
-		default: alu_in1 <= 64'b0;
+		default: alu_in2 <= 64'b0;
 	endcase
 end
 

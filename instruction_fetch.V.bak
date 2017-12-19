@@ -4,10 +4,9 @@ input clock, Branchreg,or_out,reset;
 input [63:0] read_data_1, alu_result;
 output [31:0] instruction;
 output [63:0] PC_out, PC_branch_link_out;
-reg [63:0] PC_in;
-wire [63:0] PC_out, PC_inc;
+wire [63:0] PC_out, PC_in, PC_inc;
 wire [31:0] instruction;
-wire mux_pc_is_wat_out;;
+wire mux_pc_is_wat_out;
 assign PC_branch_link_out = PC_inc;
 
 pc pc(.clock(clock),.reset(reset),.in(PC_in),.out(PC_out));

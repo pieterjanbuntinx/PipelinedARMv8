@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Pipelined_ARMv8
-Tue Dec 19 14:03:16 2017
+Tue Dec 19 17:17:23 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -9,12 +9,8 @@ Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
   1. Legal Notice
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
-  4. Analysis & Synthesis Source Files Read
-  5. Analysis & Synthesis Resource Usage Summary
-  6. Analysis & Synthesis Resource Utilization by Entity
-  7. General Register Statistics
-  8. Analysis & Synthesis Messages
-  9. Analysis & Synthesis Suppressed Messages
+  4. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -40,20 +36,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Dec 19 14:03:16 2017   ;
+; Analysis & Synthesis Status        ; Failed - Tue Dec 19 17:17:23 2017       ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
-; Top-level Entity Name              ; EX_MEM                                  ;
+; Top-level Entity Name              ; PipelinedARMv8                          ;
 ; Family                             ; Cyclone II                              ;
-; Total logic elements               ; 269                                     ;
-;     Total combinational functions  ; 269                                     ;
-;     Dedicated logic registers      ; 269                                     ;
-; Total registers                    ; 269                                     ;
-; Total pins                         ; 540                                     ;
-; Total virtual pins                 ; 0                                       ;
-; Total memory bits                  ; 0                                       ;
-; Embedded Multiplier 9-bit elements ; 0                                       ;
-; Total PLLs                         ; 0                                       ;
+; Total logic elements               ; N/A until Partition Merge               ;
+;     Total combinational functions  ; N/A until Partition Merge               ;
+;     Dedicated logic registers      ; N/A until Partition Merge               ;
+; Total registers                    ; N/A until Partition Merge               ;
+; Total pins                         ; N/A until Partition Merge               ;
+; Total virtual pins                 ; N/A until Partition Merge               ;
+; Total memory bits                  ; N/A until Partition Merge               ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge               ;
+; Total PLLs                         ; N/A until Partition Merge               ;
 +------------------------------------+-----------------------------------------+
 
 
@@ -63,7 +59,7 @@ applicable agreement for further details.
 ; Option                                                         ; Setting            ; Default Value      ;
 +----------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                         ; EP2C70F896C6       ;                    ;
-; Top-level entity name                                          ; EX_MEM             ; Pipelined_ARMv8    ;
+; Top-level entity name                                          ; PipelinedARMv8     ; Pipelined_ARMv8    ;
 ; Family name                                                    ; Cyclone II         ; Stratix II         ;
 ; Use Generated Physical Constraints File                        ; Off                ;                    ;
 ; Use smart compilation                                          ; Off                ; Off                ;
@@ -133,76 +129,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                        ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                                    ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------+
-; EX_MEM.v                         ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/EX_MEM.v ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimated Total logic elements              ; 269   ;
-;                                             ;       ;
-; Total combinational functions               ; 269   ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 269   ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 269   ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 269   ;
-;     -- Dedicated logic registers            ; 269   ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 540   ;
-; Maximum fan-out node                        ; reset ;
-; Maximum fan-out                             ; 269   ;
-; Total fan-out                               ; 1345  ;
-; Average fan-out                             ; 1.25  ;
-+---------------------------------------------+-------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |EX_MEM                    ; 269 (269)         ; 269 (269)    ; 0           ; 0            ; 0       ; 0         ; 540  ; 0            ; |EX_MEM             ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 269   ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Tue Dec 19 14:03:15 2017
+    Info: Processing started: Tue Dec 19 17:17:20 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Found 1 design units, including 1 entities, in source file ID_EX.v
     Info: Found entity 1: ID_EX
@@ -237,8 +170,9 @@ Info: Found 1 design units, including 1 entities, in source file PipelinedARMv8.
     Info: Found entity 1: PipelinedARMv8
 Info: Found 1 design units, including 1 entities, in source file IF_ID.v
     Info: Found entity 1: IF_ID
-Info: Found 1 design units, including 1 entities, in source file instruction_decode.v
-    Info: Found entity 1: instruction_decode
+Error (10134): Verilog HDL Module Declaration error at instruction_decode.v(10): port "RegWrite" is declared more than once File: C:/Users/piete/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/instruction_decode.v Line: 10
+Error (10112): Ignored design unit "instruction_decode" at instruction_decode.v(1) due to previous errors File: C:/Users/piete/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/instruction_decode.v Line: 1
+Info: Found 0 design units, including 0 entities, in source file instruction_decode.v
 Info: Found 1 design units, including 1 entities, in source file execution.v
     Info: Found entity 1: execution
 Info: Found 1 design units, including 1 entities, in source file memory.v
@@ -247,22 +181,19 @@ Info: Found 1 design units, including 1 entities, in source file EX_MEM.v
     Info: Found entity 1: EX_MEM
 Info: Found 1 design units, including 1 entities, in source file MEM_WB.v
     Info: Found entity 1: MEM_WB
-Info: Elaborating entity "EX_MEM" for the top level hierarchy
-Info: Generated suppressed messages file E:/Pieter-Jan Buntinx/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg
-Info: Implemented 809 device resources after synthesis - the final resource count might be different
-    Info: Implemented 271 input pins
-    Info: Implemented 269 output pins
-    Info: Implemented 269 logic cells
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 283 megabytes
-    Info: Processing ended: Tue Dec 19 14:03:16 2017
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+Info: Found 1 design units, including 1 entities, in source file forwarding_unit.v
+    Info: Found entity 1: forwarding_unit
+Info: Generated suppressed messages file C:/Users/piete/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg
+Error: Quartus II Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 286 megabytes
+    Error: Processing ended: Tue Dec 19 17:17:23 2017
+    Error: Elapsed time: 00:00:03
+    Error: Total CPU time (on all processors): 00:00:02
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in E:/Pieter-Jan Buntinx/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg.
+The suppressed messages can be found in C:/Users/piete/OneDrive - Universiteit Hasselt/Documents/School/3 ABA IIW ELO-ICT/COMAR/Project/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg.
 
 
