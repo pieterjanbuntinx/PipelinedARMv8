@@ -1,12 +1,14 @@
-module instruction_decode(	write_register, clock, reset,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, Uncondbranch,
-						Branchlink, Branchreg, not_zero, instruction, write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out,
-						RegWrite_in, RegWrite_out, read_register1_out, read_register2_out, stall);
+module instruction_decode(	write_register, clock, reset,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc,
+						Branchreg, instruction, write_back, PC_branch_link_in, read_data1, read_data2,
+						RegWrite_in, RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, add_out, sign_extend_out,
+						Uncondbranch);
 input clock, reset, RegWrite_in, stall;
 input [31:0] instruction;
 input [4:0] write_register;
-input [63:0] write_back, PC_branch_link_in;
+input [63:0] write_back, PC__link_in, PC_out_IF_ID;
 
-output [63:0] sign_extend_out, read_data1, read_data2,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, Uncondbranch, Branchlink, Branchreg, not_zero;
+output [63:0] 	read_data1, read_data2,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, 
+				Uncondbranch, Branchlink, Branchreg, sign_extend_out, add_out;
 output RegWrite_out;
 output [4:0] read_register1_out, read_register2_out;
 
@@ -22,6 +24,8 @@ n_mux mux1(.in1(write_back),.in2(PC_branch_link_in),.out(write_data),.select(Bra
 assign read_register1_out = instruction[9:5];
 assign read_register2_out = read_register_2;
 
+
+
 //mux's voor stall
 wire Reg2Loc_in, Branch_in, MemRead_in, MemtoReg_in, MemWrite_in, ALUSrc_in, RegWrite_in, Uncondbranch_in,
 		Branchlink_in, Branchreg_in;				
@@ -36,6 +40,7 @@ n_mux n_mux_Uncondbranch(.in1(Uncondbranch_in), .in2(0), .out(Uncondbranch), .se
 n_mux n_mux_Branchlink(.in1(Branchlink_in), .in2(0), .out(Branchlink), .select(stall));
 n_mux n_mux_Branchreg(.in1(Branchreg_in), .in2(0), .out(Branchreg), .select(stall));
 
+wire not_zero;
 control control(.clock(clock), 
 				.instruction(instruction[31:21]), 
 				.Reg2Loc(Reg2Loc_in), 
@@ -59,8 +64,26 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.Read_data_2(read_data2), 
 					.clock(clock), 
 					.reset(reset));
+					
+wire alu_zero;					
+n_mux mux_zero_not_zero(.in1(zero),.in2(!zero),.out(alu_zero),.select(not_zero));
+
+wire or_out, and_out;
+assign or_out = and_out | Uncondbranch;
+assign and_out = Branch & alu_zero;
 
 //bepaalde delen van de instructies sign extenden naar 64 bits
+wire [63:0] sign_extend_out, shift_left_2_out;
 sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
+shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);
+
+alu_add add_pc_m(PC_out_IF_ID,shift_left_2_out,add_out);
+
+//kijken of read_data1 gelijk is aan 0
+reg zero;
+always @(read_data1) begin
+	if (read_data1 == 64'b0) zero <= 1;
+	else zero <= 0;
+end
 
 endmodule

@@ -89,7 +89,6 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # hierarchies {
 instruction_fetch:instruction_fetch|alu_add:add_pc_met_4
-execution:execution|alu_add:add_pc_met_4
 }
 # macro_sequence
 
@@ -189,20 +188,6 @@ instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
 instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
 instruction_fetch:instruction_fetch|n_mux:mux_pc_is_wat
 n_mux:n_mux_na_MEM_WB
-instruction_decode:instruction_decode|n_mux:mux2
-instruction_decode:instruction_decode|n_mux:mux1
-instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
-instruction_decode:instruction_decode|n_mux:n_mux_Branch
-instruction_decode:instruction_decode|n_mux:n_mux_MemRead
-instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
-instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
-instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
-instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
-instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
-instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
-instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
-execution:execution|n_mux:n_mux
-memory:memory|n_mux:mux_zero_not_zero
 }
 # macro_sequence
 
@@ -237,9 +222,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-instruction_decode:instruction_decode|control:control
-}
 # macro_sequence
 
 # end
@@ -272,9 +254,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-instruction_decode:instruction_decode|registers:registers
 }
 # macro_sequence
 
@@ -309,45 +288,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-instruction_decode:instruction_decode|sign_extend:sign_extend
-}
-# macro_sequence
-
-# end
-# entity
-execution
-# storage
-db|Pipelined_ARMv8.(13).cnf
-db|Pipelined_ARMv8.(13).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-execution.v
-3efde2d714dc67b9ca8a691297b1bf2
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-execution:execution
-}
 # macro_sequence
 
 # end
@@ -380,9 +320,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-execution:execution|alu:alu
 }
 # macro_sequence
 
@@ -417,9 +354,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-execution:execution|shift_left_2:shift_left_2
-}
 # macro_sequence
 
 # end
@@ -453,9 +387,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-execution:execution|alu_control:alu_control
-}
 # macro_sequence
 
 # end
@@ -488,9 +419,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-memory:memory
 }
 # macro_sequence
 
@@ -535,9 +463,6 @@ logwords
 PARAMETER_SIGNED_DEC
 DEF
 }
-# hierarchies {
-memory:memory|data_memory:data_memory
-}
 # macro_sequence
 
 # end
@@ -570,9 +495,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-EX_MEM:EX_MEM
 }
 # macro_sequence
 
@@ -607,9 +529,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-MEM_WB:MEM_WB
-}
 # macro_sequence
 
 # end
@@ -642,9 +561,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-ID_EX:ID_EX_pipeline_register
 }
 # macro_sequence
 
@@ -679,45 +595,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
-# hierarchies {
-forwarding_unit:forwarding_unit
-}
-# macro_sequence
-
-# end
-# entity
-instruction_decode
-# storage
-db|Pipelined_ARMv8.(1).cnf
-db|Pipelined_ARMv8.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-instruction_decode.v
-eb3eec4b4ca1556bc7bf2326ed1e4c
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-instruction_decode:instruction_decode
-}
 # macro_sequence
 
 # end
@@ -750,81 +627,6 @@ VERILOG_CONSTANT_LOOP_LIMIT
 5000
 VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
-}
-# hierarchies {
-hazard_detection_unit:hazard_detection_unit
-}
-# macro_sequence
-
-# end
-# entity
-PipelinedARMv8
-# storage
-db|Pipelined_ARMv8.(0).cnf
-db|Pipelined_ARMv8.(0).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-PipelinedARMv8.v
-a843cee241108bffbc94deb5ef828ba5
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
-instruction_fetch
-# storage
-db|Pipelined_ARMv8.(2).cnf
-db|Pipelined_ARMv8.(2).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-instruction_fetch.V
-d735b42248ff09d276bfd9584ff9d74
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-instruction_fetch:instruction_fetch
 }
 # macro_sequence
 
@@ -861,6 +663,78 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # hierarchies {
 IF_ID:IF_ID_pipeline_register
+}
+# macro_sequence
+
+# end
+# entity
+PipelinedARMv8
+# storage
+db|Pipelined_ARMv8.(0).cnf
+db|Pipelined_ARMv8.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+PipelinedARMv8.v
+7665141082921588825df8163039bb
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+instruction_fetch
+# storage
+db|Pipelined_ARMv8.(1).cnf
+db|Pipelined_ARMv8.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+instruction_fetch.V
+465739cebc5b9fa7b926c7715d559d9
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+instruction_fetch:instruction_fetch
 }
 # macro_sequence
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Pipelined_ARMv8
-Tue Dec 19 21:48:36 2017
+Wed Dec 20 00:11:49 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -9,32 +9,8 @@ Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
   1. Legal Notice
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
-  4. Analysis & Synthesis Source Files Read
-  5. Analysis & Synthesis Resource Usage Summary
-  6. Analysis & Synthesis Resource Utilization by Entity
-  7. General Register Statistics
-  8. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
-  9. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
- 10. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
- 11. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_pc_is_wat
- 12. Parameter Settings for User Entity Instance: n_mux:n_mux_na_MEM_WB
- 13. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux2
- 14. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux1
- 15. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
- 16. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branch
- 17. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemRead
- 18. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
- 19. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
- 20. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
- 21. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
- 22. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
- 23. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
- 24. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
- 25. Parameter Settings for User Entity Instance: execution:execution|n_mux:n_mux
- 26. Parameter Settings for User Entity Instance: memory:memory|data_memory:data_memory
- 27. Parameter Settings for User Entity Instance: memory:memory|n_mux:mux_zero_not_zero
- 28. Analysis & Synthesis Messages
- 29. Analysis & Synthesis Suppressed Messages
+  4. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -60,20 +36,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Dec 19 21:48:36 2017   ;
+; Analysis & Synthesis Status        ; Failed - Wed Dec 20 00:11:49 2017       ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
 ; Top-level Entity Name              ; PipelinedARMv8                          ;
 ; Family                             ; Cyclone II                              ;
-; Total logic elements               ; 0                                       ;
-;     Total combinational functions  ; 0                                       ;
-;     Dedicated logic registers      ; 0                                       ;
-; Total registers                    ; 0                                       ;
-; Total pins                         ; 3                                       ;
-; Total virtual pins                 ; 0                                       ;
-; Total memory bits                  ; 0                                       ;
-; Embedded Multiplier 9-bit elements ; 0                                       ;
-; Total PLLs                         ; 0                                       ;
+; Total logic elements               ; N/A until Partition Merge               ;
+;     Total combinational functions  ; N/A until Partition Merge               ;
+;     Dedicated logic registers      ; N/A until Partition Merge               ;
+; Total registers                    ; N/A until Partition Merge               ;
+; Total pins                         ; N/A until Partition Merge               ;
+; Total virtual pins                 ; N/A until Partition Merge               ;
+; Total memory bits                  ; N/A until Partition Merge               ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge               ;
+; Total PLLs                         ; N/A until Partition Merge               ;
 +------------------------------------+-----------------------------------------+
 
 
@@ -153,296 +129,13 @@ applicable agreement for further details.
 +----------------------------------------------------------------+--------------------+--------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                 ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                             ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------+
-; ID_EX.v                          ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/ID_EX.v                 ;
-; instruction_fetch.V              ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/instruction_fetch.V     ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/alu.v                   ;
-; alu_add.v                        ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/alu_add.v               ;
-; alu_control.v                    ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/alu_control.v           ;
-; control.v                        ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/control.v               ;
-; data_memory.v                    ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/data_memory.v           ;
-; instruction_memory.v             ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/instruction_memory.v    ;
-; n_mux.v                          ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/n_mux.v                 ;
-; pc.v                             ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/pc.v                    ;
-; registers.v                      ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/registers.v             ;
-; shift_left_2.v                   ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/shift_left_2.v          ;
-; sign_extend.v                    ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/sign_extend.v           ;
-; PipelinedARMv8.v                 ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/PipelinedARMv8.v        ;
-; IF_ID.v                          ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/IF_ID.v                 ;
-; instruction_decode.v             ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/instruction_decode.v    ;
-; execution.v                      ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/execution.v             ;
-; memory.v                         ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/memory.v                ;
-; EX_MEM.v                         ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/EX_MEM.v                ;
-; MEM_WB.v                         ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/MEM_WB.v                ;
-; forwarding_unit.v                ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/forwarding_unit.v       ;
-; hazard_detection_unit.v          ; yes             ; User Verilog HDL File  ; E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/hazard_detection_unit.v ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 3     ;
-+---------------------------------------------+-------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |PipelinedARMv8            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 3    ; 0            ; |PipelinedARMv8     ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                        ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                              ;
-+----------------+-------+-----------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|instruction_memory:instruction_memory ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                          ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
-; words          ; 256   ; Signed Integer                                                                                ;
-; logwords       ; 9     ; Signed Integer                                                                                ;
-; size           ; 32    ; Signed Integer                                                                                ;
-; addr_size      ; 64    ; Signed Integer                                                                                ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_pc_is_wat ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                        ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                              ;
-+----------------+-------+-----------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: n_mux:n_mux_na_MEM_WB ;
-+----------------+-------+-------------------------------------------+
-; Parameter Name ; Value ; Type                                      ;
-+----------------+-------+-------------------------------------------+
-; N              ; 64    ; Signed Integer                            ;
-+----------------+-------+-------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux2 ;
-+----------------+-------+----------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                 ;
-+----------------+-------+----------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                       ;
-+----------------+-------+----------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux1 ;
-+----------------+-------+----------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                 ;
-+----------------+-------+----------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                       ;
-+----------------+-------+----------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                          ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                ;
-+----------------+-------+-------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branch ;
-+----------------+-------+------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                         ;
-+----------------+-------+------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                               ;
-+----------------+-------+------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemRead ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                          ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                ;
-+----------------+-------+-------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemWrite ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc ;
-+----------------+-------+------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                         ;
-+----------------+-------+------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                               ;
-+----------------+-------+------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_RegWrite ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch ;
-+----------------+-------+------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                               ;
-+----------------+-------+------------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                     ;
-+----------------+-------+------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchlink ;
-+----------------+-------+----------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                             ;
-+----------------+-------+----------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                   ;
-+----------------+-------+----------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchreg ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: execution:execution|n_mux:n_mux ;
-+----------------+-------+-----------------------------------------------------+
-; Parameter Name ; Value ; Type                                                ;
-+----------------+-------+-----------------------------------------------------+
-; N              ; 64    ; Signed Integer                                      ;
-+----------------+-------+-----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: memory:memory|data_memory:data_memory ;
-+----------------+-------+-----------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                      ;
-+----------------+-------+-----------------------------------------------------------+
-; words          ; 8192  ; Signed Integer                                            ;
-; logwords       ; 14    ; Signed Integer                                            ;
-+----------------+-------+-----------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: memory:memory|n_mux:mux_zero_not_zero ;
-+----------------+-------+-----------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                      ;
-+----------------+-------+-----------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                            ;
-+----------------+-------+-----------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Tue Dec 19 21:48:34 2017
+    Info: Processing started: Wed Dec 20 00:11:48 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Found 1 design units, including 1 entities, in source file ID_EX.v
     Info: Found entity 1: ID_EX
@@ -492,8 +185,8 @@ Info: Found 1 design units, including 1 entities, in source file forwarding_unit
 Info: Found 1 design units, including 1 entities, in source file hazard_detection_unit.v
     Info: Found entity 1: hazard_detection_unit
 Warning (10236): Verilog HDL Implicit Net warning at instruction_fetch.V(17): created implicit net for "instruction"
-Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(34): created implicit net for "RegWrite"
-Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(57): created implicit net for "MEM_WB_RegWrite"
+Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(37): created implicit net for "RegWrite"
+Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(67): created implicit net for "MEM_WB_RegWrite"
 Info: Elaborating entity "PipelinedARMv8" for the top level hierarchy
 Warning (10034): Output port "uitgang" at PipelinedARMv8.v(4) has no driver
 Info: Elaborating entity "instruction_fetch" for hierarchy "instruction_fetch:instruction_fetch"
@@ -536,325 +229,14 @@ Info: Elaborating entity "instruction_memory" for hierarchy "instruction_fetch:i
 Warning (10858): Verilog HDL warning at instruction_memory.v(9): object memory used but never assigned
 Info: Elaborating entity "IF_ID" for hierarchy "IF_ID:IF_ID_pipeline_register"
 Info: Elaborating entity "instruction_decode" for hierarchy "instruction_decode:instruction_decode"
-Warning (10034): Output port "RegWrite_out" at instruction_decode.v(10) has no driver
-Info: Elaborating entity "control" for hierarchy "instruction_decode:instruction_decode|control:control"
-Warning (10175): Verilog HDL warning at control.v(28): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(45): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(62): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(79): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(96): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(112): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(128): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(145): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(162): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(179): ignoring unsupported system task
-Warning (10270): Verilog HDL Case Statement warning at control.v(13): incomplete case statement has no default case item
-Warning (10175): Verilog HDL warning at control.v(197): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(213): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(229): ignoring unsupported system task
-Warning (10175): Verilog HDL warning at control.v(245): ignoring unsupported system task
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "Reg2Loc", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "ALUSrc", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "MemtoReg", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "RegWrite", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "MemRead", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "MemWrite", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "Branch", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "ALUOp", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "Uncondbranch", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "Branchlink", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "Branchreg", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control.v(11): inferring latch(es) for variable "not_zero", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "MemtoReg" at control.v(199)
-Info (10041): Inferred latch for "not_zero" at control.v(199)
-Info (10041): Inferred latch for "Branchreg" at control.v(199)
-Info (10041): Inferred latch for "Branchlink" at control.v(199)
-Info (10041): Inferred latch for "ALUOp[0]" at control.v(199)
-Info (10041): Inferred latch for "ALUOp[1]" at control.v(199)
-Info (10041): Inferred latch for "Uncondbranch" at control.v(199)
-Info (10041): Inferred latch for "Branch" at control.v(199)
-Info (10041): Inferred latch for "MemWrite" at control.v(199)
-Info (10041): Inferred latch for "MemRead" at control.v(199)
-Info (10041): Inferred latch for "RegWrite" at control.v(199)
-Info (10041): Inferred latch for "ALUSrc" at control.v(199)
-Info (10041): Inferred latch for "Reg2Loc" at control.v(199)
-Info: Elaborating entity "registers" for hierarchy "instruction_decode:instruction_decode|registers:registers"
-Info: Elaborating entity "sign_extend" for hierarchy "instruction_decode:instruction_decode|sign_extend:sign_extend"
-Warning (10240): Verilog HDL Always Construct warning at sign_extend.v(9): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "out[0]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[1]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[2]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[3]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[4]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[5]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[6]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[7]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[8]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[9]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[10]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[11]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[12]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[13]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[14]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[15]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[16]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[17]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[18]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[19]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[20]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[21]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[22]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[23]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[24]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[25]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[26]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[27]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[28]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[29]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[30]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[31]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[32]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[33]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[34]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[35]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[36]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[37]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[38]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[39]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[40]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[41]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[42]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[43]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[44]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[45]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[46]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[47]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[48]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[49]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[50]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[51]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[52]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[53]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[54]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[55]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[56]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[57]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[58]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[59]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[60]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[61]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[62]" at sign_extend.v(12)
-Info (10041): Inferred latch for "out[63]" at sign_extend.v(12)
-Info: Elaborating entity "hazard_detection_unit" for hierarchy "hazard_detection_unit:hazard_detection_unit"
-Info: Elaborating entity "ID_EX" for hierarchy "ID_EX:ID_EX_pipeline_register"
-Info: Elaborating entity "execution" for hierarchy "execution:execution"
-Warning (10199): Verilog HDL Case Statement warning at execution.v(28): case item expression never matches the case expression
-Warning (10199): Verilog HDL Case Statement warning at execution.v(39): case item expression never matches the case expression
-Warning (10034): Output port "write_data[63]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[62]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[61]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[60]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[59]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[58]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[57]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[56]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[55]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[54]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[53]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[52]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[51]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[50]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[49]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[48]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[47]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[46]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[45]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[44]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[43]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[42]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[41]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[40]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[39]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[38]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[37]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[36]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[35]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[34]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[33]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[32]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[31]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[30]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[29]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[28]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[27]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[26]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[25]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[24]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[23]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[22]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[21]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[20]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[19]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[18]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[17]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[16]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[15]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[14]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[13]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[12]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[11]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[10]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[9]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[8]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[7]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[6]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[5]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[4]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[3]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[2]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[1]" at execution.v(11) has no driver
-Warning (10034): Output port "write_data[0]" at execution.v(11) has no driver
-Info: Elaborating entity "alu" for hierarchy "execution:execution|alu:alu"
-Info: Elaborating entity "shift_left_2" for hierarchy "execution:execution|shift_left_2:shift_left_2"
-Info: Elaborating entity "alu_control" for hierarchy "execution:execution|alu_control:alu_control"
-Info: Elaborating entity "forwarding_unit" for hierarchy "forwarding_unit:forwarding_unit"
-Warning (10240): Verilog HDL Always Construct warning at forwarding_unit.v(9): inferring latch(es) for variable "ForwardA", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at forwarding_unit.v(9): inferring latch(es) for variable "ForwardB", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "ForwardB[0]" at forwarding_unit.v(9)
-Info (10041): Inferred latch for "ForwardB[1]" at forwarding_unit.v(9)
-Info (10041): Inferred latch for "ForwardA[0]" at forwarding_unit.v(9)
-Info (10041): Inferred latch for "ForwardA[1]" at forwarding_unit.v(9)
-Info: Elaborating entity "EX_MEM" for hierarchy "EX_MEM:EX_MEM"
-Info: Elaborating entity "memory" for hierarchy "memory:memory"
-Info: Elaborating entity "data_memory" for hierarchy "memory:memory|data_memory:data_memory"
-Warning (10240): Verilog HDL Always Construct warning at data_memory.v(20): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "read_data[0]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[1]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[2]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[3]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[4]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[5]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[6]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[7]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[8]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[9]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[10]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[11]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[12]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[13]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[14]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[15]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[16]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[17]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[18]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[19]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[20]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[21]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[22]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[23]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[24]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[25]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[26]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[27]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[28]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[29]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[30]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[31]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[32]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[33]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[34]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[35]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[36]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[37]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[38]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[39]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[40]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[41]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[42]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[43]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[44]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[45]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[46]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[47]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[48]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[49]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[50]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[51]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[52]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[53]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[54]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[55]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[56]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[57]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[58]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[59]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[60]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[61]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[62]" at data_memory.v(20)
-Info (10041): Inferred latch for "read_data[63]" at data_memory.v(20)
-Info: Elaborating entity "MEM_WB" for hierarchy "MEM_WB:MEM_WB"
-Warning (12010): Port "in1" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in2" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12030): Port "out" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12020): Port "ALUOp" on the entity instantiation of "ID_EX_pipeline_register" is connected to a signal of width 2. The formal width of the signal in the module is 1.  The extra bits will be ignored.
-Warning (12030): Port "ALUOp_out" on the entity instantiation of "ID_EX_pipeline_register" is connected to a signal of width 2. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic.
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning (12030): Port "ALUOp" on the entity instantiation of "control" is connected to a signal of width 64. The formal width of the signal in the module is 2.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "not_zero" on the entity instantiation of "control" is connected to a signal of width 64. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_Branchreg" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_Branchlink" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_Uncondbranch" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_RegWrite" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12030): Port "out" on the entity instantiation of "n_mux_RegWrite" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_ALUSrc" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_MemWrite" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_MemtoReg" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_MemRead" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_Branch" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in1" on the entity instantiation of "n_mux_Reg2Loc" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12020): Port "select" on the entity instantiation of "mux1" is connected to a signal of width 64. The formal width of the signal in the module is 1.  The extra bits will be ignored.
-Warning (12010): Port "in1" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12010): Port "in2" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12030): Port "out" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12020): Port "select" on the entity instantiation of "mux2" is connected to a signal of width 64. The formal width of the signal in the module is 1.  The extra bits will be ignored.
-Warning (12030): Port "ALUOp" on the entity instantiation of "instruction_decode" is connected to a signal of width 2. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "ALUSrc" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "Branch" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "Branchreg" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "MemRead" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "MemWrite" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "MemtoReg" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "Uncondbranch" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12030): Port "not_zero" on the entity instantiation of "instruction_decode" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning (12030): Port "out" on the entity instantiation of "mux_pc_is_wat" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning (12010): Port "in2" on the entity instantiation of "mux_met_branchreg" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning (12030): Port "data_out" on the entity instantiation of "instruction_memory" is connected to a signal of width 1. The formal width of the signal in the module is 32.  The extra bits will be left dangling without any fan-out logic.
-Warning (12010): Port "in2" on the entity instantiation of "add_pc_met_4" is connected to a signal of width 32. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "uitgang" is stuck at GND
+Error (10663): Verilog HDL Port Connection error at instruction_decode.v(62): output or inout port "not_zero" must be connected to a structural net expression File: E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/instruction_decode.v Line: 62
+Error: Can't elaborate user hierarchy "instruction_decode:instruction_decode" File: E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/PipelinedARMv8.v Line: 67
 Info: Generated suppressed messages file E:/Pieter-Jan Buntinx/Bureaublad/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg
-Warning: Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clock"
-    Warning (15610): No output dependent on input pin "reset"
-Info: Implemented 3 device resources after synthesis - the final resource count might be different
-    Info: Implemented 2 input pins
-    Info: Implemented 1 output pins
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 188 warnings
-    Info: Peak virtual memory: 294 megabytes
-    Info: Processing ended: Tue Dec 19 21:48:36 2017
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+Error: Quartus II Analysis & Synthesis was unsuccessful. 2 errors, 37 warnings
+    Error: Peak virtual memory: 283 megabytes
+    Error: Processing ended: Wed Dec 20 00:11:49 2017
+    Error: Elapsed time: 00:00:01
+    Error: Total CPU time (on all processors): 00:00:01
 
 
 +------------------------------------------+

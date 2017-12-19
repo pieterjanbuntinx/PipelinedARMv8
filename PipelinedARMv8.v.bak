@@ -15,12 +15,13 @@ wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_I
 instruction_fetch instruction_fetch(.clock(clock), 
 									.reset(reset), 
 									.Branchreg(Branchreg_EX_MEM), 
-									.alu_result(alu_result_EX_MEM),
+									.add_pc(add_pc),
 									.read_data_1(read_data_1_EX_MEM),
 									.instruction_out(instruction),
 									.PC_out(PC_out),
 									.PC_branch_link_out(PC_branch_link),
-									.or_out(or_out));								
+									.or_out(or_out),
+									.PCWrite(!stall));								
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
 								.reset(reset),
 								.PC_out_in(PC_out),
@@ -28,12 +29,13 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.PC_branch_link_in(PC_branch_link),
 								.instruction_out(instruction_IF_ID), 
 								.PC_out_out(PC_out_IF_ID),
-								.PC_branch_link_out(PC_branch_link_IF_ID));
+								.PC_branch_link_out(PC_branch_link_IF_ID),
+								.IF_ID_Write(!stall));
 									
 //instruction decode en ID_EX pipeline register
 wire RegWrite_ID, Reg2Loc, Branchlink, stall;
 wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
-			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX,write_back;
+			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX,write_back, add_pc;
 wire [4:0] write_register_ID_EX, read_register1_ID, read_register2_ID;
 
 n_mux n_mux_na_MEM_WB(.in1(read_data_data_memory_MEM_WB),.in2(alu_result_out_memory_MEM_WB),.out(write_back),.select(MemtoReg));
@@ -45,7 +47,6 @@ instruction_decode instruction_decode(	.clock(clock),
 										.PC_branch_link_in(PC_branch_link_IF_ID),
 										.read_data1(read_data1),
 										.read_data2(read_data2),
-										.sign_extend_out(sign_extended),
 										.write_register(write_register_MEM_WB),
 										.Branch(Branch), 
 										.MemRead(MemRead), 
@@ -60,7 +61,10 @@ instruction_decode instruction_decode(	.clock(clock),
 										.RegWrite_out(RegWrite_ID),
 										.read_register1_out(read_register1_ID),
 										.read_register2_out(read_register2_ID),
-										.stall(stall));
+										.stall(stall),
+										.add_out(add_pc),
+										.PC_out_IF_ID(PC_out_IF_ID),
+										.sign_extend_out(sign_extended));
 										
 hazard_detection_unit hazard_detection_unit(.clock(clock),
 											.reset(reset), 
@@ -113,7 +117,7 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								
 
 //Execution en EX/MEM pipeline register
-wire [63:0] add_pc_met_4_out, alu_result, write_data,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,add_pc,
+wire [63:0] add_pc_met_4_out, alu_result, write_data,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
 				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory;
 wire [4:0] write_register_EX_MEM, write_register_MEM_WB;
 wire zero,zero_EX_MEM, EX_MEM_RegWrite;
@@ -121,10 +125,9 @@ wire [1:0] ForwardA, ForwardB;
 
 execution execution(.pc_out(pc_out_ID_EX),
 					.instruction(instruction),
-					.sign_extend_out(sign_extended_ID_EX),
+					.sign_extend_in(sign_extended_ID_EX),
 					.read_data_1(read_data1_ID_EX),
 					.read_data_2(read_data2_ID_EX),
-					.add_out(add_pc),
 					.zero(zero),
 					.alu_result(alu_result),
 					.write_data(write_data),

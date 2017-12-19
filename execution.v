@@ -1,24 +1,20 @@
-module execution(pc_out,sign_extend_out,read_data_1,read_data_2,add_out, zero, alu_result,write_data, 
+module execution(pc_out,read_data_1,read_data_2, zero, alu_result,write_data, sign_extend_in,
 					ALUSrc, ALUOp, instruction, forwardA, forwardB, EX_MEM_alu_result, WB_write_back);
 
-input [63:0] pc_out, read_data_1,read_data_2, sign_extend_out, EX_MEM_alu_result, WB_write_back;
+input [63:0] pc_out, read_data_1,read_data_2, EX_MEM_alu_result, WB_write_back, sign_extend_in;
 input ALUSrc;
 input [1:0] ALUOp;
 input [31:0] instruction;
 input [1:0] forwardA, forwardB;
 wire [3:0] alu_control_uit;
 
-output [63:0] add_out, alu_result, write_data;
+output [63:0] alu_result, write_data;
 output zero;
 
 wire [63:0] alu_mux_in_2, shift_left_2_out;
 
-alu_add add_pc_met_4(pc_out,shift_left_2_out,add_out);
-
 //mux tussen read data 2 en sign extend out
-n_mux n_mux(read_data_2, sign_extend_out, alu_mux_in_2, ALUSrc);
-
-
+n_mux n_mux(read_data_2, sign_extend_in, alu_mux_in_2, ALUSrc);
 
 // 3 way mux voor waarden pipeline registers naar input 1 ALU te brengen
 reg [63:0] alu_in1; 
@@ -43,8 +39,6 @@ always @(alu_mux_in_2 or EX_MEM_alu_result or WB_write_back or forwardB) begin
 end
 
 alu alu(alu_in1,alu_in2,alu_result, zero, alu_control_uit);
-
-shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);
 
 alu_control alu_control(.alu_op(ALUOp),
 						.instruction(instruction[31:21]),
