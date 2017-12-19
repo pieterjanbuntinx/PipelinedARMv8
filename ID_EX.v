@@ -1,8 +1,8 @@
-module ID_EX(	write_register_in,write_register_out,clock, reset, wren, PC_out_in, read_data1_in, read_data2_in, 
+module ID_EX(	write_register_in,write_register_out,clock, reset, PC_out_in, read_data1_in, read_data2_in, 
 				sign_extended_in, PC_out_out, sign_extended_out,read_data2_out, read_data1_out,Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite, Uncondbranch,
 						Branchreg, not_zero,Branch_out, MemRead_out, MemtoReg_out, ALUOp_out, MemWrite_out, ALUSrc_out, RegWrite_out, Uncondbranch_out,
 						Branchreg_out, not_zero_out);
-input clock, reset, wren,Branch,MemRead,MemtoReg,ALUOp,MemWrite,ALUSrc,RegWrite,Uncondbranch,Branchreg,not_zero;
+input clock, reset, Branch,MemRead,MemtoReg,ALUOp,MemWrite,ALUSrc,RegWrite,Uncondbranch,Branchreg,not_zero;
 input [63:0] PC_out_in, read_data1_in, read_data2_in, sign_extended_in;
 input [4:0] write_register_in;
 
@@ -32,23 +32,21 @@ always @(posedge clock) begin
 		Branchreg_out <= 0;
 		not_zero_out <= 0;
 	end else begin
-		if (wren) begin
-			PC_out_out <= PC_out_in;
-			sign_extended_out <= sign_extended_in;
-			read_data1_out <= read_data1_in;
-			read_data2_out <= read_data2_in;
-			write_register_out <= write_register_in;
-			Branch_out <= Branch;
-			MemRead_out <= MemRead;
-			MemtoReg_out <= MemtoReg;
-			ALUOp_out <= ALUOp;
-			MemWrite_out <= MemWrite;
-			ALUSrc_out <= ALUSrc;
-			RegWrite_out <= RegWrite;
-			Uncondbranch_out <= Uncondbranch;
-			Branchreg_out <= Branchreg;
-			not_zero_out <= not_zero;
-		end
+		PC_out_out <= PC_out_in;
+		sign_extended_out <= sign_extended_in;
+		read_data1_out <= read_data1_in;
+		read_data2_out <= read_data2_in;
+		write_register_out <= write_register_in;
+		Branch_out <= Branch;
+		MemRead_out <= MemRead;
+		MemtoReg_out <= MemtoReg;
+		ALUOp_out <= ALUOp;
+		MemWrite_out <= MemWrite;
+		ALUSrc_out <= ALUSrc;
+		RegWrite_out <= RegWrite;
+		Uncondbranch_out <= Uncondbranch;
+		Branchreg_out <= Branchreg;
+		not_zero_out <= not_zero;
 	end
 end
 

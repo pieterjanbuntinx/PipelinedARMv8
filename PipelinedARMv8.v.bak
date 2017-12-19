@@ -143,7 +143,7 @@ EX_MEM EX_MEM(.clock(clock),
 			  .Branchreg_out(Branchreg_EX_MEM), 
 			  .not_zero_out(not_zero_EX_MEM));
 			  
-wire or_out;
+wire or_out,MemtoReg_MEM_WB;
 			  
 memory memory(.clock(clock),
 			  .zero(zero_EX_MEM),

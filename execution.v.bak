@@ -2,7 +2,7 @@ module execution(pc_out,sign_extend_out,read_data_1,read_data_2,add_out, zero, a
 
 input [63:0] pc_out, read_data_1,read_data_2, sign_extend_out;
 input ALUSrc;
-input [1:0] ALUOp
+input [1:0] ALUOp;
 input [31:0] instruction;
 wire [3:0] alu_control_uit;
 

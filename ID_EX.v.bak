@@ -26,7 +26,7 @@ always @(posedge clock) begin
 		MemtoReg_out <= 0;
 		ALUOp_out <= 0;
 		MemWrite_out <= 0;
-		ALUSrc <= 0;
+		ALUSrc_out <= 0;
 		RegWrite_out <= 0;
 		Uncondbranch_out <= 0;
 		Branchreg_out <= 0;

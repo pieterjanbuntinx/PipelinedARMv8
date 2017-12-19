@@ -8,7 +8,7 @@ wire Branch, MemRead,MemtoReg,MemWrite,ALUSrc,Uncondbranch,not_zero;
 wire [1:0] ALUOp;
 
 //instruction fetch en IF_ID pipeline register
-wire Branchreg, wren_IF_ID;
+wire Branchreg;
 wire [31:0] instruction, instruction_IF_ID;
 wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_ID,read_data_1_EX_MEM;
 					
@@ -24,7 +24,6 @@ instruction_fetch instruction_fetch(.clock(clock),
 									
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
 								.reset(reset),
-								.wren(wren_IF_ID), 
 								.PC_out_in(PC_out),
 								.instruction_in(instruction), 
 								.PC_branch_link_in(PC_branch_link),
@@ -33,7 +32,7 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.PC_branch_link_out(PC_branch_link_IF_ID));
 									
 //instruction decode en ID_EX pipeline register
-wire RegWrite, Reg2Loc, Branchlink, wren_ID_EX;
+wire RegWrite, Reg2Loc, Branchlink;
 wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
 			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX,write_back;
 wire [4:0] write_register_ID_EX;
@@ -63,8 +62,7 @@ wire Branch_ID_EX, MemRead_ID_EX,  MemWrite_ID_EX, ALUSrc_ID_EX,Uncondbranch_ID_
 wire [1:0] ALUOp_ID_EX;
 
 ID_EX ID_EX_pipeline_register(	.clock(clock),
-								.reset(reset),
-								.wren(wren_ID_EX), 
+								.reset(reset), 
 								.PC_out_in(PC_out_IF_ID), 
 								.read_data1_in(read_data1), 
 								.read_data2_in(read_data2),
