@@ -1,13 +1,14 @@
-module instruction_decode(	write_register,clock, reset,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite, Uncondbranch,
-						Branchlink, Branchreg, not_zero, instruction, write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out
-						MEM_WB_RegWrite, RegWrite);
-input clock, reset, MEM_WB_RegWrite;
+module instruction_decode(	write_register, clock, reset,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, Uncondbranch,
+						Branchlink, Branchreg, not_zero, instruction, write_back, PC_branch_link_in, read_data1, read_data2, sign_extend_out,
+						RegWrite_in, RegWrite_out, read_register1_out, read_register2_out);
+input clock, reset, RegWrite_in;
 input [31:0] instruction;
 input [4:0] write_register;
 input [63:0] write_back, PC_branch_link_in;
 
-output [63:0] sign_extend_out, read_data1, read_data2,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite, Uncondbranch, Branchlink, Branchreg, not_zero;
-output RegWrite;
+output [63:0] sign_extend_out, read_data1, read_data2,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, Uncondbranch, Branchlink, Branchreg, not_zero;
+output RegWrite_out;
+output [4:0] read_register1_out, read_register2_out;
 
 //mux met Rd (instr[4:0]) en Rm (instr[20:16]) geschakeld door Reg2Loc
 wire [4:0] read_register_2;
@@ -18,6 +19,9 @@ n_mux mux2(.in1(instruction[20:16]),.in2(instruction[4:0]),.out(read_register_2)
 wire [63:0] write_data;
 n_mux mux1(.in1(write_back),.in2(PC_branch_link_in),.out(write_data),.select(Branchlink));
 
+assign read_register1_out = instruction[9:5];
+assign read_register2_out = read_register_2;
+
 control control(.clock(clock), 
 				.instruction(instruction[31:21]), 
 				.Reg2Loc(Reg2Loc), 
@@ -27,7 +31,7 @@ control control(.clock(clock),
 				.ALUOp(ALUOp), 
 				.MemWrite(MemWrite), 
 				.ALUSrc(ALUSrc), 
-				.RegWrite(RegWrite), 
+				.RegWrite(RegWrite_out), 
 				.Uncondbranch(Uncondbranch), 
 				.Branchlink(Branchlink), 
 				.Branchreg(Branchreg), 

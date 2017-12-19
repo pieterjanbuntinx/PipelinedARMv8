@@ -1,15 +1,16 @@
 module instruction_fetch(clock,reset, Branchreg, alu_result,read_data_1,
-						instruction_out, PC_out, PC_branch_link_out,or_out);
-input clock, Branchreg,or_out,reset;
+						instruction_out, PC_out, PC_branch_link_out,or_out, PCWrite);
+input clock, Branchreg,or_out,reset, PCWrite;
 input [63:0] read_data_1, alu_result;
 output [31:0] instruction_out;
 output [63:0] PC_out, PC_branch_link_out;
-wire [63:0] PC_out, PC_in, PC_inc;
+wire [63:0] PC_out, PC_in, PC_inc, PC_in_write;
 wire [31:0] instruction_out;
 wire mux_pc_is_wat_out;
 assign PC_branch_link_out = PC_inc;
 
-pc pc(.clock(clock),.reset(reset),.in(PC_in),.out(PC_out));
+n_mux n_mux_PCWrite(.in1(PC_out), .in2(PC_in), .out(PC_in_write), .select(PCWrite));
+pc pc(.clock(clock),.reset(reset),.in(PC_in_write),.out(PC_out));
 
 alu_add add_pc_met_4(.in1(PC_out),.in2(4),.out(PC_inc));
 

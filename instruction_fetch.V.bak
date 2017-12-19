@@ -1,11 +1,11 @@
 module instruction_fetch(clock,reset, Branchreg, alu_result,read_data_1,
-						instruction, PC_out, PC_branch_link_out,or_out);
+						instruction_out, PC_out, PC_branch_link_out,or_out);
 input clock, Branchreg,or_out,reset;
 input [63:0] read_data_1, alu_result;
-output [31:0] instruction;
+output [31:0] instruction_out;
 output [63:0] PC_out, PC_branch_link_out;
 wire [63:0] PC_out, PC_in, PC_inc;
-wire [31:0] instruction;
+wire [31:0] instruction_out;
 wire mux_pc_is_wat_out;
 assign PC_branch_link_out = PC_inc;
 

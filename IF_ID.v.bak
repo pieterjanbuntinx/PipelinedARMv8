@@ -1,5 +1,5 @@
 module IF_ID(clock, reset, PC_out_in,PC_branch_link_in,PC_branch_link_out, instruction_in, instruction_out, PC_out_out);
-input clock, reset, wren;
+input clock, reset;
 input [63:0] PC_out_in, PC_branch_link_in;
 input [31:0] instruction_in;
 output [31:0] instruction_out;

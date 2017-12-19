@@ -1,5 +1,5 @@
 module EX_MEM(write_register_in, write_register_out,clock,reset,pc_in,pc_out,zero_in,zero_out,alu_result_in,alu_result_out,read_data_2_in,read_data_2_out,
-				Branch, MemRead, MemtoReg,MemWrite, Uncondbranch, Branchreg,not_zero,Branch_out, Memread_out, 
+				Branch, MemRead, MemtoReg,MemWrite, Uncondbranch, Branchreg,not_zero,Branch_out, MemRead_out, 
 				MemtoReg_out,MemWrite_out,Uncondbranch_out,Branchreg_out,not_zero_out,read_data_1_in,read_data_1_out);
 
 input [63:0] pc_in,alu_result_in, read_data_2_in,read_data_1_in;

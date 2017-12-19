@@ -16,10 +16,12 @@ begin
 		ForwardB <= 2'b10;
 		
 	//MEM hazard:
-	if (MEM_WB_RegWrite && (MEM_WB_RegisterRd !== 31) && (MEM_WB_RegisterRd == ID_EX_RegisterRn1))
+	if (MEM_WB_RegWrite && (MEM_WB_RegisterRd !== 31) && (MEM_WB_RegisterRd == ID_EX_RegisterRn1)
+		&& !(EX_MEM_RegWrite && (EX_MEM_RegisterRd !== 31) && (EX_MEM_RegisterRd == ID_EX_RegisterRn1)))
 		ForwardA <= 2'b01; 
-	if (MEM_WB_RegWrite && (MEM_WB_RegisterRd !== 31) && (MEM_WB_RegisterRd == ID_EX_RegisterRm2))
-		ForwardB <= 2'b01; 	
+	if (MEM_WB_RegWrite && (MEM_WB_RegisterRd !== 31) && (MEM_WB_RegisterRd == ID_EX_RegisterRm2)
+		&& !(EX_MEM_RegWrite && (EX_MEM_RegisterRd !== 31) && (EX_MEM_RegisterRd !== ID_EX_RegisterRm2)))
+		ForwardB <= 2'b01; 			
 end 
 
 endmodule					
