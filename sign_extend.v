@@ -15,5 +15,6 @@ always@(in)begin
 		begin out = {{55{in[20]}},in[20:12]}; end
 	else if(in[31:21] == 'b11010011011 || in[31:21] == 'b11010011010)
 		begin out = {{58{in[15]}},in[15:10]}; end
+	else out = 64'b0;
 end
 endmodule 

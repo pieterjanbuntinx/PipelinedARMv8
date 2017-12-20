@@ -21,10 +21,14 @@ module data_memory(clock,address, write_data, MemWrite, MemRead, read_data,switc
 			memory[21][17:0] <= switches;
 			end
 				
-	always @(address or write_data or MemWrite or MemRead or leds)
+	always @(address or write_data or MemWrite or MemRead)
 		if(MemRead)begin
 			read_data <= memory[address[31:0]];
 			leds <= memory[22][26:0];
 			end
+		else begin
+			read_data <= 64'b0;
+			leds <= 27'b0;
+		end
 		
 endmodule 

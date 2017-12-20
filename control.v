@@ -97,6 +97,7 @@ always @(instruction) begin
 		end
 		
 		11'b11111000010 : begin //LDUR
+		Reg2Loc = 0;
 		ALUSrc = 1;
 		MemtoReg = 1;
 		RegWrite = 1;
@@ -116,6 +117,7 @@ always @(instruction) begin
 		Reg2Loc = 1;
 		ALUSrc = 1;
 		RegWrite = 0;
+		MemtoReg = 0;
 		MemRead = 0;
 		MemWrite = 1;
 		Branch = 0;
@@ -178,7 +180,7 @@ always @(instruction) begin
 		not_zero = 0;
 		$display("BR");
 		end
-		default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 1; ALUOp[0] = 1; Uncondbranch =0;Branchlink = 0;Branchreg = 0; end
+		default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 1; ALUOp[0] = 1; Uncondbranch =0;Branchlink = 0;Branchreg = 0; not_zero = 0;end
 		
 	endcase 
 	if(instruction[10:3] == 8'b10110100) begin //CBZ

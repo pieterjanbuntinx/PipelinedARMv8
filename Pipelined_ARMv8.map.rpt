@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Pipelined_ARMv8
-Wed Dec 20 11:51:26 2017
+Wed Dec 20 12:08:11 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Dec 20 11:51:26 2017       ;
+; Analysis & Synthesis Status        ; Failed - Wed Dec 20 12:08:11 2017       ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
 ; Top-level Entity Name              ; op_bord                                 ;
@@ -135,7 +135,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Wed Dec 20 11:51:24 2017
+    Info: Processing started: Wed Dec 20 12:08:09 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Found 1 design units, including 1 entities, in source file ID_EX.v
     Info: Found entity 1: ID_EX
@@ -151,8 +151,8 @@ Info: Found 1 design units, including 1 entities, in source file and_poort.V
     Info: Found entity 1: and_poort
 Info: Found 1 design units, including 1 entities, in source file control.v
     Info: Found entity 1: control
-Info: Found 1 design units, including 1 entities, in source file data_memory.v
-    Info: Found entity 1: data_memory
+Error (10170): Verilog HDL syntax error at data_memory.v(33) near text "endmodule";  expecting "@", or "end", or an identifier ("endmodule" is a reserved keyword ), or a system task, or "{", or a sequential statement File: //Mac/Home/Documents/COMAR/PipelinedARMv8/data_memory.v Line: 33
+Info: Found 0 design units, including 0 entities, in source file data_memory.v
 Info: Found 1 design units, including 1 entities, in source file instruction_memory.v
     Info: Found entity 1: instruction_memory
 Info: Found 1 design units, including 1 entities, in source file n_mux.v
@@ -186,14 +186,11 @@ Info: Found 1 design units, including 1 entities, in source file hazard_detectio
     Info: Found entity 1: hazard_detection_unit
 Info: Found 1 design units, including 1 entities, in source file op_bord.v
     Info: Found entity 1: op_bord
-Warning (10236): Verilog HDL Implicit Net warning at PipelinedARMv8.v(156): created implicit net for "alu_in2_EM_MEM"
-Error (10161): Verilog HDL error at EX_MEM.v(1): object "read_data_2_in" is not declared File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 1
-Error (10161): Verilog HDL error at EX_MEM.v(1): object "read_data_2_out" is not declared File: //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v Line: 1
 Info: Generated suppressed messages file //Mac/Home/Documents/COMAR/PipelinedARMv8/Pipelined_ARMv8.map.smsg
-Error: Quartus II Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 281 megabytes
-    Error: Processing ended: Wed Dec 20 11:51:26 2017
-    Error: Elapsed time: 00:00:02
+Error: Quartus II Analysis & Synthesis was unsuccessful. 1 error, 0 warnings
+    Error: Peak virtual memory: 286 megabytes
+    Error: Processing ended: Wed Dec 20 12:08:12 2017
+    Error: Elapsed time: 00:00:03
     Error: Total CPU time (on all processors): 00:00:01
 
 
