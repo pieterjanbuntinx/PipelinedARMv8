@@ -35,7 +35,7 @@ initial begin
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2]," ","      ",
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16]," ","      ",	
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," ",
-			test_singlecycleprocessor.scp.MemtoReg," ","      %h",
+			test_singlecycleprocessor.scp.instruction_fetch.PC_in," ","      %h",
 			test_singlecycleprocessor.scp.execution.alu_result," ","      %h",
 test_singlecycleprocessor.scp.instruction," ",clock); 
 	

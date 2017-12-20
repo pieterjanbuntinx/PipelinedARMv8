@@ -4,7 +4,7 @@ input clock;
 reg reset;
 
 wire uitgang;
-SingleCycleProcessor scp(clock,reset,uitgang);
+PipelinedARMv8 scp(clock,reset,uitgang);
 clockGenerator clk(clock);
 
 
@@ -32,18 +32,22 @@ ADD X16, X16, X2 => X16 = X16 + 80
 */
 
 initial begin	
-	$readmemh("register_file_CB_type_test.hex",test_singlecycleprocessor.scp.registers.regfile);
-	$readmemh("instruction_memory_CB_type_test.txt",test_singlecycleprocessor.scp.instruction_memory.memory);
-	$display("Instruction	  	  X16	  		 PC_out	 	 instruction code");
-	$monitor(test_singlecycleprocessor.scp.registers.regfile[16],
-			test_singlecycleprocessor.scp.pc_out, "                 ",								
-			" %h",test_singlecycleprocessor.scp.instruction);
+	$readmemh("register_file_CB_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
+	$readmemh("instruction_memory_CB_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
+	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		LR	 				instruction code");
+	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
+			test_singlecycleprocessor.scp.instruction_decode.Branchlink, "      ",	
+			test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, "      ",								
+			" %b",test_singlecycleprocessor.scp.instruction," ",clock); 
+	
 
 
 reset = 1;
 #15 reset = 0;
 	
-#300 $finish;		
+#500 $finish;		
 	
 end
 

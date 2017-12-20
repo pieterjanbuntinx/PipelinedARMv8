@@ -32,10 +32,12 @@ initial begin
 	$readmemh("instruction_memory_B_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
 	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		LR	 				instruction code");
 	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
-			test_singlecycleprocessor.scp.instruction_decode.registers.Read_data_2,
-			test_singlecycleprocessor.scp.instruction_fetch.pc.out, 
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30], "      ",								
-			" %b",test_singlecycleprocessor.scp.instruction); 
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30], 
+			test_singlecycleprocessor.scp.instruction_decode.Branchlink, "      ",	
+			test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, "      ",								
+			" %b",test_singlecycleprocessor.scp.instruction," ",clock); 
 	
 			
 
@@ -43,7 +45,7 @@ initial begin
 reset = 1;
 #15 reset = 0;
 	
-#300 $finish;		
+#250 $finish;		
 	
 end
 

@@ -79,7 +79,7 @@ instruction_decode instruction_decode(	.clock(clock),
 										.read_register2_out(read_register2_ID),
 										.stall(stall),
 										.PC_CB(add_pc),
-										.PC_out_IF_ID(PC_inc_IF_ID),
+										.PC_out_IF_ID(PC_out_IF_ID),
 										.sign_extend_out(sign_extended),
 										.or_out(or_out));
 										

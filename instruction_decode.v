@@ -83,6 +83,8 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.clock(clock), 
 					.reset(reset));
 		
+n_mux n_mux_BL_write_register(.in1(write_register), .in2(30), .out(write_register_in), .select(Branchlink));
+
 //bepaalde delen van de instructies sign extenden naar 64 bits
 sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
 shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);

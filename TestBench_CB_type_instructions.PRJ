@@ -36,10 +36,10 @@
 //#@@ "output path" ""
 //#@@ "prompt on save" "TRUE"
 //#@@ "unix mode" "FALSE"
-//#@S 460,1183		[Project window size]
+//#@S 507,1183		[Project window size]
 //#@P 165,0		[Project window position]
-//#@s 361,810		[Console window size]
-//#@p 123,286		[Console window position]
+//#@s 663,1084		[Console window size]
+//#@p 38,306		[Console window position]
 alu.v
 alu_add.v
 alu_control.v
