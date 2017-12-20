@@ -8,7 +8,7 @@ wire Branch, MemRead,MemtoReg,MemWrite,ALUSrc,Uncondbranch,not_zero;
 wire [1:0] ALUOp;
 
 //instruction fetch en IF_ID pipeline register
-wire Branchreg;
+wire Branchreg, IF_ID_Flush;
 wire [31:0] instruction, instruction_IF_ID;
 wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_ID,read_data_1_EX_MEM;
 					
@@ -20,7 +20,6 @@ instruction_fetch instruction_fetch(.clock(clock),
 									.instruction_out(instruction),
 									.PC_out(PC_out),
 									.PC_branch_link_out(PC_branch_link),
-									.or_out(or_out),
 									.PCWrite(!stall));								
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
 								.reset(reset),
@@ -30,7 +29,8 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.instruction_out(instruction_IF_ID), 
 								.PC_out_out(PC_out_IF_ID),
 								.PC_branch_link_out(PC_branch_link_IF_ID),
-								.IF_ID_Write(!stall));
+								.IF_ID_Write(!stall),
+								.IF_ID_Flush(IF_ID_Flush));
 									
 //instruction decode en ID_EX pipeline register
 wire RegWrite_ID, Reg2Loc, Branchlink, stall;
@@ -48,20 +48,18 @@ instruction_decode instruction_decode(	.clock(clock),
 										.read_data1(read_data1),
 										.read_data2(read_data2),
 										.write_register(write_register_MEM_WB),
-										.Branch(Branch), 
 										.MemRead(MemRead), 
 										.MemtoReg(MemtoReg), 
 										.ALUOp(ALUOp), 
 										.MemWrite(MemWrite), 
 										.ALUSrc(ALUSrc), 
 										.Branchreg(Branchreg), 
-										.not_zero(not_zero),
 										.RegWrite_in(MEM_WB_RegWrite),
 										.RegWrite_out(RegWrite_ID),
 										.read_register1_out(read_register1_ID),
 										.read_register2_out(read_register2_ID),
 										.stall(stall),
-										.add_out(add_pc),
+										.PC_mux(add_pc),
 										.PC_out_IF_ID(PC_out_IF_ID),
 										.sign_extend_out(sign_extended));
 										
@@ -184,12 +182,8 @@ memory memory(.clock(clock),
 			  .read_data(read_data_data_memory),
 			  .alu_result_out(alu_result_out_memory),
 			  .MemWrite(MemWrite_EX_MEM),
-			  .MemRead(MemRead_EX_MEM),
-			  .not_zero(not_zero_EX_MEM),
-			  .zero(zero_EX_MEM),
-			  .Uncondbranch(Uncondbranch_EX_MEM),
-			  .Branch(Branch_EX_MEM));
-			  
+			  .MemRead(MemRead_EX_MEM));
+			  			  
 MEM_WB MEM_WB(.read_data_in(read_data_data_memory),
 			  .read_data_uit(read_data_data_memory_MEM_WB),
 			  .clock(clock),

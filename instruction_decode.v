@@ -1,15 +1,16 @@
-module instruction_decode(	write_register, clock, reset,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc,
+module instruction_decode(	write_register, clock, reset,Reg2Loc, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc,
 						Branchreg, instruction, write_back, PC_branch_link_in, read_data1, read_data2,
-						RegWrite_in, RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, add_out, sign_extend_out,
+						RegWrite_in, RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, PC_mux, sign_extend_out,
 						Uncondbranch);
 input clock, reset, RegWrite_in, stall;
 input [31:0] instruction;
 input [4:0] write_register;
-input [63:0] write_back, PC__link_in, PC_out_IF_ID;
+input [63:0] write_back, PC_branch_link_in, PC_out_IF_ID;
 
-output [63:0] 	read_data1, read_data2,Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, 
-				Uncondbranch, Branchlink, Branchreg, sign_extend_out, add_out;
-output RegWrite_out;
+output [63:0] 	read_data1, read_data2, sign_extend_out, PC_mux;
+output RegWrite_out, Reg2Loc, MemRead, MemtoReg, MemWrite, ALUSrc, 
+				Uncondbranch, Branchreg;
+output [1:0] ALUOp;
 output [4:0] read_register1_out, read_register2_out;
 
 //mux met Rd (instr[4:0]) en Rm (instr[20:16]) geschakeld door Reg2Loc
@@ -64,20 +65,24 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.Read_data_2(read_data2), 
 					.clock(clock), 
 					.reset(reset));
-					
+		
+//bepaalde delen van de instructies sign extenden naar 64 bits
+wire [63:0] sign_extend_out, shift_left_2_out, PC_CB, PC_mux, PC_mux_link;
+sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
+shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);
+
+//sign extended waarde offset optellen bij PC_out
+alu_add add_pc_m(PC_out_IF_ID,shift_left_2_out,PC_CB);
+			
 wire alu_zero;					
 n_mux mux_zero_not_zero(.in1(zero),.in2(!zero),.out(alu_zero),.select(not_zero));
+
 
 wire or_out, and_out;
 assign or_out = and_out | Uncondbranch;
 assign and_out = Branch & alu_zero;
-
-//bepaalde delen van de instructies sign extenden naar 64 bits
-wire [63:0] sign_extend_out, shift_left_2_out;
-sign_extend sign_extend(.in(instruction),.out(sign_extend_out));
-shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);
-
-alu_add add_pc_m(PC_out_IF_ID,shift_left_2_out,add_out);
+//selecteren tussen PC_inc en PC_CB
+n_mux n_mux_PC_inc_CB(.in1(PC_out_IF_ID), .in2(PC_CB), .out(PC_mux), .select(or_out));
 
 //kijken of read_data1 gelijk is aan 0
 reg zero;

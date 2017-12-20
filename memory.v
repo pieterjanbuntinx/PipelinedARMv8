@@ -1,6 +1,6 @@
-module memory(clock, alu_result,write_data,read_data, MemWrite,Branch,MemRead,alu_result_out);
+module memory(clock, alu_result,write_data,read_data, MemWrite,MemRead,alu_result_out);
 
-input MemWrite, MemRead, Uncondbranch,Branch,clock;
+input MemWrite, MemRead,clock;
 input [63:0] alu_result, write_data;
 
 output [63:0] read_data, alu_result_out;
