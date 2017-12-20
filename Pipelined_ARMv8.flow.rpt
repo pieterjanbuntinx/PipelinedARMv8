@@ -1,5 +1,5 @@
 Flow report for Pipelined_ARMv8
-Wed Dec 20 13:39:45 2017
+Wed Dec 20 14:16:20 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +------------------------------------+-----------------------------------------+
-; Flow Status                        ; Successful - Wed Dec 20 13:39:45 2017   ;
+; Flow Status                        ; Successful - Wed Dec 20 14:16:20 2017   ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
 ; Top-level Entity Name              ; op_bord                                 ;
@@ -63,25 +63,25 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/20/2017 13:38:59 ;
+; Start date & time ; 12/20/2017 14:15:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Pipelined_ARMv8     ;
 +-------------------+---------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                      ;
-+------------------------------------+---------------------------------+-----------------+-------------+----------------+
-; Assignment Name                    ; Value                           ; Default Value   ; Entity Name ; Section Id     ;
-+------------------------------------+---------------------------------+-----------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID              ; 176676652615213.151377353900464 ; --              ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP             ; 85                              ; --              ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP             ; 0                               ; --              ; --          ; --             ;
-; PARTITION_COLOR                    ; 16764057                        ; --              ; op_bord     ; Top            ;
-; PARTITION_NETLIST_TYPE             ; SOURCE                          ; --              ; op_bord     ; Top            ;
-; TOP_LEVEL_ENTITY                   ; op_bord                         ; Pipelined_ARMv8 ; --          ; --             ;
-; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                             ; --              ; --          ; eda_blast_fpga ;
-+------------------------------------+---------------------------------+-----------------+-------------+----------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                   ;
++------------------------------------+------------------------------+-----------------+-------------+----------------+
+; Assignment Name                    ; Value                        ; Default Value   ; Entity Name ; Section Id     ;
++------------------------------------+------------------------------+-----------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID              ; 121368580236.151377575407668 ; --              ; --          ; --             ;
+; MAX_CORE_JUNCTION_TEMP             ; 85                           ; --              ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP             ; 0                            ; --              ; --          ; --             ;
+; PARTITION_COLOR                    ; 16764057                     ; --              ; op_bord     ; Top            ;
+; PARTITION_NETLIST_TYPE             ; SOURCE                       ; --              ; op_bord     ; Top            ;
+; TOP_LEVEL_ENTITY                   ; op_bord                      ; Pipelined_ARMv8 ; --          ; --             ;
+; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                          ; --              ; --          ; eda_blast_fpga ;
++------------------------------------+------------------------------+-----------------+-------------+----------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------+
@@ -89,11 +89,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:10     ; 1.0                     ; 296 MB              ; 00:00:09                           ;
-; Fitter                  ; 00:00:19     ; 1.0                     ; 446 MB              ; 00:00:19                           ;
-; Assembler               ; 00:00:09     ; 1.0                     ; 410 MB              ; 00:00:07                           ;
-; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 236 MB              ; 00:00:00                           ;
-; Total                   ; 00:00:38     ; --                      ; --                  ; 00:00:35                           ;
+; Analysis & Synthesis    ; 00:00:07     ; 1.0                     ; 347 MB              ; 00:00:05                           ;
+; Fitter                  ; 00:00:09     ; 1.0                     ; 437 MB              ; 00:00:08                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 402 MB              ; 00:00:04                           ;
+; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; 231 MB              ; 00:00:00                           ;
+; Total                   ; 00:00:21     ; --                      ; --                  ; 00:00:17                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -102,10 +102,10 @@ applicable agreement for further details.
 +-------------------------+------------------+---------------+------------+----------------+
 ; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
 +-------------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis    ; DESKTOP-THO2MJU  ; Windows Vista ; 6.2        ; x86_64         ;
-; Fitter                  ; DESKTOP-THO2MJU  ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; DESKTOP-THO2MJU  ; Windows Vista ; 6.2        ; x86_64         ;
-; Classic Timing Analyzer ; DESKTOP-THO2MJU  ; Windows Vista ; 6.2        ; x86_64         ;
+; Analysis & Synthesis    ; RUBENCOUCKE86F4  ; Windows Vista ; 6.2        ; x86_64         ;
+; Fitter                  ; RUBENCOUCKE86F4  ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; RUBENCOUCKE86F4  ; Windows Vista ; 6.2        ; x86_64         ;
+; Classic Timing Analyzer ; RUBENCOUCKE86F4  ; Windows Vista ; 6.2        ; x86_64         ;
 +-------------------------+------------------+---------------+------------+----------------+
 
 

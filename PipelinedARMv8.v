@@ -16,7 +16,7 @@ wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_I
 
 wire RegWrite_ID, Reg2Loc, Branchlink, stall;
 wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
-			read_data2_ID_EX, sign_extended_ID_EX,write_back, add_pc;
+			read_data2_ID_EX, sign_extended_ID_EX,write_back, add_pc,alu_in2_EX_MEM;
 wire [4:0] write_register_ID_EX, read_register1_ID, read_register2_ID;
 
 wire Branch_ID_EX, MemRead_ID_EX,  MemWrite_ID_EX, ALUSrc_ID_EX,Uncondbranch_ID_EX, Branchreg_ID_EX, not_zero_ID_EX, MemtoReg_ID_EX, ID_EX_RegWrite;
@@ -25,7 +25,7 @@ wire [4:0] read_register1_ID_EX, read_register2_ID_EX;
 
 wire [63:0] add_pc_met_4_out, alu_result,alu_in2_execution,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
 				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory;
-wire [4:0] write_register_EX_MEM, write_register_MEM_WB,alu_in2_EX_MEM;
+wire [4:0] write_register_EX_MEM, write_register_MEM_WB;
 wire zero,zero_EX_MEM, EX_MEM_RegWrite;
 wire [1:0] ForwardA, ForwardB;
 
@@ -57,6 +57,7 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 n_mux n_mux_na_MEM_WB(.in1(read_data_data_memory_MEM_WB),.in2(alu_result_out_memory_MEM_WB),.out(write_back),.select(MemtoReg));
 			
 instruction_decode instruction_decode(	.clock(clock),
+										.IF_ID_Flush(IF_IS_Flush),
 										.reset(reset),
 										.instruction(instruction_IF_ID),
 										.write_back(write_back), //afkomstig van MEM/WB

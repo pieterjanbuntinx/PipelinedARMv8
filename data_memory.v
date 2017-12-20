@@ -17,19 +17,21 @@ module data_memory(clock,address, write_data, MemWrite, MemRead, read_data,switc
 		if(address[31:15] == 0)begin
 			if(MemWrite)begin
 				memory[address[logwords:0]] <= write_data; 
-				end
+			end
 		end
 		else if(address[31:15] == 1)begin
-			memory[18] <= switches;
+			memory[address[31:15]] <= switches;
 		end
 				
 	always @(address or write_data or MemWrite or MemRead)
 	begin
-		if(MemRead)begin
-			read_data <= memory[address[logwords:0]];
+		if(address[31:15] == 0)begin
+			if(MemRead)begin
+				read_data <= memory[address[logwords:0]];
 			end
+		end
 		else if(address[31:15] == 1)begin
-			leds <= memory[18];
+			leds <= memory[address[31:15]];
 		end
 	end
 		

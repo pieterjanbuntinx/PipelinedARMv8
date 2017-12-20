@@ -36,14 +36,13 @@
 //#@@ "output path" ""
 //#@@ "prompt on save" "TRUE"
 //#@@ "unix mode" "FALSE"
-//#@S 534,1176		[Project window size]
-//#@P 237,465		[Project window position]
-//#@s 591,1057		[Console window size]
-//#@p 561,1258		[Console window position]
+//#@S 460,1183		[Project window size]
+//#@P 165,0		[Project window position]
+//#@s 369,1030		[Console window size]
+//#@p 17,388		[Console window position]
 alu.v
 alu_add.v
 alu_control.v
-and_poort.V
 control.v
 data_memory.v
 instruction_memory.v
@@ -53,5 +52,16 @@ registers.v
 reverse_mux.V
 shift_left_2.v
 sign_extend.v
-SingleCycleProcessor.v
+PipelinedARMv8.v
+EX_MEM.v
+execution.v
+forwarding_unit.v
+hazard_detection_unit.v
+ID_EX.v
+IF_ID.v
+instruction_decode.v
+instruction_fetch.V
+MEM_WB.v
+op_bord.v
+memory.v
 testbench_D_type_instructions.V

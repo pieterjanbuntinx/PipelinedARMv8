@@ -1,7 +1,7 @@
-module control(clock, instruction, Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite, Uncondbranch, Branchlink, Branchreg, not_zero);
+module control(clock,CB_instr, instruction, Reg2Loc, Branch, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc, RegWrite, Uncondbranch, Branchlink, Branchreg, not_zero);
 
-output Reg2Loc, ALUSrc, MemtoReg, Branch, MemRead, MemWrite, RegWrite,Uncondbranch, Branchlink, Branchreg, not_zero;
-reg Reg2Loc, ALUSrc, MemtoReg, Branch, MemRead, MemWrite, RegWrite, Uncondbranch, Branchlink,Branchreg, not_zero;
+output Reg2Loc, ALUSrc, MemtoReg, Branch, MemRead, MemWrite, RegWrite,Uncondbranch, Branchlink, Branchreg, not_zero,CB_instr;
+reg Reg2Loc, ALUSrc, MemtoReg, Branch, MemRead, MemWrite, RegWrite, Uncondbranch, Branchlink,Branchreg, not_zero,CB_instr;
 output [1:0] ALUOp;
 reg [1:0] ALUOp;
 
@@ -12,6 +12,7 @@ always @(instruction) begin
 	
 	case(instruction) 
 		11'b10001011000 : begin //ADD
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -29,6 +30,7 @@ always @(instruction) begin
 		end
 		
 		11'b11001011000 : begin //SUB
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -46,6 +48,7 @@ always @(instruction) begin
 		end
 		
 		11'b10001010000 : begin //AND
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -63,6 +66,7 @@ always @(instruction) begin
 		end
 		
 		11'b10101010000 : begin //ORR
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -80,6 +84,7 @@ always @(instruction) begin
 		end
 		
 		11'b11001010000 : begin //EOR
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -97,6 +102,7 @@ always @(instruction) begin
 		end
 		
 		11'b11111000010 : begin //LDUR
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 1;
 		MemtoReg = 1;
@@ -114,6 +120,7 @@ always @(instruction) begin
 		end
 		
 		11'b11111000000 : begin //STUR
+		CB_instr=0;
 		Reg2Loc = 1;
 		ALUSrc = 1;
 		RegWrite = 0;
@@ -131,6 +138,7 @@ always @(instruction) begin
 		end
 		
 		11'b11010011011 : begin //LSL
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 1;
 		MemtoReg = 0;
@@ -148,6 +156,7 @@ always @(instruction) begin
 		end
 		
 		11'b11010011010 : begin //LSR
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 1;
 		MemtoReg = 0;
@@ -165,6 +174,7 @@ always @(instruction) begin
 		end
 		
 		11'b11010110000 : begin //BR
+		CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -184,6 +194,7 @@ always @(instruction) begin
 		
 	endcase 
 	if(instruction[10:3] == 8'b10110100) begin //CBZ
+		CB_instr = 1;
 		Reg2Loc = 1;
 		ALUSrc = 0;
 		RegWrite = 0;
@@ -199,6 +210,7 @@ always @(instruction) begin
 		//$display("CBZ");
 	end
 	else if(instruction[10:3] == 8'b10110101) begin //CBNZ 
+	CB_instr=1;
 		Reg2Loc = 1;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -215,6 +227,7 @@ always @(instruction) begin
 		//$display("CBNZ");
 	end
 	else if(instruction[10:5] == 6'b100101) begin //BL 
+	CB_instr=0;
 		Reg2Loc = 1;
 		ALUSrc = 0;
 		MemtoReg = 0;
@@ -231,6 +244,7 @@ always @(instruction) begin
 		//$display("BL");
 	end
 	else if(instruction[10:5] == 6'b000101) begin //B
+	CB_instr=0;
 		Reg2Loc = 0;
 		ALUSrc = 0;
 		MemtoReg = 0;

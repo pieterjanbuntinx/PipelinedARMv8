@@ -12,7 +12,7 @@ assign PC_branch_link_out = PC_inc;
 n_mux n_mux_PCWrite(.in1(PC_out), .in2(PC_in), .out(PC_in_write), .select(PCWrite));
 pc pc(.clock(clock),.reset(reset),.in(PC_in_write),.out(PC_out));
 
-alu_add add_pc_met_4(.in1(PC_out),.in2(4),.out(PC_inc));
+alu_add add_pc_met_4(.in1(PC_out),.in2(64'b100),.out(PC_inc));
 
 instruction_memory instruction_memory(.address(PC_out),.data_out(instruction_out));
 
