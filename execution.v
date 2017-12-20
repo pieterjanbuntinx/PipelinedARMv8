@@ -11,7 +11,7 @@ wire [3:0] alu_control_uit;
 output [63:0] alu_result, alu_in2_out;
 wire [63:0] alu_mux_in_2, shift_left_2_out;
 
-assign alu_in2_out = alu_in2;
+
 //mux tussen read data 2 en sign extend out
 n_mux n_mux(read_data_2, sign_extend_in, alu_mux_in_2, ALUSrc);
 
@@ -28,6 +28,7 @@ end
 
 // 3 way mux voor waarden pipeline registers naar input 1 ALU te brengen
 reg [63:0] alu_in2;
+assign alu_in2_out = alu_in2;
 always @(alu_mux_in_2 or EX_MEM_alu_result or WB_write_back or forwardB) begin
 	case (forwardB)
 		00: alu_in2 <= alu_mux_in_2;

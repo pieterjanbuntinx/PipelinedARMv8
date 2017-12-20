@@ -13,6 +13,25 @@ wire [1:0] ALUOp;
 wire Branchreg, IF_ID_Flush;
 wire [31:0] instruction, instruction_IF_ID;
 wire [63:0] PC_out, PC_out_IF_ID, PC_branch, PC_branch_link, PC_branch_link_IF_ID,read_data_1_EX_MEM;
+
+wire RegWrite_ID, Reg2Loc, Branchlink, stall;
+wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
+			read_data2_ID_EX, sign_extended_ID_EX,write_back, add_pc;
+wire [4:0] write_register_ID_EX, read_register1_ID, read_register2_ID;
+
+wire Branch_ID_EX, MemRead_ID_EX,  MemWrite_ID_EX, ALUSrc_ID_EX,Uncondbranch_ID_EX, Branchreg_ID_EX, not_zero_ID_EX, MemtoReg_ID_EX, ID_EX_RegWrite;
+wire [1:0] ALUOp_ID_EX;
+wire [4:0] read_register1_ID_EX, read_register2_ID_EX;
+
+wire [63:0] add_pc_met_4_out, alu_result,alu_in2_execution,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
+				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory;
+wire [4:0] write_register_EX_MEM, write_register_MEM_WB,alu_in2_EX_MEM;
+wire zero,zero_EX_MEM, EX_MEM_RegWrite;
+wire [1:0] ForwardA, ForwardB;
+
+wire Branch_EX_MEM, MemRead_EX_MEM, MemtoReg_EX_MEM,MemWrite_EX_MEM, Uncondbranch_EX_MEM, Branchreg_EX_MEM,not_zero_EX_MEM;
+
+wire or_out, MemtoReg_MEM_WB, MEM_WB_RegWrite;
 					
 instruction_fetch instruction_fetch(.clock(clock), 
 									.reset(reset), 
@@ -35,11 +54,6 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.IF_ID_Flush(IF_ID_Flush));
 									
 //instruction decode en ID_EX pipeline register
-wire RegWrite_ID, Reg2Loc, Branchlink, stall;
-wire [63:0] read_data1, read_data2, sign_extended, read_data1_ID_EX, 
-			read_data2_ID_EX, PC_out_ID_EX, sign_extended_ID_EX,write_back, add_pc;
-wire [4:0] write_register_ID_EX, read_register1_ID, read_register2_ID;
-
 n_mux n_mux_na_MEM_WB(.in1(read_data_data_memory_MEM_WB),.in2(alu_result_out_memory_MEM_WB),.out(write_back),.select(MemtoReg));
 			
 instruction_decode instruction_decode(	.clock(clock),
@@ -73,10 +87,6 @@ hazard_detection_unit hazard_detection_unit(.clock(clock),
 											.IF_ID_RegisterRm2(read_register2_ID), 
 											.stall(stall));										
 
-wire Branch_ID_EX, MemRead_ID_EX,  MemWrite_ID_EX, ALUSrc_ID_EX,Uncondbranch_ID_EX, Branchreg_ID_EX, not_zero_ID_EX, MemtoReg_ID_EX, ID_EX_RegWrite;
-wire [1:0] ALUOp_ID_EX;
-wire [4:0] read_register1_ID_EX, read_register2_ID_EX;
-
 ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.reset(reset), 
 								.PC_out_in(PC_out_IF_ID), 
@@ -85,7 +95,7 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.read_data1_out(read_data1_ID_EX),
 								.read_data2_out(read_data2_ID_EX),
 								.sign_extended_in(sign_extended), 
-								.PC_out_out(PC_out_ID_EX), 
+								.PC_out_out(pc_out_ID_EX), 
 								.Branch(Branch), 
 								.MemRead(MemRead), 
 								.MemtoReg(MemtoReg), 
@@ -116,12 +126,6 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								
 
 //Execution en EX/MEM pipeline register
-wire [63:0] add_pc_met_4_out, alu_result,alu_in2_execution,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
-				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory;
-wire [4:0] write_register_EX_MEM, write_register_MEM_WB,alu_in2_EX_MEM;
-wire zero,zero_EX_MEM, EX_MEM_RegWrite;
-wire [1:0] ForwardA, ForwardB;
-
 execution execution(.pc_out(pc_out_ID_EX),
 					.instruction(instruction),
 					.sign_extend_in(sign_extended_ID_EX),
@@ -143,7 +147,6 @@ forwarding_unit forwarding_unit(.EX_MEM_RegWrite(EX_MEM_RegWrite),
 								.ForwardA(ForwardA), 
 								.ForwardB(ForwardB));					
 					
-wire Branch_EX_MEM, MemRead_EX_MEM, MemtoReg_EX_MEM,MemWrite_EX_MEM, Uncondbranch_EX_MEM, Branchreg_EX_MEM,not_zero_EX_MEM;
 EX_MEM EX_MEM(.clock(clock),
 			  .reset(reset),
 			  .pc_in(add_pc),
@@ -172,8 +175,6 @@ EX_MEM EX_MEM(.clock(clock),
 			  .not_zero_out(not_zero_EX_MEM),
 			  .RegWrite_in(ID_EX_RegWrite),
 			  .RegWrite_out(EX_MEM_RegWrite));
-			  
-wire or_out, MemtoReg_MEM_WB, MEM_WB_RegWrite;
 			  
 memory memory(.clock(clock),
 			  .alu_result(alu_result_EX_MEM),
