@@ -1,6 +1,6 @@
 module instruction_decode(	write_register, clock, reset,Reg2Loc, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc,
-						Branchreg, instruction, write_back, PC_branch_link_in, read_data1, read_data2,
-						RegWrite_in, IF_ID_Flush,RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, PC_mux, sign_extend_out,
+						Branchreg, instruction, write_back, PC_branch_link_in, read_data1, read_data2, PC_CB, or_out,
+						RegWrite_in, IF_ID_Flush,RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, sign_extend_out,
 						Uncondbranch);
 input clock, reset, RegWrite_in, stall;
 input [31:0] instruction;
@@ -8,20 +8,21 @@ output IF_ID_Flush;
 input [4:0] write_register;
 input [63:0] write_back, PC_branch_link_in, PC_out_IF_ID;
 
-output [63:0] 	read_data1, read_data2, sign_extend_out, PC_mux;
+output [63:0] 	read_data1, read_data2, sign_extend_out, PC_CB;
 output RegWrite_out, Reg2Loc, MemRead, MemtoReg, MemWrite, ALUSrc, 
-				Uncondbranch, Branchreg;
+				Uncondbranch, Branchreg,or_out;
 output [1:0] ALUOp;
 output [4:0] read_register1_out, read_register2_out;
 
 wire [63:0] write_data;
-
+
+
 wire [4:0] read_register_2;
 
 wire Reg2Loc_in, Branch_in, MemRead_in, MemtoReg_in, MemWrite_in, ALUSrc_in, Uncondbranch_in,
 		Branchlink_in, Branchreg_in,Branchlink,Branch, RegWrite;	
 		
-wire not_zero, CB_instr;
+wire not_zero, CB_instr,or_out;
 
 wire [63:0] sign_extend_out, shift_left_2_out, PC_CB, PC_mux, PC_mux_link;
 
@@ -29,7 +30,7 @@ wire alu_zero;
 
 assign IF_ID_Flush = CB_instr & alu_zero;
 
-wire or_out, and_out;
+wire  and_out;
 
 reg zero;
 
@@ -94,11 +95,11 @@ n_mux #(1) mux_zero_not_zero(.in1(zero),.in2(!zero),.out(alu_zero),.select(not_z
 assign or_out = and_out | Uncondbranch;
 assign and_out = Branch & alu_zero;
 //selecteren tussen PC_inc en PC_CB
-n_mux n_mux_PC_inc_CB(.in1(PC_out_IF_ID), .in2(PC_CB), .out(PC_mux), .select(or_out));
 
-//kijken of read_data1 gelijk is aan 0
-always @(read_data1) begin
-	if (read_data1 == 64'b0) zero <= 1;
+
+//kijken of read_data2 gelijk is aan 0
+always @(read_data2) begin
+	if (read_data2 == 64'b0) zero <= 1;
 	else zero <= 0;
 end
 

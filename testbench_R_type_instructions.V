@@ -21,27 +21,29 @@ AND X2, X16, X18; X2 = 20 AND 6 = 4
 ORR X2, X16, X18; X2 = 20 OR 6 = 22
 EOR X2, X16, X18; X2 = 20 EOR 6 = 18
 LSL X2, X16, #3;  X2 = 20 * 2^3 = 160
-LSR X2, X16, #3;  X2 = 20 / 2^3 = 2.5
+LSR X2, X16, #3;  X2 = 20 / 2^3 = 2
 BR X17; X17 = 8;
 
 
 */
 
 initial begin	
-	$readmemh("register_file_B_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
-	$readmemh("instruction_memory_B_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
-	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		LR	 				instruction code");
-	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
-			test_singlecycleprocessor.scp.instruction_decode.registers.Read_data_2,
-			test_singlecycleprocessor.scp.instruction_fetch.pc.out, 
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30], "      ",								
-			" %b",test_singlecycleprocessor.scp.instruction); 
+	$readmemh("register_file_R_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
+	$readmemh("instruction_memory_R_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
+	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		Read_data1	 				instruction code");
+	$monitor(
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2]," ","      ",
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16]," ","      ",	
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," ",
+			test_singlecycleprocessor.scp.MemtoReg," ","      %h",
+			test_singlecycleprocessor.scp.execution.alu_result," ","      %h",
+test_singlecycleprocessor.scp.instruction," ",clock); 
 	
 			
 
 
 reset = 1;
-#15 reset = 0;
+#20 reset = 0;
 	
 #300 $finish;		
 end
