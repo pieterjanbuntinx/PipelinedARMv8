@@ -178,7 +178,7 @@ always @(instruction) begin
 		not_zero = 0;
 		$display("BR");
 		end
-		//default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 1; ALUOp[0] = 1; Uncondbranch =0;Branchlink = 0;Branchreg = 0; end
+		default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 1; ALUOp[0] = 1; Uncondbranch =0;Branchlink = 0;Branchreg = 0; end
 		
 	endcase 
 	if(instruction[10:3] == 8'b10110100) begin //CBZ

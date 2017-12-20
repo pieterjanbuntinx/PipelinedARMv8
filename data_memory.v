@@ -16,11 +16,15 @@ module data_memory(clock,address, write_data, MemWrite, MemRead, read_data,switc
 	
 	
 	always @(posedge clock) //begin
-		if(MemWrite)
+		if(MemWrite)begin
 			memory[address[31:0]] <= write_data; 
+			memory[21][17:0] <= switches;
+			end
 				
-	always @(address or write_data or MemWrite or MemRead)
-		if(MemRead)
+	always @(address or write_data or MemWrite or MemRead or leds)
+		if(MemRead)begin
 			read_data <= memory[address[31:0]];
+			leds <= memory[22][26:0];
+			end
 		
 endmodule 

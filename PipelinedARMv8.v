@@ -116,9 +116,9 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								
 
 //Execution en EX/MEM pipeline register
-wire [63:0] add_pc_met_4_out, alu_result, write_data,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
+wire [63:0] add_pc_met_4_out, alu_result,alu_in2_execution,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
 				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory;
-wire [4:0] write_register_EX_MEM, write_register_MEM_WB;
+wire [4:0] write_register_EX_MEM, write_register_MEM_WB,alu_in2_EX_MEM;
 wire zero,zero_EX_MEM, EX_MEM_RegWrite;
 wire [1:0] ForwardA, ForwardB;
 
@@ -127,9 +127,8 @@ execution execution(.pc_out(pc_out_ID_EX),
 					.sign_extend_in(sign_extended_ID_EX),
 					.read_data_1(read_data1_ID_EX),
 					.read_data_2(read_data2_ID_EX),
-					.zero(zero),
 					.alu_result(alu_result),
-					.write_data(write_data),
+					.alu_in2_out(alu_in2_execution),
 					.ALUSrc(ALUSrc_ID_EX),			
 					.ALUOp(ALUOp_ID_EX),
 					.forwardA(ForwardA),
@@ -153,10 +152,8 @@ EX_MEM EX_MEM(.clock(clock),
 			  .zero_out(zero_EX_MEM),
 			  .alu_result_in(alu_result),
 			  .alu_result_out(alu_result_EX_MEM),
-			  .read_data_1_in(read_data1_ID_EX),
-			  .read_data_1_out(read_data_1_EX_MEM),
-			  .read_data_2_in(read_data2_ID_EX),
-			  .read_data_2_out(read_data_2_EX_MEM),
+			  .alu_in2_in(alu_in2_execution),
+			  .alu_in2_out(alu_in2_EX_MEM),
 			  .write_register_in(write_register_ID_EX),
 			  .write_register_out(write_register_EX_MEM),
 			  .Branch(Branch_ID_EX), 
@@ -180,7 +177,7 @@ wire or_out, MemtoReg_MEM_WB, MEM_WB_RegWrite;
 			  
 memory memory(.clock(clock),
 			  .alu_result(alu_result_EX_MEM),
-			  .write_data(read_data_2_EX_MEM),
+			  .write_data(alu_in2_EX_MEM),
 			  .read_data(read_data_data_memory),
 			  .alu_result_out(alu_result_out_memory),
 			  .MemWrite(MemWrite_EX_MEM),

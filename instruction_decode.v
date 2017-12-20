@@ -29,14 +29,14 @@ assign read_register2_out = read_register_2;
 
 //mux's voor stall
 wire Reg2Loc_in, Branch_in, MemRead_in, MemtoReg_in, MemWrite_in, ALUSrc_in, RegWrite_in, Uncondbranch_in,
-		Branchlink_in, Branchreg_in;				
+		Branchlink_in, Branchreg_in,Branchlink,Branch;				
 n_mux n_mux_Reg2Loc(.in1(Reg2Loc_in), .in2(0), .out(Reg2Loc), .select(stall));
 n_mux n_mux_Branch(.in1(Branch_in), .in2(0), .out(Branch), .select(stall));
 n_mux n_mux_MemRead(.in1(MemRead_in), .in2(0), .out(MemRead), .select(stall));
 n_mux n_mux_MemtoReg(.in1(MemtoReg_in), .in2(0), .out(MemtoReg), .select(stall));
 n_mux n_mux_MemWrite(.in1(MemWrite_in), .in2(0), .out(MemWrite), .select(stall));
 n_mux n_mux_ALUSrc(.in1(ALUSrc_in), .in2(0), .out(ALUSrc), .select(stall));
-n_mux n_mux_RegWrite(.in1(RegWrite_in), .in2(0), .out(RegWrite), .select(stall));
+n_mux n_mux_RegWrite(.in1(RegWrite_in), .in2(0), .out(RegWrite_out), .select(stall));
 n_mux n_mux_Uncondbranch(.in1(Uncondbranch_in), .in2(0), .out(Uncondbranch), .select(stall));
 n_mux n_mux_Branchlink(.in1(Branchlink_in), .in2(0), .out(Branchlink), .select(stall));
 n_mux n_mux_Branchreg(.in1(Branchreg_in), .in2(0), .out(Branchreg), .select(stall));
@@ -60,7 +60,7 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.Read_register_2(read_register_2), 
 					.Write_register(write_register), 
 					.Write_data(write_data), 
-					.RegWrite(MEM_WB_RegWrite), 
+					.RegWrite(RegWrite_in), 
 					.Read_data_1(read_data1), 
 					.Read_data_2(read_data2), 
 					.clock(clock), 

@@ -1,5 +1,5 @@
-module execution(pc_out,read_data_1,read_data_2, zero, alu_result,write_data, sign_extend_in,
-					ALUSrc, ALUOp, instruction, forwardA, forwardB, EX_MEM_alu_result, WB_write_back);
+module execution(pc_out,read_data_1,read_data_2,  alu_result,sign_extend_in,
+					ALUSrc, ALUOp, instruction, forwardA, forwardB, EX_MEM_alu_result, WB_write_back,alu_in2_out);
 
 input [63:0] pc_out, read_data_1,read_data_2, EX_MEM_alu_result, WB_write_back, sign_extend_in;
 input ALUSrc;
@@ -8,11 +8,10 @@ input [31:0] instruction;
 input [1:0] forwardA, forwardB;
 wire [3:0] alu_control_uit;
 
-output [63:0] alu_result, write_data;
-output zero;
-
+output [63:0] alu_result, alu_in2_out;
 wire [63:0] alu_mux_in_2, shift_left_2_out;
 
+assign alu_in2_out = alu_in2;
 //mux tussen read data 2 en sign extend out
 n_mux n_mux(read_data_2, sign_extend_in, alu_mux_in_2, ALUSrc);
 
@@ -37,6 +36,8 @@ always @(alu_mux_in_2 or EX_MEM_alu_result or WB_write_back or forwardB) begin
 		default: alu_in2 <= 64'b0;
 	endcase
 end
+
+wire zero;
 
 alu alu(alu_in1,alu_in2,alu_result, zero, alu_control_uit);
 
