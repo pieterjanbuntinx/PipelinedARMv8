@@ -30,15 +30,14 @@ BR X17; X17 = 8;
 initial begin	
 	$readmemh("register_file_R_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
 	$readmemh("instruction_memory_R_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
-	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		Read_data1	 				instruction code");
+	$display("Instruction	  	  X2				X16  				 X18	 	instruction code        clock");
 	$monitor(
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2]," ","      ",
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16]," ","      ",	
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," ",
-			test_singlecycleprocessor.scp.instruction_fetch.PC_in," ","      %h",
-			test_singlecycleprocessor.scp.execution.alu_result," ","      %h",
-test_singlecycleprocessor.scp.instruction," ",clock); 
-	
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],	
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," 		",
+			test_singlecycleprocessor.scp.instruction,
+			," 		",clock); 
+		
 			
 
 
