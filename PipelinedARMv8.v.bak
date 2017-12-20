@@ -29,7 +29,7 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.instruction_out(instruction_IF_ID), 
 								.PC_out_out(PC_out_IF_ID),
 								.PC_branch_link_out(PC_branch_link_IF_ID),
-								.IF_ID_Write(!stall)
+								.IF_ID_Write(!stall),
 								.IF_ID_Flush(IF_ID_Flush));
 									
 //instruction decode en ID_EX pipeline register

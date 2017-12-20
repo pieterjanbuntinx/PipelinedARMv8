@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Pipelined_ARMv8
-Wed Dec 20 10:56:52 2017
+Wed Dec 20 11:17:26 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -13,26 +13,26 @@ Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
   5. Analysis & Synthesis Resource Usage Summary
   6. Analysis & Synthesis Resource Utilization by Entity
   7. General Register Statistics
-  8. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
-  9. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
- 10. Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
- 11. Parameter Settings for User Entity Instance: n_mux:n_mux_na_MEM_WB
- 12. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux2
- 13. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux1
- 14. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
- 15. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branch
- 16. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemRead
- 17. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
- 18. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
- 19. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
- 20. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
- 21. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
- 22. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
- 23. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
- 24. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux_zero_not_zero
- 25. Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB
- 26. Parameter Settings for User Entity Instance: execution:execution|n_mux:n_mux
- 27. Parameter Settings for User Entity Instance: memory:memory|data_memory:data_memory
+  8. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
+  9. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
+ 10. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
+ 11. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|n_mux:n_mux_na_MEM_WB
+ 12. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux2
+ 13. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux1
+ 14. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
+ 15. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branch
+ 16. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemRead
+ 17. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
+ 18. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
+ 19. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
+ 20. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
+ 21. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
+ 22. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
+ 23. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
+ 24. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux_zero_not_zero
+ 25. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB
+ 26. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|execution:execution|n_mux:n_mux
+ 27. Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|memory:memory|data_memory:data_memory
  28. Analysis & Synthesis Messages
  29. Analysis & Synthesis Suppressed Messages
 
@@ -60,16 +60,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +------------------------------------+-----------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Dec 20 10:56:52 2017   ;
+; Analysis & Synthesis Status        ; Successful - Wed Dec 20 11:17:25 2017   ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
-; Top-level Entity Name              ; PipelinedARMv8                          ;
+; Top-level Entity Name              ; op_bord                                 ;
 ; Family                             ; Cyclone II                              ;
 ; Total logic elements               ; 0                                       ;
 ;     Total combinational functions  ; 0                                       ;
 ;     Dedicated logic registers      ; 0                                       ;
 ; Total registers                    ; 0                                       ;
-; Total pins                         ; 3                                       ;
+; Total pins                         ; 50                                      ;
 ; Total virtual pins                 ; 0                                       ;
 ; Total memory bits                  ; 0                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                       ;
@@ -83,7 +83,7 @@ applicable agreement for further details.
 ; Option                                                         ; Setting            ; Default Value      ;
 +----------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                         ; EP2C70F896C6       ;                    ;
-; Top-level entity name                                          ; PipelinedARMv8     ; Pipelined_ARMv8    ;
+; Top-level entity name                                          ; op_bord            ; Pipelined_ARMv8    ;
 ; Family name                                                    ; Cyclone II         ; Stratix II         ;
 ; Use Generated Physical Constraints File                        ; Off                ;                    ;
 ; Use smart compilation                                          ; Off                ; Off                ;
@@ -153,34 +153,35 @@ applicable agreement for further details.
 +----------------------------------------------------------------+--------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                       ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                   ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------+
-; ID_EX.v                          ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/ID_EX.v                 ;
-; instruction_fetch.V              ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/instruction_fetch.V     ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/alu.v                   ;
-; alu_add.v                        ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/alu_add.v               ;
-; alu_control.v                    ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/alu_control.v           ;
-; control.v                        ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/control.v               ;
-; data_memory.v                    ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/data_memory.v           ;
-; instruction_memory.v             ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/instruction_memory.v    ;
-; n_mux.v                          ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/n_mux.v                 ;
-; pc.v                             ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/pc.v                    ;
-; registers.v                      ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/registers.v             ;
-; shift_left_2.v                   ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/shift_left_2.v          ;
-; sign_extend.v                    ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/sign_extend.v           ;
-; PipelinedARMv8.v                 ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/PipelinedARMv8.v        ;
-; IF_ID.v                          ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/IF_ID.v                 ;
-; instruction_decode.v             ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/instruction_decode.v    ;
-; execution.v                      ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/execution.v             ;
-; memory.v                         ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/memory.v                ;
-; EX_MEM.v                         ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/EX_MEM.v                ;
-; MEM_WB.v                         ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/MEM_WB.v                ;
-; forwarding_unit.v                ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/forwarding_unit.v       ;
-; hazard_detection_unit.v          ; yes             ; User Verilog HDL File  ; C:/Users/piete/Desktop/Pipelined_ARMv8/hazard_detection_unit.v ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                          ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                      ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+
+; ID_EX.v                          ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/ID_EX.v                 ;
+; instruction_fetch.V              ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/instruction_fetch.V     ;
+; alu.v                            ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/alu.v                   ;
+; alu_add.v                        ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/alu_add.v               ;
+; alu_control.v                    ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/alu_control.v           ;
+; control.v                        ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/control.v               ;
+; data_memory.v                    ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/data_memory.v           ;
+; instruction_memory.v             ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/instruction_memory.v    ;
+; n_mux.v                          ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/n_mux.v                 ;
+; pc.v                             ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/pc.v                    ;
+; registers.v                      ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/registers.v             ;
+; shift_left_2.v                   ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/shift_left_2.v          ;
+; sign_extend.v                    ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/sign_extend.v           ;
+; PipelinedARMv8.v                 ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/PipelinedARMv8.v        ;
+; IF_ID.v                          ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/IF_ID.v                 ;
+; instruction_decode.v             ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/instruction_decode.v    ;
+; execution.v                      ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/execution.v             ;
+; memory.v                         ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/memory.v                ;
+; EX_MEM.v                         ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/EX_MEM.v                ;
+; MEM_WB.v                         ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/MEM_WB.v                ;
+; forwarding_unit.v                ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/forwarding_unit.v       ;
+; hazard_detection_unit.v          ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/hazard_detection_unit.v ;
+; op_bord.v                        ; yes             ; User Verilog HDL File  ; //Mac/Home/Documents/COMAR/PipelinedARMv8/op_bord.v               ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -203,7 +204,7 @@ applicable agreement for further details.
 ;     -- Dedicated logic registers            ; 0     ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 3     ;
+; I/O pins                                    ; 50    ;
 +---------------------------------------------+-------+
 
 
@@ -212,7 +213,7 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |PipelinedARMv8            ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 3    ; 0            ; |PipelinedARMv8     ; work         ;
+; |op_bord                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |op_bord            ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -232,207 +233,207 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                        ;
-+----------------+-------+-----------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                              ;
-+----------------+-------+-----------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite ;
++----------------+-------+------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                           ;
++----------------+-------+------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                 ;
++----------------+-------+------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|instruction_memory:instruction_memory ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                          ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
-; words          ; 256   ; Signed Integer                                                                                ;
-; logwords       ; 9     ; Signed Integer                                                                                ;
-; size           ; 32    ; Signed Integer                                                                                ;
-; addr_size      ; 64    ; Signed Integer                                                                                ;
-+----------------+-------+-----------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|instruction_memory:instruction_memory ;
++----------------+-------+------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                             ;
++----------------+-------+------------------------------------------------------------------------------------------------------------------+
+; words          ; 256   ; Signed Integer                                                                                                   ;
+; logwords       ; 9     ; Signed Integer                                                                                                   ;
+; size           ; 32    ; Signed Integer                                                                                                   ;
+; addr_size      ; 64    ; Signed Integer                                                                                                   ;
++----------------+-------+------------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: n_mux:n_mux_na_MEM_WB ;
-+----------------+-------+-------------------------------------------+
-; Parameter Name ; Value ; Type                                      ;
-+----------------+-------+-------------------------------------------+
-; N              ; 64    ; Signed Integer                            ;
-+----------------+-------+-------------------------------------------+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|n_mux:n_mux_na_MEM_WB ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux2 ;
-+----------------+-------+----------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                 ;
-+----------------+-------+----------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                       ;
-+----------------+-------+----------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux2 ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux1 ;
-+----------------+-------+----------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                 ;
-+----------------+-------+----------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                       ;
-+----------------+-------+----------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux1 ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                          ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                ;
-+----------------+-------+-------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                             ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                   ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branch ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemRead ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                             ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                   ;
++----------------+-------+--------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                              ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemWrite ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                              ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_RegWrite ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                              ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                        ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchlink ;
++----------------+-------+-----------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                ;
++----------------+-------+-----------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                      ;
++----------------+-------+-----------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchreg ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux_zero_not_zero ;
++----------------+-------+------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                 ;
++----------------+-------+------------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                       ;
++----------------+-------+------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                                                     ;
++----------------+-------+----------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|execution:execution|n_mux:n_mux ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; N              ; 64    ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branch ;
+; Parameter Settings for User Entity Instance: PipelinedARMv8:cpu|memory:memory|data_memory:data_memory ;
 +----------------+-------+------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                         ;
 +----------------+-------+------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                               ;
+; words          ; 8192  ; Signed Integer                                                               ;
+; logwords       ; 14    ; Signed Integer                                                               ;
 +----------------+-------+------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemRead ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                          ;
-+----------------+-------+-------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                ;
-+----------------+-------+-------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_MemWrite ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc ;
-+----------------+-------+------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                         ;
-+----------------+-------+------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                               ;
-+----------------+-------+------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_RegWrite ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                           ;
-+----------------+-------+--------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                 ;
-+----------------+-------+--------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch ;
-+----------------+-------+------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                               ;
-+----------------+-------+------------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                     ;
-+----------------+-------+------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchlink ;
-+----------------+-------+----------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                             ;
-+----------------+-------+----------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                   ;
-+----------------+-------+----------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_Branchreg ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:mux_zero_not_zero ;
-+----------------+-------+-----------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                              ;
-+----------------+-------+-----------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                    ;
-+----------------+-------+-----------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                            ;
-+----------------+-------+---------------------------------------------------------------------------------+
-; N              ; 64    ; Signed Integer                                                                  ;
-+----------------+-------+---------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: execution:execution|n_mux:n_mux ;
-+----------------+-------+-----------------------------------------------------+
-; Parameter Name ; Value ; Type                                                ;
-+----------------+-------+-----------------------------------------------------+
-; N              ; 64    ; Signed Integer                                      ;
-+----------------+-------+-----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: memory:memory|data_memory:data_memory ;
-+----------------+-------+-----------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                      ;
-+----------------+-------+-----------------------------------------------------------+
-; words          ; 8192  ; Signed Integer                                            ;
-; logwords       ; 14    ; Signed Integer                                            ;
-+----------------+-------+-----------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -442,7 +443,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Wed Dec 20 10:56:46 2017
+    Info: Processing started: Wed Dec 20 11:17:19 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Found 1 design units, including 1 entities, in source file ID_EX.v
     Info: Found entity 1: ID_EX
@@ -491,14 +492,16 @@ Info: Found 1 design units, including 1 entities, in source file forwarding_unit
     Info: Found entity 1: forwarding_unit
 Info: Found 1 design units, including 1 entities, in source file hazard_detection_unit.v
     Info: Found entity 1: hazard_detection_unit
+Info: Found 1 design units, including 1 entities, in source file op_bord.v
+    Info: Found entity 1: op_bord
 Warning (10236): Verilog HDL Implicit Net warning at instruction_fetch.V(17): created implicit net for "instruction"
 Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(23): created implicit net for "Branchlink"
 Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(34): created implicit net for "Branch"
 Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(39): created implicit net for "RegWrite"
 Warning (10236): Verilog HDL Implicit Net warning at instruction_decode.v(63): created implicit net for "MEM_WB_RegWrite"
-Info: Elaborating entity "PipelinedARMv8" for the top level hierarchy
-Warning (10034): Output port "uitgang" at PipelinedARMv8.v(4) has no driver
-Info: Elaborating entity "instruction_fetch" for hierarchy "instruction_fetch:instruction_fetch"
+Info: Elaborating entity "op_bord" for the top level hierarchy
+Info: Elaborating entity "PipelinedARMv8" for hierarchy "PipelinedARMv8:cpu"
+Info: Elaborating entity "instruction_fetch" for hierarchy "PipelinedARMv8:cpu|instruction_fetch:instruction_fetch"
 Warning (10034): Output port "instruction_out[31]" at instruction_fetch.V(5) has no driver
 Warning (10034): Output port "instruction_out[30]" at instruction_fetch.V(5) has no driver
 Warning (10034): Output port "instruction_out[29]" at instruction_fetch.V(5) has no driver
@@ -531,15 +534,15 @@ Warning (10034): Output port "instruction_out[3]" at instruction_fetch.V(5) has 
 Warning (10034): Output port "instruction_out[2]" at instruction_fetch.V(5) has no driver
 Warning (10034): Output port "instruction_out[1]" at instruction_fetch.V(5) has no driver
 Warning (10034): Output port "instruction_out[0]" at instruction_fetch.V(5) has no driver
-Info: Elaborating entity "n_mux" for hierarchy "instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite"
-Info: Elaborating entity "pc" for hierarchy "instruction_fetch:instruction_fetch|pc:pc"
-Info: Elaborating entity "alu_add" for hierarchy "instruction_fetch:instruction_fetch|alu_add:add_pc_met_4"
-Info: Elaborating entity "instruction_memory" for hierarchy "instruction_fetch:instruction_fetch|instruction_memory:instruction_memory"
+Info: Elaborating entity "n_mux" for hierarchy "PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite"
+Info: Elaborating entity "pc" for hierarchy "PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|pc:pc"
+Info: Elaborating entity "alu_add" for hierarchy "PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|alu_add:add_pc_met_4"
+Info: Elaborating entity "instruction_memory" for hierarchy "PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|instruction_memory:instruction_memory"
 Warning (10858): Verilog HDL warning at instruction_memory.v(9): object memory used but never assigned
-Info: Elaborating entity "IF_ID" for hierarchy "IF_ID:IF_ID_pipeline_register"
-Info: Elaborating entity "instruction_decode" for hierarchy "instruction_decode:instruction_decode"
+Info: Elaborating entity "IF_ID" for hierarchy "PipelinedARMv8:cpu|IF_ID:IF_ID_pipeline_register"
+Info: Elaborating entity "instruction_decode" for hierarchy "PipelinedARMv8:cpu|instruction_decode:instruction_decode"
 Warning (10034): Output port "RegWrite_out" at instruction_decode.v(11) has no driver
-Info: Elaborating entity "control" for hierarchy "instruction_decode:instruction_decode|control:control"
+Info: Elaborating entity "control" for hierarchy "PipelinedARMv8:cpu|instruction_decode:instruction_decode|control:control"
 Warning (10175): Verilog HDL warning at control.v(28): ignoring unsupported system task
 Warning (10175): Verilog HDL warning at control.v(45): ignoring unsupported system task
 Warning (10175): Verilog HDL warning at control.v(62): ignoring unsupported system task
@@ -580,8 +583,8 @@ Info (10041): Inferred latch for "MemRead" at control.v(199)
 Info (10041): Inferred latch for "RegWrite" at control.v(199)
 Info (10041): Inferred latch for "ALUSrc" at control.v(199)
 Info (10041): Inferred latch for "Reg2Loc" at control.v(199)
-Info: Elaborating entity "registers" for hierarchy "instruction_decode:instruction_decode|registers:registers"
-Info: Elaborating entity "sign_extend" for hierarchy "instruction_decode:instruction_decode|sign_extend:sign_extend"
+Info: Elaborating entity "registers" for hierarchy "PipelinedARMv8:cpu|instruction_decode:instruction_decode|registers:registers"
+Info: Elaborating entity "sign_extend" for hierarchy "PipelinedARMv8:cpu|instruction_decode:instruction_decode|sign_extend:sign_extend"
 Warning (10240): Verilog HDL Always Construct warning at sign_extend.v(9): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
 Info (10041): Inferred latch for "out[0]" at sign_extend.v(12)
 Info (10041): Inferred latch for "out[1]" at sign_extend.v(12)
@@ -647,10 +650,10 @@ Info (10041): Inferred latch for "out[60]" at sign_extend.v(12)
 Info (10041): Inferred latch for "out[61]" at sign_extend.v(12)
 Info (10041): Inferred latch for "out[62]" at sign_extend.v(12)
 Info (10041): Inferred latch for "out[63]" at sign_extend.v(12)
-Info: Elaborating entity "shift_left_2" for hierarchy "instruction_decode:instruction_decode|shift_left_2:shift_left_2"
-Info: Elaborating entity "hazard_detection_unit" for hierarchy "hazard_detection_unit:hazard_detection_unit"
-Info: Elaborating entity "ID_EX" for hierarchy "ID_EX:ID_EX_pipeline_register"
-Info: Elaborating entity "execution" for hierarchy "execution:execution"
+Info: Elaborating entity "shift_left_2" for hierarchy "PipelinedARMv8:cpu|instruction_decode:instruction_decode|shift_left_2:shift_left_2"
+Info: Elaborating entity "hazard_detection_unit" for hierarchy "PipelinedARMv8:cpu|hazard_detection_unit:hazard_detection_unit"
+Info: Elaborating entity "ID_EX" for hierarchy "PipelinedARMv8:cpu|ID_EX:ID_EX_pipeline_register"
+Info: Elaborating entity "execution" for hierarchy "PipelinedARMv8:cpu|execution:execution"
 Warning (10199): Verilog HDL Case Statement warning at execution.v(24): case item expression never matches the case expression
 Warning (10199): Verilog HDL Case Statement warning at execution.v(35): case item expression never matches the case expression
 Warning (10034): Output port "write_data[63]" at execution.v(11) has no driver
@@ -717,90 +720,113 @@ Warning (10034): Output port "write_data[3]" at execution.v(11) has no driver
 Warning (10034): Output port "write_data[2]" at execution.v(11) has no driver
 Warning (10034): Output port "write_data[1]" at execution.v(11) has no driver
 Warning (10034): Output port "write_data[0]" at execution.v(11) has no driver
-Info: Elaborating entity "alu" for hierarchy "execution:execution|alu:alu"
-Info: Elaborating entity "alu_control" for hierarchy "execution:execution|alu_control:alu_control"
-Info: Elaborating entity "forwarding_unit" for hierarchy "forwarding_unit:forwarding_unit"
+Info: Elaborating entity "alu" for hierarchy "PipelinedARMv8:cpu|execution:execution|alu:alu"
+Info: Elaborating entity "alu_control" for hierarchy "PipelinedARMv8:cpu|execution:execution|alu_control:alu_control"
+Info: Elaborating entity "forwarding_unit" for hierarchy "PipelinedARMv8:cpu|forwarding_unit:forwarding_unit"
 Warning (10240): Verilog HDL Always Construct warning at forwarding_unit.v(9): inferring latch(es) for variable "ForwardA", which holds its previous value in one or more paths through the always construct
 Warning (10240): Verilog HDL Always Construct warning at forwarding_unit.v(9): inferring latch(es) for variable "ForwardB", which holds its previous value in one or more paths through the always construct
 Info (10041): Inferred latch for "ForwardB[0]" at forwarding_unit.v(9)
 Info (10041): Inferred latch for "ForwardB[1]" at forwarding_unit.v(9)
 Info (10041): Inferred latch for "ForwardA[0]" at forwarding_unit.v(9)
 Info (10041): Inferred latch for "ForwardA[1]" at forwarding_unit.v(9)
-Info: Elaborating entity "EX_MEM" for hierarchy "EX_MEM:EX_MEM"
-Info: Elaborating entity "memory" for hierarchy "memory:memory"
-Info: Elaborating entity "data_memory" for hierarchy "memory:memory|data_memory:data_memory"
-Warning (10240): Verilog HDL Always Construct warning at data_memory.v(19): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "read_data[0]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[1]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[2]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[3]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[4]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[5]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[6]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[7]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[8]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[9]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[10]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[11]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[12]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[13]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[14]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[15]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[16]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[17]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[18]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[19]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[20]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[21]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[22]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[23]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[24]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[25]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[26]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[27]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[28]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[29]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[30]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[31]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[32]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[33]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[34]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[35]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[36]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[37]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[38]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[39]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[40]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[41]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[42]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[43]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[44]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[45]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[46]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[47]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[48]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[49]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[50]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[51]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[52]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[53]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[54]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[55]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[56]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[57]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[58]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[59]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[60]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[61]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[62]" at data_memory.v(19)
-Info (10041): Inferred latch for "read_data[63]" at data_memory.v(19)
-Info: Elaborating entity "MEM_WB" for hierarchy "MEM_WB:MEM_WB"
+Info: Elaborating entity "EX_MEM" for hierarchy "PipelinedARMv8:cpu|EX_MEM:EX_MEM"
+Info: Elaborating entity "memory" for hierarchy "PipelinedARMv8:cpu|memory:memory"
+Info: Elaborating entity "data_memory" for hierarchy "PipelinedARMv8:cpu|memory:memory|data_memory:data_memory"
+Warning (10240): Verilog HDL Always Construct warning at data_memory.v(22): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
+Warning (10034): Output port "leds[26]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[25]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[24]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[23]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[22]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[21]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[20]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[19]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[18]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[17]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[16]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[15]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[14]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[13]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[12]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[11]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[10]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[9]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[8]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[7]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[6]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[5]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[4]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[3]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[2]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[1]" at data_memory.v(11) has no driver
+Warning (10034): Output port "leds[0]" at data_memory.v(11) has no driver
+Info (10041): Inferred latch for "read_data[0]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[1]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[2]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[3]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[4]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[5]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[6]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[7]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[8]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[9]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[10]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[11]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[12]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[13]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[14]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[15]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[16]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[17]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[18]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[19]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[20]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[21]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[22]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[23]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[24]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[25]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[26]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[27]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[28]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[29]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[30]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[31]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[32]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[33]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[34]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[35]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[36]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[37]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[38]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[39]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[40]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[41]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[42]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[43]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[44]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[45]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[46]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[47]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[48]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[49]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[50]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[51]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[52]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[53]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[54]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[55]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[56]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[57]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[58]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[59]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[60]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[61]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[62]" at data_memory.v(22)
+Info (10041): Inferred latch for "read_data[63]" at data_memory.v(22)
+Info: Elaborating entity "MEM_WB" for hierarchy "PipelinedARMv8:cpu|MEM_WB:MEM_WB"
 Warning (12020): Port "ALUOp" on the entity instantiation of "ID_EX_pipeline_register" is connected to a signal of width 2. The formal width of the signal in the module is 1.  The extra bits will be ignored.
 Warning (12030): Port "ALUOp_out" on the entity instantiation of "ID_EX_pipeline_register" is connected to a signal of width 2. The formal width of the signal in the module is 1.  The extra bits will be left dangling without any fan-out logic.
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
 Warning (12010): Port "in1" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
 Warning (12010): Port "in2" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
 Warning (12030): Port "out" on the entity instantiation of "mux_zero_not_zero" is connected to a signal of width 1. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
@@ -827,35 +853,76 @@ Warning (12030): Port "out" on the entity instantiation of "n_mux_Reg2Loc" is co
 Warning (12010): Port "in1" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
 Warning (12010): Port "in2" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
 Warning (12030): Port "out" on the entity instantiation of "mux2" is connected to a signal of width 5. The formal width of the signal in the module is 64.  The extra bits will be left dangling without any fan-out logic.
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
-Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
 Warning (12030): Port "data_out" on the entity instantiation of "instruction_memory" is connected to a signal of width 1. The formal width of the signal in the module is 32.  The extra bits will be left dangling without any fan-out logic.
 Warning (12010): Port "in2" on the entity instantiation of "add_pc_met_4" is connected to a signal of width 32. The formal width of the signal in the module is 64.  The extra bits will be driven by GND.
 Warning: Net is missing source, defaulting to GND
-    Warning (12110): Net "ALUOp_ID_EX[1]" is missing source, defaulting to GND
+    Warning (12110): Net "PipelinedARMv8:cpu|ALUOp_ID_EX[1]" is missing source, defaulting to GND
 Warning: Output pins are stuck at VCC or GND
-    Warning (13410): Pin "uitgang" is stuck at GND
-Info: Generated suppressed messages file C:/Users/piete/Desktop/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg
-Warning: Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clock"
-    Warning (15610): No output dependent on input pin "reset"
-Info: Implemented 3 device resources after synthesis - the final resource count might be different
-    Info: Implemented 2 input pins
-    Info: Implemented 1 output pins
-Info: Quartus II Analysis & Synthesis was successful. 0 errors, 184 warnings
-    Info: Peak virtual memory: 295 megabytes
-    Info: Processing ended: Wed Dec 20 10:56:52 2017
-    Info: Elapsed time: 00:00:06
+    Warning (13410): Pin "oLED_R[0]" is stuck at GND
+    Warning (13410): Pin "oLED_R[1]" is stuck at GND
+    Warning (13410): Pin "oLED_R[2]" is stuck at GND
+    Warning (13410): Pin "oLED_R[3]" is stuck at GND
+    Warning (13410): Pin "oLED_R[4]" is stuck at GND
+    Warning (13410): Pin "oLED_R[5]" is stuck at GND
+    Warning (13410): Pin "oLED_R[6]" is stuck at GND
+    Warning (13410): Pin "oLED_R[7]" is stuck at GND
+    Warning (13410): Pin "oLED_R[8]" is stuck at GND
+    Warning (13410): Pin "oLED_R[9]" is stuck at GND
+    Warning (13410): Pin "oLED_R[10]" is stuck at GND
+    Warning (13410): Pin "oLED_R[11]" is stuck at GND
+    Warning (13410): Pin "oLED_R[12]" is stuck at GND
+    Warning (13410): Pin "oLED_R[13]" is stuck at GND
+    Warning (13410): Pin "oLED_R[14]" is stuck at GND
+    Warning (13410): Pin "oLED_R[15]" is stuck at GND
+    Warning (13410): Pin "oLED_R[16]" is stuck at GND
+    Warning (13410): Pin "oLED_R[17]" is stuck at GND
+    Warning (13410): Pin "oLED_R[18]" is stuck at GND
+    Warning (13410): Pin "oLED_G[0]" is stuck at GND
+    Warning (13410): Pin "oLED_G[1]" is stuck at GND
+    Warning (13410): Pin "oLED_G[2]" is stuck at GND
+    Warning (13410): Pin "oLED_G[3]" is stuck at GND
+    Warning (13410): Pin "oLED_G[4]" is stuck at GND
+    Warning (13410): Pin "oLED_G[5]" is stuck at GND
+    Warning (13410): Pin "oLED_G[6]" is stuck at GND
+    Warning (13410): Pin "oLED_G[7]" is stuck at GND
+Info: Generated suppressed messages file //Mac/Home/Documents/COMAR/PipelinedARMv8/Pipelined_ARMv8.map.smsg
+Warning: Design contains 23 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "iCLK_50"
+    Warning (15610): No output dependent on input pin "iKEY[0]"
+    Warning (15610): No output dependent on input pin "iKEY[1]"
+    Warning (15610): No output dependent on input pin "iKEY[2]"
+    Warning (15610): No output dependent on input pin "iKEY[3]"
+    Warning (15610): No output dependent on input pin "iSW[0]"
+    Warning (15610): No output dependent on input pin "iSW[1]"
+    Warning (15610): No output dependent on input pin "iSW[2]"
+    Warning (15610): No output dependent on input pin "iSW[3]"
+    Warning (15610): No output dependent on input pin "iSW[4]"
+    Warning (15610): No output dependent on input pin "iSW[5]"
+    Warning (15610): No output dependent on input pin "iSW[6]"
+    Warning (15610): No output dependent on input pin "iSW[7]"
+    Warning (15610): No output dependent on input pin "iSW[8]"
+    Warning (15610): No output dependent on input pin "iSW[9]"
+    Warning (15610): No output dependent on input pin "iSW[10]"
+    Warning (15610): No output dependent on input pin "iSW[11]"
+    Warning (15610): No output dependent on input pin "iSW[12]"
+    Warning (15610): No output dependent on input pin "iSW[13]"
+    Warning (15610): No output dependent on input pin "iSW[14]"
+    Warning (15610): No output dependent on input pin "iSW[15]"
+    Warning (15610): No output dependent on input pin "iSW[16]"
+    Warning (15610): No output dependent on input pin "iSW[17]"
+Info: Implemented 50 device resources after synthesis - the final resource count might be different
+    Info: Implemented 23 input pins
+    Info: Implemented 27 output pins
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 247 warnings
+    Info: Peak virtual memory: 352 megabytes
+    Info: Processing ended: Wed Dec 20 11:17:26 2017
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:05
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipelined_ARMv8.map.smsg.
+The suppressed messages can be found in //Mac/Home/Documents/COMAR/PipelinedARMv8/Pipelined_ARMv8.map.smsg.
 
 

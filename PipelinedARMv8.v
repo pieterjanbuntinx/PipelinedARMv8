@@ -1,7 +1,9 @@
-module PipelinedARMv8(clock, reset,uitgang);
+module PipelinedARMv8(clock, reset,switches,leds);
 
 input clock, reset;
-output uitgang;
+input [17:0] switches;
+
+output [26:0] leds;
 
 
 wire Branch, MemRead,MemtoReg,MemWrite,ALUSrc,Uncondbranch,not_zero;
@@ -182,7 +184,9 @@ memory memory(.clock(clock),
 			  .read_data(read_data_data_memory),
 			  .alu_result_out(alu_result_out_memory),
 			  .MemWrite(MemWrite_EX_MEM),
-			  .MemRead(MemRead_EX_MEM));
+			  .MemRead(MemRead_EX_MEM),
+			  .switches(switches),
+			  .leds(leds));
 			  			  
 MEM_WB MEM_WB(.read_data_in(read_data_data_memory),
 			  .read_data_uit(read_data_data_memory_MEM_WB),

@@ -1,10 +1,107 @@
-|PipelinedARMv8
+|op_bord
+iCLK_50 => iCLK_50~0.IN1
+iKEY[0] => iKEY[0]~0.IN1
+iKEY[1] => ~NO_FANOUT~
+iKEY[2] => ~NO_FANOUT~
+iKEY[3] => ~NO_FANOUT~
+iSW[0] => iSW[0]~17.IN1
+iSW[1] => iSW[1]~16.IN1
+iSW[2] => iSW[2]~15.IN1
+iSW[3] => iSW[3]~14.IN1
+iSW[4] => iSW[4]~13.IN1
+iSW[5] => iSW[5]~12.IN1
+iSW[6] => iSW[6]~11.IN1
+iSW[7] => iSW[7]~10.IN1
+iSW[8] => iSW[8]~9.IN1
+iSW[9] => iSW[9]~8.IN1
+iSW[10] => iSW[10]~7.IN1
+iSW[11] => iSW[11]~6.IN1
+iSW[12] => iSW[12]~5.IN1
+iSW[13] => iSW[13]~4.IN1
+iSW[14] => iSW[14]~3.IN1
+iSW[15] => iSW[15]~2.IN1
+iSW[16] => iSW[16]~1.IN1
+iSW[17] => iSW[17]~0.IN1
+oLED_R[0] <= PipelinedARMv8:cpu.leds
+oLED_R[1] <= PipelinedARMv8:cpu.leds
+oLED_R[2] <= PipelinedARMv8:cpu.leds
+oLED_R[3] <= PipelinedARMv8:cpu.leds
+oLED_R[4] <= PipelinedARMv8:cpu.leds
+oLED_R[5] <= PipelinedARMv8:cpu.leds
+oLED_R[6] <= PipelinedARMv8:cpu.leds
+oLED_R[7] <= PipelinedARMv8:cpu.leds
+oLED_R[8] <= PipelinedARMv8:cpu.leds
+oLED_R[9] <= PipelinedARMv8:cpu.leds
+oLED_R[10] <= PipelinedARMv8:cpu.leds
+oLED_R[11] <= PipelinedARMv8:cpu.leds
+oLED_R[12] <= PipelinedARMv8:cpu.leds
+oLED_R[13] <= PipelinedARMv8:cpu.leds
+oLED_R[14] <= PipelinedARMv8:cpu.leds
+oLED_R[15] <= PipelinedARMv8:cpu.leds
+oLED_R[16] <= PipelinedARMv8:cpu.leds
+oLED_R[17] <= PipelinedARMv8:cpu.leds
+oLED_R[18] <= PipelinedARMv8:cpu.leds
+oLED_G[0] <= PipelinedARMv8:cpu.leds
+oLED_G[1] <= PipelinedARMv8:cpu.leds
+oLED_G[2] <= PipelinedARMv8:cpu.leds
+oLED_G[3] <= PipelinedARMv8:cpu.leds
+oLED_G[4] <= PipelinedARMv8:cpu.leds
+oLED_G[5] <= PipelinedARMv8:cpu.leds
+oLED_G[6] <= PipelinedARMv8:cpu.leds
+oLED_G[7] <= PipelinedARMv8:cpu.leds
+
+
+|op_bord|PipelinedARMv8:cpu
 clock => clock~0.IN8
 reset => reset~0.IN7
-uitgang <= <GND>
+switches[0] => switches[0]~17.IN1
+switches[1] => switches[1]~16.IN1
+switches[2] => switches[2]~15.IN1
+switches[3] => switches[3]~14.IN1
+switches[4] => switches[4]~13.IN1
+switches[5] => switches[5]~12.IN1
+switches[6] => switches[6]~11.IN1
+switches[7] => switches[7]~10.IN1
+switches[8] => switches[8]~9.IN1
+switches[9] => switches[9]~8.IN1
+switches[10] => switches[10]~7.IN1
+switches[11] => switches[11]~6.IN1
+switches[12] => switches[12]~5.IN1
+switches[13] => switches[13]~4.IN1
+switches[14] => switches[14]~3.IN1
+switches[15] => switches[15]~2.IN1
+switches[16] => switches[16]~1.IN1
+switches[17] => switches[17]~0.IN1
+leds[0] <= memory:memory.leds
+leds[1] <= memory:memory.leds
+leds[2] <= memory:memory.leds
+leds[3] <= memory:memory.leds
+leds[4] <= memory:memory.leds
+leds[5] <= memory:memory.leds
+leds[6] <= memory:memory.leds
+leds[7] <= memory:memory.leds
+leds[8] <= memory:memory.leds
+leds[9] <= memory:memory.leds
+leds[10] <= memory:memory.leds
+leds[11] <= memory:memory.leds
+leds[12] <= memory:memory.leds
+leds[13] <= memory:memory.leds
+leds[14] <= memory:memory.leds
+leds[15] <= memory:memory.leds
+leds[16] <= memory:memory.leds
+leds[17] <= memory:memory.leds
+leds[18] <= memory:memory.leds
+leds[19] <= memory:memory.leds
+leds[20] <= memory:memory.leds
+leds[21] <= memory:memory.leds
+leds[22] <= memory:memory.leds
+leds[23] <= memory:memory.leds
+leds[24] <= memory:memory.leds
+leds[25] <= memory:memory.leds
+leds[26] <= memory:memory.leds
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch
 clock => clock~0.IN1
 reset => reset~0.IN1
 Branchreg => Branchreg~0.IN1
@@ -299,7 +396,7 @@ PC_branch_link_out[63] <= alu_add:add_pc_met_4.out
 PCWrite => PCWrite~0.IN1
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:n_mux_PCWrite
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -558,7 +655,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch|pc:pc
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|pc:pc
 clock => out[63]~reg0.CLK
 clock => out[62]~reg0.CLK
 clock => out[61]~reg0.CLK
@@ -817,7 +914,7 @@ out[62] <= out[62]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 out[63] <= out[63]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch|alu_add:add_pc_met_4
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|alu_add:add_pc_met_4
 in1[0] => Add0.IN64
 in1[1] => Add0.IN63
 in1[2] => Add0.IN62
@@ -1012,7 +1109,7 @@ out[62] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 out[63] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|instruction_memory:instruction_memory
 address[0] => ~NO_FANOUT~
 address[1] => ~NO_FANOUT~
 address[2] => ~NO_FANOUT~
@@ -1111,7 +1208,7 @@ data_out[30] <= <GND>
 data_out[31] <= <GND>
 
 
-|PipelinedARMv8|instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
+|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|n_mux:mux_met_branchreg
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -1370,7 +1467,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|IF_ID:IF_ID_pipeline_register
+|op_bord|PipelinedARMv8:cpu|IF_ID:IF_ID_pipeline_register
 clock => instruction_out[31]~reg0.CLK
 clock => instruction_out[30]~reg0.CLK
 clock => instruction_out[29]~reg0.CLK
@@ -2333,7 +2430,7 @@ IF_ID_Flush => instruction_out~33.OUTPUTSELECT
 IF_ID_Flush => instruction_out~32.OUTPUTSELECT
 
 
-|PipelinedARMv8|n_mux:n_mux_na_MEM_WB
+|op_bord|PipelinedARMv8:cpu|n_mux:n_mux_na_MEM_WB
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -2592,7 +2689,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode
 write_register[0] => write_register[0]~4.IN1
 write_register[1] => write_register[1]~3.IN1
 write_register[2] => write_register[2]~2.IN1
@@ -3104,7 +3201,7 @@ sign_extend_out[63] <= sign_extend_out[63]~0.DB_MAX_OUTPUT_PORT_TYPE
 Uncondbranch <= n_mux:n_mux_Uncondbranch.out
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:mux2
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux2
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -3363,7 +3460,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:mux1
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux1
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -3622,7 +3719,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Reg2Loc
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -3881,7 +3978,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_Branch
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branch
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -4140,7 +4237,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_MemRead
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemRead
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -4399,7 +4496,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemtoReg
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -4658,7 +4755,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_MemWrite
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -4917,7 +5014,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_ALUSrc
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -5176,7 +5273,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_RegWrite
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -5435,7 +5532,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Uncondbranch
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -5694,7 +5791,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchlink
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -5953,7 +6050,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_Branchreg
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -6212,7 +6309,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|control:control
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|control:control
 clock => ~NO_FANOUT~
 instruction[0] => Equal9.IN21
 instruction[0] => Equal8.IN21
@@ -6367,7 +6464,7 @@ Branchreg <= Branchreg$latch.DB_MAX_OUTPUT_PORT_TYPE
 not_zero <= not_zero$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|registers:registers
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|registers:registers
 Read_register_1[0] => Mux63.IN4
 Read_register_1[0] => Mux62.IN4
 Read_register_1[0] => Mux61.IN4
@@ -15335,7 +15432,7 @@ reset => regfile~4097.OUTPUTSELECT
 reset => regfile~4096.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|sign_extend:sign_extend
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|sign_extend:sign_extend
 in[0] => out[0]~7.DATAB
 in[1] => out[1]~6.DATAB
 in[2] => out[2]~5.DATAB
@@ -15537,7 +15634,7 @@ out[62] <= out[62]$latch.DB_MAX_OUTPUT_PORT_TYPE
 out[63] <= out[63]$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|shift_left_2:shift_left_2
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|shift_left_2:shift_left_2
 in[0] => out[2].DATAIN
 in[1] => out[3].DATAIN
 in[2] => out[4].DATAIN
@@ -15668,7 +15765,7 @@ out[62] <= in[60].DB_MAX_OUTPUT_PORT_TYPE
 out[63] <= in[61].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|alu_add:add_pc_m
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|alu_add:add_pc_m
 in1[0] => Add0.IN64
 in1[1] => Add0.IN63
 in1[2] => Add0.IN62
@@ -15863,7 +15960,7 @@ out[62] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 out[63] <= Add0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:mux_zero_not_zero
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:mux_zero_not_zero
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -16122,7 +16219,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB
+|op_bord|PipelinedARMv8:cpu|instruction_decode:instruction_decode|n_mux:n_mux_PC_inc_CB
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -16381,7 +16478,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|hazard_detection_unit:hazard_detection_unit
+|op_bord|PipelinedARMv8:cpu|hazard_detection_unit:hazard_detection_unit
 clock => stall~reg0.CLK
 reset => stall~0.OUTPUTSELECT
 ID_EX_MemRead => always0~1.IN1
@@ -16408,7 +16505,7 @@ IF_ID_RegisterRm2[4] => Equal1.IN5
 stall <= stall~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|ID_EX:ID_EX_pipeline_register
+|op_bord|PipelinedARMv8:cpu|ID_EX:ID_EX_pipeline_register
 write_register_in[0] => write_register_out~4.DATAA
 write_register_in[1] => write_register_out~3.DATAA
 write_register_in[2] => write_register_out~2.DATAA
@@ -17535,7 +17632,7 @@ read_register2_out[3] <= read_register2_out[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 read_register2_out[4] <= read_register2_out[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|execution:execution
+|op_bord|PipelinedARMv8:cpu|execution:execution
 pc_out[0] => ~NO_FANOUT~
 pc_out[1] => ~NO_FANOUT~
 pc_out[2] => ~NO_FANOUT~
@@ -18158,7 +18255,7 @@ WB_write_back[63] => Selector64.IN4
 WB_write_back[63] => Selector0.IN5
 
 
-|PipelinedARMv8|execution:execution|n_mux:n_mux
+|op_bord|PipelinedARMv8:cpu|execution:execution|n_mux:n_mux
 in1[0] => out~63.DATAA
 in1[1] => out~62.DATAA
 in1[2] => out~61.DATAA
@@ -18417,7 +18514,7 @@ select => out~1.OUTPUTSELECT
 select => out~0.OUTPUTSELECT
 
 
-|PipelinedARMv8|execution:execution|alu:alu
+|op_bord|PipelinedARMv8:cpu|execution:execution|alu:alu
 in1[0] => ShiftLeft0.IN64
 in1[0] => ShiftRight0.IN64
 in1[0] => out~128.IN0
@@ -19637,7 +19734,7 @@ control[3] => Mux1.IN16
 control[3] => Mux0.IN16
 
 
-|PipelinedARMv8|execution:execution|alu_control:alu_control
+|op_bord|PipelinedARMv8:cpu|execution:execution|alu_control:alu_control
 alu_op[0] => Mux2.IN5
 alu_op[0] => Mux1.IN5
 alu_op[0] => Mux0.IN5
@@ -19740,7 +19837,7 @@ out[2] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
 out[3] <= out~2.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|forwarding_unit:forwarding_unit
+|op_bord|PipelinedARMv8:cpu|forwarding_unit:forwarding_unit
 EX_MEM_RegWrite => always0~3.IN1
 EX_MEM_RegisterRd[0] => Equal5.IN4
 EX_MEM_RegisterRd[0] => Equal3.IN4
@@ -19799,7 +19896,7 @@ ForwardB[0] <= ForwardB[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ForwardB[1] <= ForwardB[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|EX_MEM:EX_MEM
+|op_bord|PipelinedARMv8:cpu|EX_MEM:EX_MEM
 write_register_in[0] => write_register_out~4.DATAA
 write_register_in[1] => write_register_out~3.DATAA
 write_register_in[2] => write_register_out~2.DATAA
@@ -20882,7 +20979,7 @@ RegWrite_in => RegWrite_out~0.DATAA
 RegWrite_out <= RegWrite_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|PipelinedARMv8|memory:memory
+|op_bord|PipelinedARMv8:cpu|memory:memory
 clock => clock~0.IN1
 alu_result[0] => alu_result[0]~63.IN1
 alu_result[1] => alu_result[1]~62.IN1
@@ -21142,9 +21239,54 @@ alu_result_out[60] <= alu_result[60]~3.DB_MAX_OUTPUT_PORT_TYPE
 alu_result_out[61] <= alu_result[61]~2.DB_MAX_OUTPUT_PORT_TYPE
 alu_result_out[62] <= alu_result[62]~1.DB_MAX_OUTPUT_PORT_TYPE
 alu_result_out[63] <= alu_result[63]~0.DB_MAX_OUTPUT_PORT_TYPE
+switches[0] => switches[0]~17.IN1
+switches[1] => switches[1]~16.IN1
+switches[2] => switches[2]~15.IN1
+switches[3] => switches[3]~14.IN1
+switches[4] => switches[4]~13.IN1
+switches[5] => switches[5]~12.IN1
+switches[6] => switches[6]~11.IN1
+switches[7] => switches[7]~10.IN1
+switches[8] => switches[8]~9.IN1
+switches[9] => switches[9]~8.IN1
+switches[10] => switches[10]~7.IN1
+switches[11] => switches[11]~6.IN1
+switches[12] => switches[12]~5.IN1
+switches[13] => switches[13]~4.IN1
+switches[14] => switches[14]~3.IN1
+switches[15] => switches[15]~2.IN1
+switches[16] => switches[16]~1.IN1
+switches[17] => switches[17]~0.IN1
+leds[0] <= data_memory:data_memory.port7
+leds[1] <= data_memory:data_memory.port7
+leds[2] <= data_memory:data_memory.port7
+leds[3] <= data_memory:data_memory.port7
+leds[4] <= data_memory:data_memory.port7
+leds[5] <= data_memory:data_memory.port7
+leds[6] <= data_memory:data_memory.port7
+leds[7] <= data_memory:data_memory.port7
+leds[8] <= data_memory:data_memory.port7
+leds[9] <= data_memory:data_memory.port7
+leds[10] <= data_memory:data_memory.port7
+leds[11] <= data_memory:data_memory.port7
+leds[12] <= data_memory:data_memory.port7
+leds[13] <= data_memory:data_memory.port7
+leds[14] <= data_memory:data_memory.port7
+leds[15] <= data_memory:data_memory.port7
+leds[16] <= data_memory:data_memory.port7
+leds[17] <= data_memory:data_memory.port7
+leds[18] <= data_memory:data_memory.port7
+leds[19] <= data_memory:data_memory.port7
+leds[20] <= data_memory:data_memory.port7
+leds[21] <= data_memory:data_memory.port7
+leds[22] <= data_memory:data_memory.port7
+leds[23] <= data_memory:data_memory.port7
+leds[24] <= data_memory:data_memory.port7
+leds[25] <= data_memory:data_memory.port7
+leds[26] <= data_memory:data_memory.port7
 
 
-|PipelinedARMv8|memory:memory|data_memory:data_memory
+|op_bord|PipelinedARMv8:cpu|memory:memory|data_memory:data_memory
 clock => memory.data_a[0].CLK
 clock => memory.data_a[1].CLK
 clock => memory.data_a[2].CLK
@@ -21575,9 +21717,54 @@ read_data[60] <= read_data[60]$latch.DB_MAX_OUTPUT_PORT_TYPE
 read_data[61] <= read_data[61]$latch.DB_MAX_OUTPUT_PORT_TYPE
 read_data[62] <= read_data[62]$latch.DB_MAX_OUTPUT_PORT_TYPE
 read_data[63] <= read_data[63]$latch.DB_MAX_OUTPUT_PORT_TYPE
+switches[0] => ~NO_FANOUT~
+switches[1] => ~NO_FANOUT~
+switches[2] => ~NO_FANOUT~
+switches[3] => ~NO_FANOUT~
+switches[4] => ~NO_FANOUT~
+switches[5] => ~NO_FANOUT~
+switches[6] => ~NO_FANOUT~
+switches[7] => ~NO_FANOUT~
+switches[8] => ~NO_FANOUT~
+switches[9] => ~NO_FANOUT~
+switches[10] => ~NO_FANOUT~
+switches[11] => ~NO_FANOUT~
+switches[12] => ~NO_FANOUT~
+switches[13] => ~NO_FANOUT~
+switches[14] => ~NO_FANOUT~
+switches[15] => ~NO_FANOUT~
+switches[16] => ~NO_FANOUT~
+switches[17] => ~NO_FANOUT~
+leds[0] <= <GND>
+leds[1] <= <GND>
+leds[2] <= <GND>
+leds[3] <= <GND>
+leds[4] <= <GND>
+leds[5] <= <GND>
+leds[6] <= <GND>
+leds[7] <= <GND>
+leds[8] <= <GND>
+leds[9] <= <GND>
+leds[10] <= <GND>
+leds[11] <= <GND>
+leds[12] <= <GND>
+leds[13] <= <GND>
+leds[14] <= <GND>
+leds[15] <= <GND>
+leds[16] <= <GND>
+leds[17] <= <GND>
+leds[18] <= <GND>
+leds[19] <= <GND>
+leds[20] <= <GND>
+leds[21] <= <GND>
+leds[22] <= <GND>
+leds[23] <= <GND>
+leds[24] <= <GND>
+leds[25] <= <GND>
+leds[26] <= <GND>
 
 
-|PipelinedARMv8|MEM_WB:MEM_WB
+|op_bord|PipelinedARMv8:cpu|MEM_WB:MEM_WB
 MemtoReg => MemtoReg_out~0.DATAA
 MemtoReg_out <= MemtoReg_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
 write_register_in[0] => write_register_out~4.DATAA

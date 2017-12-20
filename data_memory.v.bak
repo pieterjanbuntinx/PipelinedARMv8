@@ -1,4 +1,3 @@
-
 module data_memory(clock,address, write_data, MemWrite, MemRead, read_data);
 
 	

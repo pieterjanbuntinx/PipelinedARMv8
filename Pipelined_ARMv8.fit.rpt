@@ -1,5 +1,5 @@
 Fitter report for Pipelined_ARMv8
-Wed Dec 20 10:57:13 2017
+Wed Dec 20 11:17:36 2017
 Quartus II Version 8.1 Build 163 10/28/2008 SJ Web Edition
 
 
@@ -55,10 +55,10 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +------------------------------------+-----------------------------------------+
-; Fitter Status                      ; Successful - Wed Dec 20 10:57:13 2017   ;
+; Fitter Status                      ; Successful - Wed Dec 20 11:17:36 2017   ;
 ; Quartus II Version                 ; 8.1 Build 163 10/28/2008 SJ Web Edition ;
 ; Revision Name                      ; Pipelined_ARMv8                         ;
-; Top-level Entity Name              ; PipelinedARMv8                          ;
+; Top-level Entity Name              ; op_bord                                 ;
 ; Family                             ; Cyclone II                              ;
 ; Device                             ; EP2C70F896C6                            ;
 ; Timing Models                      ; Final                                   ;
@@ -66,7 +66,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 0 / 68,416 ( 0 % )                      ;
 ;     Dedicated logic registers      ; 0 / 68,416 ( 0 % )                      ;
 ; Total registers                    ; 0                                       ;
-; Total pins                         ; 3 / 622 ( < 1 % )                       ;
+; Total pins                         ; 50 / 622 ( 8 % )                        ;
 ; Total virtual pins                 ; 0                                       ;
 ; Total memory bits                  ; 0 / 1,152,000 ( 0 % )                   ;
 ; Embedded Multiplier 9-bit elements ; 0 / 300 ( 0 % )                         ;
@@ -130,8 +130,8 @@ applicable agreement for further details.
 ; Type                    ; Value              ;
 +-------------------------+--------------------+
 ; Placement               ;                    ;
-;     -- Requested        ; 0 / 3 ( 0.00 % )   ;
-;     -- Achieved         ; 0 / 3 ( 0.00 % )   ;
+;     -- Requested        ; 0 / 50 ( 0.00 % )  ;
+;     -- Achieved         ; 0 / 50 ( 0.00 % )  ;
 ;                         ;                    ;
 ; Routing (by Connection) ;                    ;
 ;     -- Requested        ; 0 / 0 ( 0.00 % )   ;
@@ -153,14 +153,14 @@ applicable agreement for further details.
 +----------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +----------------+---------+-------------------+-------------------------+-------------------+
-; Top            ; 3       ; 0                 ; N/A                     ; Source File       ;
+; Top            ; 50      ; 0                 ; N/A                     ; Source File       ;
 +----------------+---------+-------------------+-------------------------+-------------------+
 
 
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipelined_ARMv8.pin.
+The pin-out file can be found in //Mac/Home/Documents/COMAR/PipelinedARMv8/Pipelined_ARMv8.pin.
 
 
 +---------------------------------------------------------------------+
@@ -190,7 +190,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; Total LABs:  partially or completely used   ; 0 / 4,276 ( 0 % )     ;
 ; User inserted logic elements                ; 0                     ;
 ; Virtual pins                                ; 0                     ;
-; I/O pins                                    ; 3 / 622 ( < 1 % )     ;
+; I/O pins                                    ; 50 / 622 ( 8 % )      ;
 ;     -- Clock pins                           ; 1 / 8 ( 13 % )        ;
 ; Global signals                              ; 0                     ;
 ; M4Ks                                        ; 0 / 250 ( 0 % )       ;
@@ -207,39 +207,86 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Input Pins                                                                                                                                                                                                                                                  ;
-+-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
-; Name  ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Location assigned by ;
-+-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
-; clock ; G15   ; 3        ; 47           ; 51           ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; reset ; H15   ; 3        ; 47           ; 51           ; 3           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-+-------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                                                                                                                                    ;
++---------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
+; Name    ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Location assigned by ;
++---------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
+; iCLK_50 ; AD15  ; 7        ; 49           ; 0            ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iKEY[0] ; T29   ; 6        ; 95           ; 24           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iKEY[1] ; T28   ; 6        ; 95           ; 24           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iKEY[2] ; U30   ; 6        ; 95           ; 23           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iKEY[3] ; U29   ; 6        ; 95           ; 23           ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[0]  ; AA23  ; 6        ; 95           ; 8            ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[10] ; W5    ; 1        ; 0            ; 15           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[11] ; V10   ; 1        ; 0            ; 16           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[12] ; U9    ; 1        ; 0            ; 21           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[13] ; T9    ; 1        ; 0            ; 22           ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[14] ; L5    ; 2        ; 0            ; 41           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[15] ; L4    ; 2        ; 0            ; 36           ; 4           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[16] ; L7    ; 2        ; 0            ; 43           ; 4           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[17] ; L8    ; 2        ; 0            ; 43           ; 3           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[1]  ; AB26  ; 6        ; 95           ; 9            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[2]  ; AB25  ; 6        ; 95           ; 8            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[3]  ; AC27  ; 6        ; 95           ; 11           ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[4]  ; AC26  ; 6        ; 95           ; 4            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[5]  ; AC24  ; 6        ; 95           ; 3            ; 3           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[6]  ; AC23  ; 6        ; 95           ; 2            ; 0           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[7]  ; AD25  ; 6        ; 95           ; 2            ; 1           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[8]  ; AD24  ; 6        ; 95           ; 2            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
+; iSW[9]  ; AE27  ; 6        ; 95           ; 7            ; 2           ; 0                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; User                 ;
++---------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Output Pins                                                                                                                                                                                                                                                                              ;
-+---------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
-; Name    ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Output Register ; Output Enable Register ; Power Up High ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination ; Location assigned by ; Load ;
-+---------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
-; uitgang ; D26   ; 4        ; 91           ; 51           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
-+---------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                                                                                                                 ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
+; Name       ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Output Register ; Output Enable Register ; Power Up High ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination ; Location assigned by ; Load ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
+; oLED_G[0]  ; AD12  ; 8        ; 24           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[1]  ; AK25  ; 7        ; 80           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[2]  ; AF12  ; 8        ; 29           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[3]  ; Y25   ; 6        ; 95           ; 14           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[4]  ; AH3   ; 8        ; 3            ; 0            ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[5]  ; M4    ; 2        ; 0            ; 33           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[6]  ; AF29  ; 6        ; 95           ; 9            ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_G[7]  ; H18   ; 4        ; 65           ; 51           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[0]  ; AF16  ; 7        ; 56           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[10] ; AD9   ; 8        ; 15           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[11] ; E29   ; 5        ; 95           ; 45           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[12] ; AF28  ; 6        ; 95           ; 3            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[13] ; AK12  ; 8        ; 38           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[14] ; W24   ; 6        ; 95           ; 13           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[15] ; H14   ; 3        ; 38           ; 51           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[16] ; F20   ; 4        ; 69           ; 51           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[17] ; F27   ; 5        ; 95           ; 46           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[18] ; F30   ; 5        ; 95           ; 43           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[1]  ; AH29  ; 6        ; 95           ; 5            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[2]  ; AD26  ; 6        ; 95           ; 4            ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[3]  ; B24   ; 4        ; 80           ; 51           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[4]  ; U2    ; 1        ; 0            ; 23           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[5]  ; AH28  ; 6        ; 95           ; 6            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[6]  ; D14   ; 3        ; 40           ; 51           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[7]  ; AK21  ; 7        ; 69           ; 0            ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[8]  ; AG19  ; 7        ; 65           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
+; oLED_R[9]  ; K7    ; 2        ; 0            ; 43           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ;
++------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+
 
 
-+----------------------------------------------------------+
-; I/O Bank Usage                                           ;
-+----------+----------------+---------------+--------------+
-; I/O Bank ; Usage          ; VCCIO Voltage ; VREF Voltage ;
-+----------+----------------+---------------+--------------+
-; 1        ; 0 / 85 ( 0 % ) ; 3.3V          ; --           ;
-; 2        ; 2 / 79 ( 3 % ) ; 3.3V          ; --           ;
-; 3        ; 2 / 72 ( 3 % ) ; 3.3V          ; --           ;
-; 4        ; 1 / 74 ( 1 % ) ; 3.3V          ; --           ;
-; 5        ; 0 / 85 ( 0 % ) ; 3.3V          ; --           ;
-; 6        ; 0 / 81 ( 0 % ) ; 3.3V          ; --           ;
-; 7        ; 0 / 74 ( 0 % ) ; 3.3V          ; --           ;
-; 8        ; 0 / 72 ( 0 % ) ; 3.3V          ; --           ;
-+----------+----------------+---------------+--------------+
++------------------------------------------------------------+
+; I/O Bank Usage                                             ;
++----------+------------------+---------------+--------------+
+; I/O Bank ; Usage            ; VCCIO Voltage ; VREF Voltage ;
++----------+------------------+---------------+--------------+
+; 1        ; 5 / 85 ( 6 % )   ; 3.3V          ; --           ;
+; 2        ; 8 / 79 ( 10 % )  ; 3.3V          ; --           ;
+; 3        ; 2 / 72 ( 3 % )   ; 3.3V          ; --           ;
+; 4        ; 3 / 74 ( 4 % )   ; 3.3V          ; --           ;
+; 5        ; 3 / 85 ( 4 % )   ; 3.3V          ; --           ;
+; 6        ; 21 / 81 ( 26 % ) ; 3.3V          ; --           ;
+; 7        ; 5 / 74 ( 7 % )   ; 3.3V          ; --           ;
+; 8        ; 5 / 72 ( 7 % )   ; 3.3V          ; --           ;
++----------+------------------+---------------+--------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -297,7 +344,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AA20     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AA21     ;            ;          ; GND_PLL4                                 ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AA22     ;            ;          ; GND_PLL4                                 ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; AA23     ; 340        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AA23     ; 340        ; 6        ; iSW[0]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; AA24     ; 339        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AA25     ; 347        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AA26     ; 356        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -329,8 +376,8 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AB22     ;            ;          ; VCCD_PLL4                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; AB23     ; 318        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AB24     ; 323        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AB25     ; 341        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AB26     ; 342        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AB25     ; 341        ; 6        ; iSW[2]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; AB26     ; 342        ; 6        ; iSW[1]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; AB27     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AB28     ;            ; 6        ; VCCIO6                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AB29     ; 371        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -357,11 +404,11 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AC20     ; 293        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC21     ; 307        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC22     ;            ;          ; VCCA_PLL4                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
-; AC23     ; 321        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AC24     ; 322        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AC23     ; 321        ; 6        ; iSW[6]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; AC24     ; 322        ; 6        ; iSW[5]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; AC25     ; 328        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AC26     ; 329        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AC27     ; 350        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AC26     ; 329        ; 6        ; iSW[4]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; AC27     ; 350        ; 6        ; iSW[3]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; AC28     ; 351        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AC29     ; 365        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AC30     ; 366        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -373,13 +420,13 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AD6      ; 170        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AD7      ; 171        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AD8      ; 180        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AD9      ; 195        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AD9      ; 195        ; 8        ; oLED_R[10]                               ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AD10     ; 197        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD11     ; 202        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AD12     ; 210        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AD12     ; 210        ; 8        ; oLED_G[0]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AD13     ; 222        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD14     ; 229        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AD15     ; 244        ; 7        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
+; AD15     ; 244        ; 7        ; iCLK_50                                  ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; Y               ; no       ; Off          ;
 ; AD16     ; 249        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD17     ; 258        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD18     ; 271        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -388,9 +435,9 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AD21     ; 306        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD22     ; 301        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD23     ;            ;          ; GNDA_PLL4                                ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; AD24     ; 319        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AD25     ; 320        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AD26     ; 326        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AD24     ; 319        ; 6        ; iSW[8]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; AD25     ; 320        ; 6        ; iSW[7]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; AD26     ; 326        ; 6        ; oLED_R[2]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; AD27     ; 327        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AD28     ; 338        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AD29     ; 354        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -421,7 +468,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AE24     ; 317        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE25     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AE26     ;            ; 6        ; VCCIO6                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; AE27     ; 336        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AE27     ; 336        ; 6        ; iSW[9]                                   ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; AE28     ; 337        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AE29     ; 352        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AE30     ; 353        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -436,11 +483,11 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AF9      ; 192        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF10     ; 200        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF11     ; 203        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AF12     ; 217        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AF12     ; 217        ; 8        ; oLED_G[2]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AF13     ;            ; 8        ; VCCIO8                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AF14     ; 233        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF15     ; 234        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AF16     ; 252        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AF16     ; 252        ; 7        ; oLED_R[0]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AF17     ; 264        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF18     ; 269        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AF19     ;            ; 7        ; VCCIO7                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
@@ -452,8 +499,8 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AF25     ;            ; 7        ; VCCIO7                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AF26     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AF27     ; 324        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AF28     ; 325        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AF29     ; 343        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AF28     ; 325        ; 6        ; oLED_R[12]                               ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; AF29     ; 343        ; 6        ; oLED_G[6]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; AF30     ; 344        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AG1      ;            ; 1        ; VCCIO1                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AG2      ; 156        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -473,7 +520,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AG16     ; 251        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AG17     ; 254        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AG18     ; 270        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AG19     ; 268        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AG19     ; 268        ; 7        ; oLED_R[8]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AG20     ; 275        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AG21     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AG22     ; 292        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -487,7 +534,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AG30     ;            ; 6        ; VCCIO6                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AH1      ; 158        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AH2      ; 159        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AH3      ; 177        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AH3      ; 177        ; 8        ; oLED_G[4]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AH4      ; 185        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AH5      ; 181        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AH6      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -512,8 +559,8 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AH25     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AH26     ; 305        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AH27     ; 313        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AH28     ; 333        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; AH29     ; 332        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; AH28     ; 333        ; 6        ; oLED_R[5]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; AH29     ; 332        ; 6        ; oLED_R[1]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; AH30     ; 334        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; AJ1      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AJ2      ; 176        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -555,7 +602,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AK9      ; 213        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK10     ; 215        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK11     ; 219        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AK12     ; 227        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AK12     ; 227        ; 8        ; oLED_R[13]                               ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AK13     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AK14     ; 238        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK15     ;            ; 8        ; VCCIO8                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
@@ -564,11 +611,11 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; AK18     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AK19     ; 262        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK20     ; 265        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AK21     ; 273        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AK21     ; 273        ; 7        ; oLED_R[7]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AK22     ; 277        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK23     ; 285        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK24     ; 287        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AK25     ; 295        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AK25     ; 295        ; 7        ; oLED_G[1]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AK26     ; 299        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AK27     ;            ; 7        ; VCCIO7                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AK28     ; 308        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -596,7 +643,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; B21      ; 531        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B22      ; 527        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B23      ; 517        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; B24      ; 513        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; B24      ; 513        ; 4        ; oLED_R[3]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; B25      ; 509        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B26      ; 502        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B27      ; 499        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -646,7 +693,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; D11      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; D12      ; 583        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D13      ; 588        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; D14      ; 571        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; D14      ; 571        ; 3        ; oLED_R[6]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; D15      ; 567        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D16      ; 561        ; 4        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
 ; D17      ; 553        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -658,7 +705,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; D23      ; 515        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D24      ; 508        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D25      ; 507        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; D26      ; 494        ; 4        ; uitgang                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; D26      ; 494        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D27      ; 495        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D28      ; 475        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; D29      ; 474        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -691,7 +738,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; E26      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; E27      ; 478        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; E28      ; 477        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; E29      ; 470        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; E29      ; 470        ; 5        ; oLED_R[11]                               ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; E30      ; 471        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F1       ; 39         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F2       ; 40         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -712,17 +759,17 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; F17      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; F18      ; 543        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F19      ; 533        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; F20      ; 529        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; F20      ; 529        ; 4        ; oLED_R[16]                               ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; F21      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; F22      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; F23      ; 488        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F24      ; 491        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F25      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; F26      ;            ; 5        ; VCCIO5                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; F27      ; 476        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; F27      ; 476        ; 5        ; oLED_R[17]                               ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; F28      ; 481        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F29      ; 463        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; F30      ; 464        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; F30      ; 464        ; 5        ; oLED_R[18]                               ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; G1       ; 41         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; G2       ; 42         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; G3       ; 10         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -737,7 +784,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; G12      ; 597        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G13      ; 582        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G14      ; 576        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; G15      ; 562        ; 3        ; clock                                    ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; G15      ; 562        ; 3        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
 ; G16      ; 555        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G17      ; 551        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G18      ; 542        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -766,11 +813,11 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; H11      ; 602        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H12      ; 598        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H13      ; 587        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; H14      ; 574        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; H15      ; 563        ; 3        ; reset                                    ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; H14      ; 574        ; 3        ; oLED_R[15]                               ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; H15      ; 563        ; 3        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
 ; H16      ; 557        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H17      ; 552        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; H18      ; 535        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; H18      ; 535        ; 4        ; oLED_G[7]                                ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; H19      ; 524        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H20      ; 512        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H21      ; 501        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -819,7 +866,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; K4       ; 46         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K5       ; 32         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K6       ; 31         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; K7       ; 26         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; K7       ; 26         ; 2        ; oLED_R[9]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; K8       ; 25         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K9       ; 1          ; 2        ; ~nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; On           ;
 ; K10      ;            ;          ; GND_PLL3                                 ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -846,11 +893,11 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; L1       ; 60         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L2       ; 61         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L3       ; 54         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; L4       ; 55         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; L5       ; 34         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; L4       ; 55         ; 2        ; iSW[15]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; L5       ; 34         ; 2        ; iSW[14]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; L6       ; 33         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; L7       ; 28         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; L8       ; 27         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; L7       ; 28         ; 2        ; iSW[16]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; L8       ; 27         ; 2        ; iSW[17]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; L9       ; 30         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L10      ; 29         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L11      ;            ; 2        ; VCCIO2                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
@@ -876,7 +923,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; M1       ; 64         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; M2       ; 65         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; M3       ; 66         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; M4       ; 67         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; M4       ; 67         ; 2        ; oLED_G[5]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; M5       ; 53         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; M6       ; 49         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; M7       ; 50         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1001,7 +1048,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; T6       ; 89         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; T7       ; 90         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; T8       ; 97         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; T9       ; 96         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; T9       ; 96         ; 1        ; iSW[13]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; T10      ;            ; 1        ; VCCIO1                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; T11      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; T12      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -1020,18 +1067,18 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; T25      ; 401        ; 6        ; GND+                                     ;        ;              ;         ; Row I/O    ;                 ; --       ; --           ;
 ; T26      ; 400        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; T27      ; 399        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; T28      ; 397        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; T29      ; 398        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; T28      ; 397        ; 6        ; iKEY[1]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; T29      ; 398        ; 6        ; iKEY[0]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; T30      ;            ; 6        ; VCCIO6                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; U1       ; 93         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; U2       ; 94         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; U2       ; 94         ; 1        ; oLED_R[4]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; U3       ; 102        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U4       ; 103        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U5       ; 95         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U6       ; 100        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U7       ; 101        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; U8       ; 99         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; U9       ; 98         ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; U9       ; 98         ; 1        ; iSW[12]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; U10      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; U11      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; U12      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -1051,8 +1098,8 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; U26      ; 393        ; 6        ; ^nSTATUS                                 ;        ;              ;         ; --         ;                 ; --       ; --           ;
 ; U27      ; 394        ; 6        ; ^CONF_DONE                               ;        ;              ;         ; --         ;                 ; --       ; --           ;
 ; U28      ; 395        ; 6        ; ^MSEL1                                   ;        ;              ;         ; --         ;                 ; --       ; --           ;
-; U29      ; 391        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; U30      ; 392        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; U29      ; 391        ; 6        ; iKEY[3]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
+; U30      ; 392        ; 6        ; iKEY[2]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; V1       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; V2       ; 104        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V3       ; 105        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1062,7 +1109,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; V7       ; 118        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V8       ; 117        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; V9       ; 116        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; V10      ; 115        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; V10      ; 115        ; 1        ; iSW[11]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; V11      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; V12      ;            ;          ; VCCINT                                   ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; V13      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -1087,7 +1134,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; W2       ; 107        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W3       ; 109        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W4       ; 110        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; W5       ; 119        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; W5       ; 119        ; 1        ; iSW[10]                                  ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; Y               ; no       ; Off          ;
 ; W6       ; 128        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W7       ; 130        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W8       ; 129        ; 1        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1106,7 +1153,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; W21      ; 364        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W22      ; 363        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W23      ; 358        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; W24      ; 359        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; W24      ; 359        ; 6        ; oLED_R[14]                               ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; W25      ; 367        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W26      ; 362        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; W27      ; 378        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1137,7 +1184,7 @@ The pin-out file can be found in C:/Users/piete/Desktop/Pipelined_ARMv8/Pipeline
 ; Y22      ; 348        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; Y23      ; 346        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; Y24      ; 345        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; Y25      ; 361        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; Y25      ; 361        ; 6        ; oLED_G[3]                                ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; Y26      ; 360        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; Y27      ; 375        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; Y28      ; 374        ; 6        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -1189,20 +1236,67 @@ Note: User assignments will override these defaults. The user specified values a
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------+--------------+
-; |PipelinedARMv8            ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 3    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |PipelinedARMv8     ; work         ;
+; |op_bord                   ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 50   ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |op_bord            ; work         ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------+
-; Delay Chain Summary                                                              ;
-+---------+----------+---------------+---------------+-----------------------+-----+
-; Name    ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ;
-+---------+----------+---------------+---------------+-----------------------+-----+
-; clock   ; Input    ; 0             ; 0             ; --                    ; --  ;
-; reset   ; Input    ; 0             ; 0             ; --                    ; --  ;
-; uitgang ; Output   ; --            ; --            ; --                    ; --  ;
-+---------+----------+---------------+---------------+-----------------------+-----+
++-------------------------------------------------------------------------------------+
+; Delay Chain Summary                                                                 ;
++------------+----------+---------------+---------------+-----------------------+-----+
+; Name       ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ;
++------------+----------+---------------+---------------+-----------------------+-----+
+; iCLK_50    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iKEY[0]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iKEY[1]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iKEY[2]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iKEY[3]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[0]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[1]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[2]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[3]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[4]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[5]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[6]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[7]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[8]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[9]     ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[10]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[11]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[12]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[13]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[14]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[15]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[16]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; iSW[17]    ; Input    ; 0             ; 0             ; --                    ; --  ;
+; oLED_R[0]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[1]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[2]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[3]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[4]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[5]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[6]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[7]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[8]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[9]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[10] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[11] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[12] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[13] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[14] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[15] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[16] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[17] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_R[18] ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[0]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[1]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[2]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[3]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[4]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[5]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[6]  ; Output   ; --            ; --            ; --                    ; --  ;
+; oLED_G[7]  ; Output   ; --            ; --            ; --                    ; --  ;
++------------+----------+---------------+---------------+-----------------------+-----+
 
 
 +---------------------------------------------------+
@@ -1210,8 +1304,29 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------+-------------------+---------+
 ; Source Pin / Fanout ; Pad To Core Index ; Setting ;
 +---------------------+-------------------+---------+
-; clock               ;                   ;         ;
-; reset               ;                   ;         ;
+; iCLK_50             ;                   ;         ;
+; iKEY[0]             ;                   ;         ;
+; iKEY[1]             ;                   ;         ;
+; iKEY[2]             ;                   ;         ;
+; iKEY[3]             ;                   ;         ;
+; iSW[0]              ;                   ;         ;
+; iSW[1]              ;                   ;         ;
+; iSW[2]              ;                   ;         ;
+; iSW[3]              ;                   ;         ;
+; iSW[4]              ;                   ;         ;
+; iSW[5]              ;                   ;         ;
+; iSW[6]              ;                   ;         ;
+; iSW[7]              ;                   ;         ;
+; iSW[8]              ;                   ;         ;
+; iSW[9]              ;                   ;         ;
+; iSW[10]             ;                   ;         ;
+; iSW[11]             ;                   ;         ;
+; iSW[12]             ;                   ;         ;
+; iSW[13]             ;                   ;         ;
+; iSW[14]             ;                   ;         ;
+; iSW[15]             ;                   ;         ;
+; iSW[16]             ;                   ;         ;
+; iSW[17]             ;                   ;         ;
 +---------------------+-------------------+---------+
 
 
@@ -1326,7 +1441,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Late Slack - Fit Attempt 1         ; 2147483639 ;
 ; Peak Regional Wire - Fit Attempt 1 ; 0.000      ;
 ; Auto Fit Point 7 - Fit Attempt 1   ; ff         ;
-; Time - Fit Attempt 1               ; 2          ;
+; Time - Fit Attempt 1               ; 1          ;
 +------------------------------------+------------+
 
 
@@ -1351,7 +1466,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Fitter
     Info: Version 8.1 Build 163 10/28/2008 SJ Web Edition
-    Info: Processing started: Wed Dec 20 10:56:54 2017
+    Info: Processing started: Wed Dec 20 11:17:27 2017
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off Pipelined_ARMv8 -c Pipelined_ARMv8
 Info: Selected device EP2C70F896C6 for design "Pipelined_ARMv8"
 Info: Low junction temperature is 0 degrees C
@@ -1362,10 +1477,34 @@ Info: Device migration not selected. If you intend to use device migration later
 Info: Fitter converted 2 user pins into dedicated programming pins
     Info: Pin ~ASDO~ is reserved at location G7
     Info: Pin ~nCSO~ is reserved at location K9
-Warning: No exact pin location assignment(s) for 3 pins of 3 total pins
-    Info: Pin clock not assigned to an exact location on the device
-    Info: Pin reset not assigned to an exact location on the device
-    Info: Pin uitgang not assigned to an exact location on the device
+Warning: No exact pin location assignment(s) for 27 pins of 50 total pins
+    Info: Pin oLED_R[0] not assigned to an exact location on the device
+    Info: Pin oLED_R[1] not assigned to an exact location on the device
+    Info: Pin oLED_R[2] not assigned to an exact location on the device
+    Info: Pin oLED_R[3] not assigned to an exact location on the device
+    Info: Pin oLED_R[4] not assigned to an exact location on the device
+    Info: Pin oLED_R[5] not assigned to an exact location on the device
+    Info: Pin oLED_R[6] not assigned to an exact location on the device
+    Info: Pin oLED_R[7] not assigned to an exact location on the device
+    Info: Pin oLED_R[8] not assigned to an exact location on the device
+    Info: Pin oLED_R[9] not assigned to an exact location on the device
+    Info: Pin oLED_R[10] not assigned to an exact location on the device
+    Info: Pin oLED_R[11] not assigned to an exact location on the device
+    Info: Pin oLED_R[12] not assigned to an exact location on the device
+    Info: Pin oLED_R[13] not assigned to an exact location on the device
+    Info: Pin oLED_R[14] not assigned to an exact location on the device
+    Info: Pin oLED_R[15] not assigned to an exact location on the device
+    Info: Pin oLED_R[16] not assigned to an exact location on the device
+    Info: Pin oLED_R[17] not assigned to an exact location on the device
+    Info: Pin oLED_R[18] not assigned to an exact location on the device
+    Info: Pin oLED_G[0] not assigned to an exact location on the device
+    Info: Pin oLED_G[1] not assigned to an exact location on the device
+    Info: Pin oLED_G[2] not assigned to an exact location on the device
+    Info: Pin oLED_G[3] not assigned to an exact location on the device
+    Info: Pin oLED_G[4] not assigned to an exact location on the device
+    Info: Pin oLED_G[5] not assigned to an exact location on the device
+    Info: Pin oLED_G[6] not assigned to an exact location on the device
+    Info: Pin oLED_G[7] not assigned to an exact location on the device
 Info: Fitter is using the Classic Timing Analyzer
 Info: Timing requirements not specified -- quality metrics such as performance and power consumption may be sacrificed to reduce compilation time.
 Info: Starting register packing
@@ -1378,17 +1517,17 @@ Extra Info: Finished moving registers into I/O cells, Multiplier Blocks, and RAM
 Info: Finished register packing
     Extra Info: No registers were packed into other blocks
 Info: Statistics of I/O pins that need to be placed that use the same VCCIO and VREF, before I/O pin placement
-    Info: Number of I/O pins in group: 3 (unused VREF, 3.3V VCCIO, 2 input, 1 output, 0 bidirectional)
+    Info: Number of I/O pins in group: 27 (unused VREF, 3.3V VCCIO, 0 input, 27 output, 0 bidirectional)
         Info: I/O standards used: 3.3-V LVTTL.
 Info: I/O bank details before I/O pin placement
     Info: Statistics of I/O banks
-        Info: I/O bank number 1 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  85 pins available
-        Info: I/O bank number 2 does not use VREF pins and has undetermined VCCIO pins. 2 total pin(s) used --  77 pins available
+        Info: I/O bank number 1 does not use VREF pins and has undetermined VCCIO pins. 4 total pin(s) used --  81 pins available
+        Info: I/O bank number 2 does not use VREF pins and has undetermined VCCIO pins. 6 total pin(s) used --  73 pins available
         Info: I/O bank number 3 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  72 pins available
         Info: I/O bank number 4 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  74 pins available
         Info: I/O bank number 5 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  85 pins available
-        Info: I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  81 pins available
-        Info: I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  74 pins available
+        Info: I/O bank number 6 does not use VREF pins and has undetermined VCCIO pins. 14 total pin(s) used --  67 pins available
+        Info: I/O bank number 7 does not use VREF pins and has undetermined VCCIO pins. 1 total pin(s) used --  73 pins available
         Info: I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 0 total pin(s) used --  72 pins available
 Warning: Ignored locations or region assignments to the following nodes
     Warning: Node "AUD_ADCLRCK" is assigned to location or region, but does not exist in design
@@ -1602,7 +1741,6 @@ Warning: Ignored locations or region assignments to the following nodes
     Warning: Node "SRAM_DQ[9]" is assigned to location or region, but does not exist in design
     Warning: Node "iAUD_ADCDAT" is assigned to location or region, but does not exist in design
     Warning: Node "iCLK_28" is assigned to location or region, but does not exist in design
-    Warning: Node "iCLK_50" is assigned to location or region, but does not exist in design
     Warning: Node "iCLK_50_2" is assigned to location or region, but does not exist in design
     Warning: Node "iCLK_50_3" is assigned to location or region, but does not exist in design
     Warning: Node "iCLK_50_4" is assigned to location or region, but does not exist in design
@@ -1610,32 +1748,10 @@ Warning: Ignored locations or region assignments to the following nodes
     Warning: Node "iEXT_CLOCK" is assigned to location or region, but does not exist in design
     Warning: Node "iFLASH_RY_N" is assigned to location or region, but does not exist in design
     Warning: Node "iIRDA_RXD" is assigned to location or region, but does not exist in design
-    Warning: Node "iKEY[0]" is assigned to location or region, but does not exist in design
-    Warning: Node "iKEY[1]" is assigned to location or region, but does not exist in design
-    Warning: Node "iKEY[2]" is assigned to location or region, but does not exist in design
-    Warning: Node "iKEY[3]" is assigned to location or region, but does not exist in design
     Warning: Node "iOTG_DREQ0" is assigned to location or region, but does not exist in design
     Warning: Node "iOTG_DREQ1" is assigned to location or region, but does not exist in design
     Warning: Node "iOTG_INT0" is assigned to location or region, but does not exist in design
     Warning: Node "iOTG_INT1" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[0]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[10]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[11]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[12]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[13]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[14]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[15]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[16]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[17]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[1]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[2]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[3]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[4]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[5]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[6]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[7]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[8]" is assigned to location or region, but does not exist in design
-    Warning: Node "iSW[9]" is assigned to location or region, but does not exist in design
     Warning: Node "iTD1_CLK27" is assigned to location or region, but does not exist in design
     Warning: Node "iTD1_D[0]" is assigned to location or region, but does not exist in design
     Warning: Node "iTD1_D[1]" is assigned to location or region, but does not exist in design
@@ -1926,7 +2042,7 @@ Info: Fitter placement preparation operations beginning
 Info: Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info: Fitter placement operations beginning
 Info: Fitter placement was successful
-Info: Fitter placement operations ending: elapsed time is 00:00:02
+Info: Fitter placement operations ending: elapsed time is 00:00:01
 Info: Fitter routing operations beginning
 Info: Average interconnect usage is 0% of the available device resources
     Info: Peak interconnect usage is 0% of the available device resources in the region that extends from location X0_Y26 to location X11_Y38
@@ -1935,16 +2051,68 @@ Info: The Fitter performed an Auto Fit compilation.  Optimizations were skipped 
     Info: Optimizations that may affect the design's routability were skipped
     Info: Optimizations that may affect the design's timing were skipped
 Info: Started post-fitting delay annotation
-Warning: Found 1 output pins without output pin load capacitance assignment
-    Info: Pin "uitgang" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+Warning: Found 27 output pins without output pin load capacitance assignment
+    Info: Pin "oLED_R[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[6]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[7]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[8]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[9]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[10]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[11]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[12]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[13]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[14]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[15]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[16]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[17]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_R[18]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[6]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "oLED_G[7]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
 Info: Delay annotation completed successfully
-Warning: Following 1 pins have nothing, GND, or VCC driving datain port -- changes to this connectivity may change fitting results
-    Info: Pin uitgang has GND driving its datain port
+Warning: Following 27 pins have nothing, GND, or VCC driving datain port -- changes to this connectivity may change fitting results
+    Info: Pin oLED_R[0] has GND driving its datain port
+    Info: Pin oLED_R[1] has GND driving its datain port
+    Info: Pin oLED_R[2] has GND driving its datain port
+    Info: Pin oLED_R[3] has GND driving its datain port
+    Info: Pin oLED_R[4] has GND driving its datain port
+    Info: Pin oLED_R[5] has GND driving its datain port
+    Info: Pin oLED_R[6] has GND driving its datain port
+    Info: Pin oLED_R[7] has GND driving its datain port
+    Info: Pin oLED_R[8] has GND driving its datain port
+    Info: Pin oLED_R[9] has GND driving its datain port
+    Info: Pin oLED_R[10] has GND driving its datain port
+    Info: Pin oLED_R[11] has GND driving its datain port
+    Info: Pin oLED_R[12] has GND driving its datain port
+    Info: Pin oLED_R[13] has GND driving its datain port
+    Info: Pin oLED_R[14] has GND driving its datain port
+    Info: Pin oLED_R[15] has GND driving its datain port
+    Info: Pin oLED_R[16] has GND driving its datain port
+    Info: Pin oLED_R[17] has GND driving its datain port
+    Info: Pin oLED_R[18] has GND driving its datain port
+    Info: Pin oLED_G[0] has GND driving its datain port
+    Info: Pin oLED_G[1] has GND driving its datain port
+    Info: Pin oLED_G[2] has GND driving its datain port
+    Info: Pin oLED_G[3] has GND driving its datain port
+    Info: Pin oLED_G[4] has GND driving its datain port
+    Info: Pin oLED_G[5] has GND driving its datain port
+    Info: Pin oLED_G[6] has GND driving its datain port
+    Info: Pin oLED_G[7] has GND driving its datain port
 Warning: The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
-Info: Quartus II Fitter was successful. 0 errors, 536 warnings
-    Info: Peak virtual memory: 445 megabytes
-    Info: Processing ended: Wed Dec 20 10:57:13 2017
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:19
+Info: Quartus II Fitter was successful. 0 errors, 513 warnings
+    Info: Peak virtual memory: 443 megabytes
+    Info: Processing ended: Wed Dec 20 11:17:36 2017
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:08
 
 
