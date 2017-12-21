@@ -35,14 +35,8 @@ initial begin
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30]," ",
-			test_singlecycleprocessor.scp.instruction_decode.PC_CB, "  ", 
-			test_singlecycleprocessor.scp.execution.alu_in1, " ",
-			test_singlecycleprocessor.scp.execution.alu_mux_in_2, " ",
-			test_singlecycleprocessor.scp.execution.alu_result, " ",
-			//test_singlecycleprocessor.scp.instruction_fetch.n_mux_PC_inc_CB.in1, "  ",
-			//test_singlecycleprocessor.scp.instruction_fetch.n_mux_PC_inc_CB.in2, "  ",
-			//test_singlecycleprocessor.scp.instruction_fetch.n_mux_PC_inc_CB.out, "  ",
-			//test_singlecycleprocessor.scp.instruction_fetch.n_mux_PC_inc_CB.select, "  ",
+			test_singlecycleprocessor.scp.instruction_fetch.PC_mux, "  ", 
+			test_singlecycleprocessor.scp.IF_ID_pipeline_register.IF_ID_Flush, " ",
 			test_singlecycleprocessor.scp.PC_out, " ",
 			" %h",test_singlecycleprocessor.scp.instruction_IF_ID," ",clock); 
 	

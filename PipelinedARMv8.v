@@ -29,7 +29,7 @@ wire [4:0] write_register_EX_MEM, write_register_MEM_WB;
 wire zero,zero_EX_MEM, EX_MEM_RegWrite;
 wire [1:0] ForwardA, ForwardB;
 
-wire Branch_EX_MEM, MemRead_EX_MEM, MemtoReg_EX_MEM,MemWrite_EX_MEM, Uncondbranch_EX_MEM, Branchreg_EX_MEM,not_zero_EX_MEM;
+wire Branch_EX_MEM, MemRead_EX_MEM, MemtoReg_EX_MEM,MemWrite_EX_MEM, Uncondbranch_EX_MEM, Branchreg_EX_MEM,not_zero_EX_MEM, zero_EX;
 
 wire or_out, MemtoReg_MEM_WB, MEM_WB_RegWrite;
 					
@@ -58,7 +58,7 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.IF_ID_Flush(IF_ID_Flush));
 											
 instruction_decode instruction_decode(	.clock(clock),
-										.IF_ID_Flush(IF_IS_Flush),
+										.IF_ID_Flush(IF_ID_Flush),
 										.reset(reset),
 										.instruction(instruction_IF_ID),
 										.write_back(write_back), //afkomstig van MEM/WB
