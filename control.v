@@ -227,7 +227,7 @@ always @(instruction) begin
 		$display("CBNZ");
 	end
 	else if(instruction[10:5] == 6'b100101) begin //BL 
-	CB_instr=1;
+		CB_instr=1;
 		Reg2Loc = 1;
 		ALUSrc = 0;
 		MemtoReg = 0;

@@ -28,7 +28,7 @@ wire [63:0] sign_extend_out, shift_left_2_out, PC_CB, PC_mux, PC_mux_link;
 
 wire alu_zero;
 
-assign IF_ID_Flush = CB_instr & alu_zero;
+assign IF_ID_Flush = CB_instr & or_out;
 
 wire  and_out;
 
