@@ -38,8 +38,8 @@
 //#@@ "unix mode" "FALSE"
 //#@S 491,1183		[Project window size]
 //#@P 160,108		[Project window position]
-//#@s 966,1784		[Console window size]
-//#@p 4,689		[Console window position]
+//#@s 34,199		[Console window size]
+//#@p 724,0		[Console window position]
 alu.v
 alu_add.v
 alu_control.v

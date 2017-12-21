@@ -5,61 +5,31 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 13.103 ns
-From           : iKEY[0]
-To             : PipelinedARMv8:cpu|instruction_decode:instruction_decode|registers:registers|regfile[15][24]
+Actual Time    : 4.946 ns
+From           : pc_in[40]
+To             : pc_out[40]~reg0
 From Clock     : --
-To Clock       : iCLK_50
+To Clock       : clock
 Failed Paths   : 0
 
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 10.268 ns
-From           : PipelinedARMv8:cpu|memory:memory|leds[20]
-To             : oLED_R[12]
-From Clock     : iCLK_50
-To Clock       : --
-Failed Paths   : 0
-
-Type           : Worst-case tpd
-Slack          : N/A
-Required Time  : None
-Actual Time    : 2.622 ns
-From           : altera_internal_jtag~TDO
-To             : altera_reserved_tdo
-From Clock     : --
+Actual Time    : 11.848 ns
+From           : read_data_2_out[9]~reg0
+To             : read_data_2_out[9]
+From Clock     : clock
 To Clock       : --
 Failed Paths   : 0
 
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : 2.263 ns
-From           : altera_internal_jtag~TDIUTAP
-To             : PipelinedARMv8:cpu|memory:memory|data_memory_aangemaakt:data_memory_aangemaakt|altsyncram:altsyncram_component|altsyncram_e5i1:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[7]
+Actual Time    : 0.803 ns
+From           : reset
+To             : pc_out[18]~reg0
 From Clock     : --
-To Clock       : altera_internal_jtag~TCKUTAP
-Failed Paths   : 0
-
-Type           : Clock Setup: 'iCLK_50'
-Slack          : N/A
-Required Time  : None
-Actual Time    : 49.22 MHz ( period = 20.319 ns )
-From           : PipelinedARMv8:cpu|MEM_WB:MEM_WB|MemtoReg_out
-To             : PipelinedARMv8:cpu|IF_ID:IF_ID_pipeline_register|instruction_out[6]
-From Clock     : iCLK_50
-To Clock       : iCLK_50
-Failed Paths   : 0
-
-Type           : Clock Setup: 'altera_internal_jtag~TCKUTAP'
-Slack          : N/A
-Required Time  : None
-Actual Time    : 161.03 MHz ( period = 6.210 ns )
-From           : sld_hub:sld_hub_inst|irf_reg[2][1]
-To             : sld_hub:sld_hub_inst|tdo
-From Clock     : altera_internal_jtag~TCKUTAP
-To Clock       : altera_internal_jtag~TCKUTAP
+To Clock       : clock
 Failed Paths   : 0
 
 Type           : Total number of failed paths

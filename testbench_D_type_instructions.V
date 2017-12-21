@@ -2,9 +2,11 @@ module test_singlecycleprocessor(clock);
 
 input clock;
 reg reset;
+reg [17:0] switches;
 
+wire [26:0] leds;
 wire uitgang;
-PipelinedARMv8 scp(clock,reset,uitgang);
+PipelinedARMv8 scp(clock,reset,switches, leds);
 clockGenerator clk(clock);
 
 
@@ -45,21 +47,20 @@ initial begin
 	$monitor(
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[3],
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],	
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," 		",
-			test_singlecycleprocessor.scp.instruction_IF_ID, " ",
-			test_singlecycleprocessor.scp.PC_out, "   ",
-			test_singlecycleprocessor.scp.write_back, "   ",
-			test_singlecycleprocessor.scp.IF_ID_pipeline_register.IF_ID_Write, "  ",
-  
+  			test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, " ",
 			test_singlecycleprocessor.scp.execution.alu_result, "     ",
 			test_singlecycleprocessor.scp.memory.data_memory.memory[20],
-			test_singlecycleprocessor.scp.memory.data_memory.memory[22],
+			test_singlecycleprocessor.scp.memory.data_memory.memory[35],
+			test_singlecycleprocessor.scp.memory.data_memory.address, "  ",
+			test_singlecycleprocessor.scp.memory.data_memory.leds, "  ",
 			," 		",clock); 
 
 
 reset = 1;
 #15 reset = 0;
+#15 switches <= 'h30;
+#50 switches <= 'h15;
+#100 switches <= 'h20;
 	
 #300 $finish;		
 	

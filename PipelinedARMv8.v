@@ -26,7 +26,7 @@ wire [4:0] read_register1_ID_EX, read_register2_ID_EX;
 wire [63:0] add_pc_met_4_out, alu_result,alu_in2_execution,read_data_data_memory_MEM_WB,alu_result_out_memory_MEM_WB,pc_out_ID_EX,
 				add_pc_EX_MEM,alu_result_EX_MEM,read_data_2_EX_MEM,read_data_data_memory,alu_result_out_memory,PC_inc_fetch,PC_inc_IF_ID;
 wire [4:0] write_register_EX_MEM, write_register_MEM_WB;
-wire zero, EX_MEM_RegWrite;
+wire zero,zero_EX_MEM, EX_MEM_RegWrite;
 wire [1:0] ForwardA, ForwardB;
 
 wire Branch_EX_MEM, MemRead_EX_MEM, MemtoReg_EX_MEM,MemWrite_EX_MEM, Uncondbranch_EX_MEM, Branchreg_EX_MEM,not_zero_EX_MEM, zero_EX;
@@ -42,9 +42,12 @@ instruction_fetch instruction_fetch(.clock(clock),
 									.PC_out(PC_out),
 									.PC_branch_link_out(PC_branch_link),
 									.PCWrite(!stall),
+									.PC_inc_out(PC_inc_fetch),
 									.or_out(or_out));								
 IF_ID IF_ID_pipeline_register(	.clock(clock), 
 								.reset(reset),
+								.PC_inc_in(PC_inc_fetch),
+								.PC_inc_out(PC_inc_IF_ID),
 								.PC_out_in(PC_out),
 								.instruction_in(instruction), 
 								.PC_branch_link_in(PC_branch_link),
@@ -154,6 +157,8 @@ EX_MEM EX_MEM(.clock(clock),
 			  .reset(reset),
 			  .pc_in(add_pc),
 			  .pc_out(add_pc_EX_MEM),
+			  .zero_in(zero_EX),
+			  .zero_out(zero_EX_MEM),
 			  .alu_result_in(alu_result),
 			  .alu_result_out(alu_result_EX_MEM),
 			  .alu_in2_in(alu_in2_execution),

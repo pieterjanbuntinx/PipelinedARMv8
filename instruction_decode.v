@@ -14,8 +14,7 @@ output RegWrite_out, Reg2Loc, MemRead, MemtoReg, MemWrite, ALUSrc,
 output [1:0] ALUOp;
 output [4:0] read_register1_out, read_register2_out;
 
-wire [63:0] write_data;
-wire [4:0] write_register_in;
+wire [63:0] write_data, write_register_in;
 
 
 wire [4:0] read_register_2;
@@ -86,7 +85,7 @@ registers registers(.Read_register_1(instruction[9:5]),
 					.clock(clock), 
 					.reset(reset));
 		
-n_mux #(5) n_mux_BL_write_register(.in1(write_register), .in2(30), .out(write_register_in), .select(Branchlink));
+n_mux n_mux_BL_write_register(.in1(write_register), .in2(30), .out(write_register_in), .select(Branchlink));
 
 //bepaalde delen van de instructies sign extenden naar 64 bits
 sign_extend sign_extend(.in(instruction),.out(sign_extend_out));

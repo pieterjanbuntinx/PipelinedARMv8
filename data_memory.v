@@ -14,24 +14,24 @@ module data_memory(clock,address, write_data, MemWrite, MemRead, read_data,switc
 	reg    [63:0] memory [0:words]; //Komt overeen met 13 bits
 	
 	always @(posedge clock) //
-		if(address[31:15] == 0)begin			
+		if(address[31:5] == 0)begin			
 			if(MemWrite)begin				
 				memory[address[logwords:0]] <= write_data; 			
 			end		
-		end else if(address[31:15] == 1) begin			
-			memory[address[31:15]] <= switches;		
+		end	else if(address[31:5] !== 0) begin			$display("hoger dan 31");
+			memory[address[31:0]] <= switches;		
 		end					
 	
 	always @(address or write_data or MemWrite or MemRead)	
 		begin		
-		if(address[31:15] == 0)
+		if(address[31:5] == 0)
 			begin			
 			if(MemRead)begin				
 				read_data <= memory[address[logwords:0]];			
 			end		
 		end		
-		else if(address[31:15] == 1)begin			
-			leds <= memory[address[31:15]];		
+		else if(address[31:5] !== 0)begin			
+			leds <= memory[address[31:0]];		
 		end	
 	end
 		

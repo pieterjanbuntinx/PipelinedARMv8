@@ -26,6 +26,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("ADD");
 		end
 		
 		11'b11001011000 : begin //SUB
@@ -43,6 +44,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("SUB");
 		end
 		
 		11'b10001010000 : begin //AND
@@ -60,6 +62,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("AND");
 		end
 		
 		11'b10101010000 : begin //ORR
@@ -77,6 +80,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("ORR");
 		end
 		
 		11'b11001010000 : begin //EOR
@@ -94,6 +98,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("EOR");
 		end
 		
 		11'b11111000010 : begin //LDUR
@@ -111,6 +116,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("LDUR");
 		end
 		
 		11'b11111000000 : begin //STUR
@@ -128,6 +134,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("STUR");
 		end
 		
 		11'b11010011011 : begin //LSL
@@ -144,7 +151,8 @@ always @(instruction) begin
 		Uncondbranch = 0;
 		Branchlink = 0;
 		Branchreg = 0;
-		not_zero = 0;	
+		not_zero = 0;		
+		$display("LSL");
 		end
 		
 		11'b11010011010 : begin //LSR
@@ -162,6 +170,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("LSR");
 		end
 		
 		11'b11010110000 : begin //BR
@@ -179,8 +188,9 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 1;
 		not_zero = 0;
+		$display("BR");
 		end
-		default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 0; ALUOp[0] = 0; Uncondbranch =0;Branchlink = 0;Branchreg = 0; not_zero = 0; CB_instr = 0;end
+		default: begin Reg2Loc = 0; ALUSrc = 0; MemtoReg = 0; RegWrite = 0; MemRead = 0; MemWrite = 0; Branch = 0; ALUOp[1] = 0; ALUOp[0] = 0; Uncondbranch =0;Branchlink = 0;Branchreg = 0; not_zero = 0;end
 		
 	endcase 
 	if(instruction[10:3] == 8'b10110100) begin //CBZ
@@ -197,6 +207,7 @@ always @(instruction) begin
 		Branchreg = 0;
 		ALUOp[0] = 1;
 		not_zero = 0;
+		$display("CBZ");
 	end
 	else if(instruction[10:3] == 8'b10110101) begin //CBNZ 
 	CB_instr=1;
@@ -213,6 +224,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 1;
+		$display("CBNZ");
 	end
 	else if(instruction[10:5] == 6'b100101) begin //BL 
 		CB_instr=1;
@@ -229,6 +241,7 @@ always @(instruction) begin
 		Branchlink = 1;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("BL");
 	end
 	else if(instruction[10:5] == 6'b000101) begin //B
 	CB_instr=1;
@@ -245,6 +258,7 @@ always @(instruction) begin
 		Branchlink = 0;
 		Branchreg = 0;
 		not_zero = 0;
+		$display("B");
 	end
 	
 end

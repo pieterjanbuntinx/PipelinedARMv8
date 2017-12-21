@@ -37,9 +37,9 @@
 //#@@ "prompt on save" "TRUE"
 //#@@ "unix mode" "FALSE"
 //#@S 589,1183		[Project window size]
-//#@P 331,212		[Project window position]
-//#@s 39,237		[Console window size]
-//#@p 1295,0		[Console window position]
+//#@P 65,109		[Project window position]
+//#@s 567,845		[Console window size]
+//#@p 64,665		[Console window position]
 alu.v
 alu_add.v
 alu_control.v

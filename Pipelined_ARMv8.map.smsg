@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at forwarding_unit.v(31): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at PipelinedARMv8.v(40): object "PC_out_ID_EX" differs only in case from object "pc_out_ID_EX" in the same scope
