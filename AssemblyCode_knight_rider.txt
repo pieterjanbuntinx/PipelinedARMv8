@@ -1,0 +1,32 @@
+//inladen variabelen uit data memory
+LDUR X2, [XZR,#0]; // [XZR,#0] = 64'b1
+LDUR X20, [XZR,#8]; // [XZR,#8] = {38'b1, 26'b0}
+LDUR X21, [XZR,#16]; // [XZR,#16] = 64'b1
+
+//left shift
+STUR X4, [XZR, #400];
+STUR X4, [XZR, #400];
+LSL X2, X2, #1;
+SUB X3, X2, X20;  
+//loop om volgende shift te vertragen
+ADD X5, XZR, XZR;
+ADD X5, X5, X4;
+LSR X5, X5, #62;
+SUB X5 
+CBZ X3, shiftright;
+B #12;
+
+//right shift
+STUR X4, [XZR, #400];
+STUR X4, [XZR, #400];
+LSR X2, X2, #1;
+SUB X3, X2, X21; 
+//loop om volgende shift te vertragen
+CBZ X3, shiftleft;			
+B #24;
+			
+//startcode
+L1:	STUR X2, [XZR, #400]; // waarden vd switches inladen
+	LDUR X2, [XZR, #400];
+
+
