@@ -1,16 +1,16 @@
-Fitter Status : Successful - Wed Dec 20 16:35:23 2017
+Fitter Status : Successful - Thu Dec 21 14:22:42 2017
 Quartus II Version : 8.1 Build 163 10/28/2008 SJ Web Edition
 Revision Name : Pipelined_ARMv8
 Top-level Entity Name : op_bord
 Family : Cyclone II
 Device : EP2C70F896C6
 Timing Models : Final
-Total logic elements : 0 / 68,416 ( 0 % )
-    Total combinational functions : 0 / 68,416 ( 0 % )
-    Dedicated logic registers : 0 / 68,416 ( 0 % )
-Total registers : 0
-Total pins : 50 / 622 ( 8 % )
+Total logic elements : 5,841 / 68,416 ( 9 % )
+    Total combinational functions : 5,750 / 68,416 ( 8 % )
+    Dedicated logic registers : 3,048 / 68,416 ( 4 % )
+Total registers : 3048
+Total pins : 54 / 622 ( 9 % )
 Total virtual pins : 0
-Total memory bits : 0 / 1,152,000 ( 0 % )
+Total memory bits : 49,152 / 1,152,000 ( 4 % )
 Embedded Multiplier 9-bit elements : 0 / 300 ( 0 % )
 Total PLLs : 0 / 4 ( 0 % )

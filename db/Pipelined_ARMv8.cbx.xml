@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="Pipelined_ARMv8">
+		<CBX_INST_ENTRY INSTANCE_NAME="|op_bord|PipelinedARMv8:cpu|instruction_fetch:instruction_fetch|rom:instruction_memory|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_lsd1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|op_bord|PipelinedARMv8:cpu|memory:memory|data_memory_aangemaakt:data_memory_aangemaakt|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_e5i1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

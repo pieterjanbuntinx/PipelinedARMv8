@@ -34,28 +34,6 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
-set_global_assignment -name VERILOG_FILE ID_EX.v
-set_global_assignment -name VERILOG_FILE instruction_fetch.V
-set_global_assignment -name VERILOG_FILE alu.v
-set_global_assignment -name VERILOG_FILE alu_add.v
-set_global_assignment -name VERILOG_FILE alu_control.v
-set_global_assignment -name VERILOG_FILE and_poort.V
-set_global_assignment -name VERILOG_FILE control.v
-set_global_assignment -name VERILOG_FILE data_memory.v
-set_global_assignment -name VERILOG_FILE instruction_memory.v
-set_global_assignment -name VERILOG_FILE n_mux.v
-set_global_assignment -name VERILOG_FILE pc.v
-set_global_assignment -name VERILOG_FILE registers.v
-set_global_assignment -name VERILOG_FILE reverse_mux.V
-set_global_assignment -name VERILOG_FILE shift_left_2.v
-set_global_assignment -name VERILOG_FILE sign_extend.v
-set_global_assignment -name VERILOG_FILE PipelinedARMv8.v
-set_global_assignment -name VERILOG_FILE IF_ID.v
-set_global_assignment -name VERILOG_FILE instruction_decode.v
-set_global_assignment -name VERILOG_FILE execution.v
-set_global_assignment -name VERILOG_FILE memory.v
-set_global_assignment -name VERILOG_FILE EX_MEM.v
-set_global_assignment -name VERILOG_FILE MEM_WB.v
 set_location_assignment PIN_D27 -to oENET_CLK
 set_location_assignment PIN_E16 -to iCLK_28
 set_location_assignment PIN_AD15 -to iCLK_50
@@ -586,11 +564,39 @@ set_location_assignment PIN_E20 -to oVGA_R[8]
 set_location_assignment PIN_G20 -to oVGA_R[9]
 set_location_assignment PIN_B15 -to oVGA_SYNC_N
 set_location_assignment PIN_H19 -to oVGA_VS
-set_global_assignment -name VERILOG_FILE forwarding_unit.v
-set_global_assignment -name VERILOG_FILE hazard_detection_unit.v
-set_global_assignment -name VERILOG_FILE op_bord.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_parameter -name CYCLONEII_SAFE_WRITE "\"RESTRUCTURE\""
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name VERILOG_FILE ID_EX.v
+set_global_assignment -name VERILOG_FILE instruction_fetch.V
+set_global_assignment -name VERILOG_FILE alu.v
+set_global_assignment -name VERILOG_FILE alu_add.v
+set_global_assignment -name VERILOG_FILE alu_control.v
+set_global_assignment -name VERILOG_FILE and_poort.V
+set_global_assignment -name VERILOG_FILE control.v
+set_global_assignment -name VERILOG_FILE data_memory.v
+set_global_assignment -name VERILOG_FILE instruction_memory.v
+set_global_assignment -name VERILOG_FILE n_mux.v
+set_global_assignment -name VERILOG_FILE pc.v
+set_global_assignment -name VERILOG_FILE registers.v
+set_global_assignment -name VERILOG_FILE reverse_mux.V
+set_global_assignment -name VERILOG_FILE shift_left_2.v
+set_global_assignment -name VERILOG_FILE sign_extend.v
+set_global_assignment -name VERILOG_FILE PipelinedARMv8.v
+set_global_assignment -name VERILOG_FILE IF_ID.v
+set_global_assignment -name VERILOG_FILE instruction_decode.v
+set_global_assignment -name VERILOG_FILE execution.v
+set_global_assignment -name VERILOG_FILE memory.v
+set_global_assignment -name VERILOG_FILE EX_MEM.v
+set_global_assignment -name VERILOG_FILE MEM_WB.v
+set_global_assignment -name VERILOG_FILE forwarding_unit.v
+set_global_assignment -name VERILOG_FILE hazard_detection_unit.v
+set_global_assignment -name VERILOG_FILE op_bord.v
+set_global_assignment -name QIP_FILE data_memory_aangemaakt.qip
+set_global_assignment -name MIF_FILE data.mif
+set_global_assignment -name QIP_FILE rom.qip
+set_global_assignment -name MIF_FILE instructions.mif

@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Wed Dec 20 16:36:09 2017
+Analysis & Synthesis Status : Successful - Thu Dec 21 14:22:02 2017
 Quartus II Version : 8.1 Build 163 10/28/2008 SJ Web Edition
 Revision Name : Pipelined_ARMv8
 Top-level Entity Name : op_bord
 Family : Cyclone II
-Total logic elements : 0
-    Total combinational functions : 0
-    Dedicated logic registers : 0
-Total registers : 0
-Total pins : 50
+Total logic elements : 5,750
+    Total combinational functions : 5,750
+    Dedicated logic registers : 3,048
+Total registers : 3048
+Total pins : 54
 Total virtual pins : 0
-Total memory bits : 0
+Total memory bits : 49,152
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 0
