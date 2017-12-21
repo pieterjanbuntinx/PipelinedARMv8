@@ -30,15 +30,13 @@ ADD X2, X16, X18 => X2 = 20 + 6 = 26;
 initial begin	
 	$readmemh("register_file_B_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
 	$readmemh("instruction_memory_B_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
-	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		LR	 				instruction code");
+	$display("Instruction	  	  X2				X16  		   		X18 	 	 		X30(LR)	 			PC_out		instruction code		clock");
 	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30]," ",
-			test_singlecycleprocessor.scp.instruction_fetch.PC_mux, "  ", 
-			test_singlecycleprocessor.scp.IF_ID_pipeline_register.IF_ID_Flush, " ",
-			test_singlecycleprocessor.scp.PC_out, " ",
-			" %h",test_singlecycleprocessor.scp.instruction_IF_ID," ",clock); 
+			test_singlecycleprocessor.scp.PC_out, " 		",
+			" %h",test_singlecycleprocessor.scp.instruction_IF_ID," 					",clock); 
 	
 			
 
