@@ -17,12 +17,15 @@ X16 = 20, X18 = 6;
 
 ADD X2, X16, X18; X2 = 20+6 = 26 
 SUB X2, X16, X18; X2 = 20-6 = 14
+SUB X2, X2, X18; X2 = 14-6 = 8
 AND X2, X16, X18; X2 = 20 AND 6 = 4
 ORR X2, X16, X18; X2 = 20 OR 6 = 22
 EOR X2, X16, X18; X2 = 20 EOR 6 = 18
 LSL X2, X16, #3;  X2 = 20 * 2^3 = 160
 LSR X2, X16, #3;  X2 = 20 / 2^3 = 2
 BR X17; X17 = 8;
+ADD X2, X16, X18; X2 = 20+6 = 26 //wordt overgeslagen
+SUB X2, X16, X18; X2 = 20-6 = 14
 
 
 */
@@ -36,8 +39,7 @@ initial begin
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],	
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," 		",
 			test_singlecycleprocessor.scp.instruction,
-			," 		",clock); 
-		
+			," 		",clock);
 			
 
 

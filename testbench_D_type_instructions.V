@@ -4,20 +4,20 @@ input clock;
 reg reset;
 
 wire uitgang;
-SingleCycleProcessor scp(clock,reset,uitgang);
+PipelinedARMv8 scp(clock,reset,uitgang);
 clockGenerator clk(clock);
 
 
 /**
 Instruction register: 
-X16 = 20, X18 = 6, [X16, #1] = 21;
+X16 = 20, X18 = 6, [X16, #0] = 35 [X16, #1] = 22;
 
 
-LDUR X2, [X16, #0] => X2 = 17;
-LDUR X2, [X16, #1] => X2 = 21;
+LDUR X2, [X16, #0] => X2 = 35;
+LDUR X2, [X16, #1] => X2 = 22;
+ADD X16,X2,X3
 
 STUR X18, [X16, #0] => [X16, #0] = 6;
-
 STUR X18, [X16, #2] => [X16, #2] = 6;
 
 
@@ -25,16 +25,37 @@ STUR X18, [X16, #2] => [X16, #2] = 6;
 */
 
 initial begin	
-	$readmemh("register_file_D_type_test.hex",test_singlecycleprocessor.scp.registers.regfile);
-	$readmemh("instruction_memory_D_type_test.txt",test_singlecycleprocessor.scp.instruction_memory.memory);
-	$readmemh("data_mem_D_type_test.hex",test_singlecycleprocessor.scp.data_memory.memory);
-	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 data_memory[20] 		data_memory[22]		instruction code");
-	$monitor(test_singlecycleprocessor.scp.registers.regfile[2],
-			test_singlecycleprocessor.scp.registers.Read_data_2,
-			test_singlecycleprocessor.scp.pc.out, 
-			test_singlecycleprocessor.scp.data_memory.memory[20],
-			test_singlecycleprocessor.scp.data_memory.memory[22], "                 ",								
-			" %h",test_singlecycleprocessor.scp.instruction);
+	$readmemh("register_file_D_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
+	$readmemh("instruction_memory_D_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
+	$readmemh("data_mem_D_type_test.hex",test_singlecycleprocessor.scp.memory.data_memory.memory);
+	$display("Instruction	  	  X2				X3			X16  				 X18	 	instruction code   		mem[20]     	mem[21] 		mem[22]	  clock");
+	
+	/**$monitor(
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[3],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],	
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," 		",
+			test_singlecycleprocessor.scp.instruction,
+			test_singlecycleprocessor.scp.memory.data_memory.memory[20],
+			test_singlecycleprocessor.scp.memory.data_memory.memory[21],
+			test_singlecycleprocessor.scp.memory.data_memory.memory[22],
+			," 		",clock); */
+			
+	
+	$monitor(
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[3],
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],	
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18]," 		",
+			test_singlecycleprocessor.scp.instruction_IF_ID, " ",
+			test_singlecycleprocessor.scp.PC_out, "   ",
+			test_singlecycleprocessor.scp.write_back, "   ",
+			test_singlecycleprocessor.scp.IF_ID_pipeline_register.IF_ID_Write, "  ",
+  
+			test_singlecycleprocessor.scp.execution.alu_result, "     ",
+			test_singlecycleprocessor.scp.memory.data_memory.memory[20],
+			test_singlecycleprocessor.scp.memory.data_memory.memory[22],
+			," 		",clock); 
 
 
 reset = 1;

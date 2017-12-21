@@ -34,13 +34,26 @@ ADD X16, X16, X2 => X16 = X16 + 80
 initial begin	
 	$readmemh("register_file_CB_type_test.hex",test_singlecycleprocessor.scp.instruction_decode.registers.regfile);
 	$readmemh("instruction_memory_CB_type_test.txt",test_singlecycleprocessor.scp.instruction_fetch.instruction_memory.memory);
-	$display("Instruction	  	  X2				Read_data2  		 PC_out	 	 		LR	 				instruction code");
-	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+	$display("Instruction	  	  X2				X16  		   X18	 	 		LR	 				instruction code");
+/**	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
-			test_singlecycleprocessor.scp.instruction_decode.Branchlink, "      ",	
+			test_singlecycleprocessor.scp.write_back, "      ",	
 			test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, "      ",								
-			" %b",test_singlecycleprocessor.scp.instruction," ",clock); 
+			" %b",test_singlecycleprocessor.scp.instruction," ",clock); */
+			
+			$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
+				test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
+				test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], " ",
+				test_singlecycleprocessor.scp.instruction_decode.read_data2, " ", 
+				test_singlecycleprocessor.scp.instruction_decode.Branch, "      ",	
+				test_singlecycleprocessor.scp.instruction_decode.and_out, "  ",
+				test_singlecycleprocessor.scp.instruction_decode.or_out, "  ",
+			 	test_singlecycleprocessor.scp.instruction_decode.zero_EX, " ",
+			 	test_singlecycleprocessor.scp.instruction_decode.read_data2, " ",
+				test_singlecycleprocessor.scp.instruction_decode.PC_CB, " ", 			 	
+			 	test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, " ",
+				" %b",test_singlecycleprocessor.scp.instruction," ",clock); 
 	
 
 

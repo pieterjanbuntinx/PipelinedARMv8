@@ -1,8 +1,8 @@
 module instruction_decode(	write_register, clock, reset,Reg2Loc, MemRead, MemtoReg, ALUOp, MemWrite, ALUSrc,
 						Branchreg, instruction, write_back, PC_branch_link_in, read_data1, read_data2, PC_CB, or_out,
 						RegWrite_in, IF_ID_Flush,RegWrite_out, read_register1_out, read_register2_out, stall, PC_out_IF_ID, sign_extend_out,
-						Uncondbranch);
-input clock, reset, RegWrite_in, stall;
+						Uncondbranch, zero_in);
+input clock, reset, RegWrite_in, stall, zero_in;
 input [31:0] instruction;
 output IF_ID_Flush;
 input [4:0] write_register;
@@ -14,13 +14,13 @@ output RegWrite_out, Reg2Loc, MemRead, MemtoReg, MemWrite, ALUSrc,
 output [1:0] ALUOp;
 output [4:0] read_register1_out, read_register2_out;
 
-wire [63:0] write_data;
+wire [63:0] write_data, write_register_in;
 
 
 wire [4:0] read_register_2;
 
 wire Reg2Loc_in, Branch_in, MemRead_in, MemtoReg_in, MemWrite_in, ALUSrc_in, Uncondbranch_in,
-		Branchlink_in, Branchreg_in,Branchlink,Branch, RegWrite;	
+		Branchreg_in,Branchlink,Branch, RegWrite;	
 		
 wire not_zero, CB_instr,or_out;
 
@@ -44,6 +44,7 @@ n_mux mux1(.in1(write_back),.in2(PC_branch_link_in),.out(write_data),.select(Bra
 assign read_register1_out = instruction[9:5];
 assign read_register2_out = read_register_2;
 
+wire Regwrite_reg;
 
 
 //mux's voor stall			
@@ -55,8 +56,9 @@ n_mux #(1) n_mux_MemWrite(.in1(MemWrite_in), .in2(1'b0), .out(MemWrite), .select
 n_mux #(1) n_mux_ALUSrc(.in1(ALUSrc_in), .in2(1'b0), .out(ALUSrc), .select(stall));
 n_mux #(1) n_mux_RegWrite(.in1(RegWrite), .in2(1'b0), .out(RegWrite_out), .select(stall));
 n_mux #(1) n_mux_Uncondbranch(.in1(Uncondbranch_in), .in2(1'b0), .out(Uncondbranch), .select(stall));
-n_mux #(1) n_mux_Branchlink(.in1(Branchlink_in), .in2(1'b0), .out(Branchlink), .select(stall));
+//n_mux #(1) n_mux_Branchlink(.in1(Branchlink_in), .in2(1'b0), .out(Branchlink), .select(stall));
 n_mux #(1) n_mux_Branchreg(.in1(Branchreg_in), .in2(1'b0), .out(Branchreg), .select(stall));
+n_mux #(1) n_mux_RegWrite_BranchLink(.in1(RegWrite_in), .in2(RegWrite), .out(Regwrite_reg), .select(Branchlink));
 
 control control(.clock(clock), 
 				.instruction(instruction[31:21]), 
@@ -69,15 +71,15 @@ control control(.clock(clock),
 				.ALUSrc(ALUSrc_in), 
 				.RegWrite(RegWrite), 
 				.Uncondbranch(Uncondbranch_in), 
-				.Branchlink(Branchlink_in), 
+				.Branchlink(Branchlink), 
 				.Branchreg(Branchreg_in), 
 				.not_zero(not_zero),
 				.CB_instr(CB_instr));
 registers registers(.Read_register_1(instruction[9:5]), 
 					.Read_register_2(read_register_2), 
-					.Write_register(write_register), 
+					.Write_register(write_register_in),
 					.Write_data(write_data), 
-					.RegWrite(RegWrite_in), 
+					.RegWrite(Regwrite_reg), 
 					.Read_data_1(read_data1), 
 					.Read_data_2(read_data2), 
 					.clock(clock), 
@@ -92,17 +94,10 @@ shift_left_2 shift_left_2(sign_extend_out,shift_left_2_out);
 //sign extended waarde offset optellen bij PC_out
 alu_add add_pc_m(PC_out_IF_ID,shift_left_2_out,PC_CB);
 								
-n_mux #(1) mux_zero_not_zero(.in1(zero),.in2(!zero),.out(alu_zero),.select(not_zero));
+n_mux #(1) mux_zero_not_zero(.in1(zero_in),.in2(!zero_in),.out(alu_zero),.select(not_zero));
 
 assign or_out = and_out | Uncondbranch;
 assign and_out = Branch & alu_zero;
 //selecteren tussen PC_inc en PC_CB
-
-
-//kijken of read_data2 gelijk is aan 0
-always @(read_data2) begin
-	if (read_data2 == 64'b0) zero <= 1;
-	else zero <= 0;
-end
 
 endmodule

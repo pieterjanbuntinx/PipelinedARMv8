@@ -37,7 +37,7 @@ instruction_fetch instruction_fetch(.clock(clock),
 									.reset(reset), 
 									.Branchreg(Branchreg), 
 									.add_pc(add_pc),
-									.read_data_1(read_data_1_EX_MEM),
+									.read_data_1(read_data1),
 									.instruction_out(instruction),
 									.PC_out(PC_out),
 									.PC_branch_link_out(PC_branch_link),
@@ -56,8 +56,7 @@ IF_ID IF_ID_pipeline_register(	.clock(clock),
 								.PC_branch_link_out(PC_branch_link_IF_ID),
 								.IF_ID_Write(!stall),
 								.IF_ID_Flush(IF_ID_Flush));
-									
-			
+											
 instruction_decode instruction_decode(	.clock(clock),
 										.IF_ID_Flush(IF_IS_Flush),
 										.reset(reset),
@@ -81,11 +80,10 @@ instruction_decode instruction_decode(	.clock(clock),
 										.PC_CB(add_pc),
 										.PC_out_IF_ID(PC_out_IF_ID),
 										.sign_extend_out(sign_extended),
-										.or_out(or_out));
+										.or_out(or_out),
+										.zero_in(zero_EX));
 										
-hazard_detection_unit hazard_detection_unit(.clock(clock),
-											.reset(reset), 
-											.ID_EX_MemRead(MemRead_ID_EX), 
+hazard_detection_unit hazard_detection_unit(.ID_EX_MemRead(MemRead_ID_EX), 
 											.ID_EX_RegisterRd(write_register_ID_EX), 
 											.IF_ID_RegisterRn1(read_register1_ID), 
 											.IF_ID_RegisterRm2(read_register2_ID), 
@@ -129,20 +127,22 @@ ID_EX ID_EX_pipeline_register(	.clock(clock),
 								.read_register2_out(read_register2_ID_EX),
 								.instruction_in(instruction_IF_ID),
 								.instruction_out(instruction_ID_EX));
-								
-
+						
 //Execution en EX/MEM pipeline register
 execution execution(.pc_out(pc_out_ID_EX),
 					.instruction(instruction_ID_EX),
 					.sign_extend_in(sign_extended_ID_EX),
 					.read_data_1(read_data1_ID_EX),
 					.read_data_2(read_data2_ID_EX),
+					.EX_MEM_alu_result(alu_result_EX_MEM),
+					.WB_write_back(write_back),
 					.alu_result(alu_result),
 					.alu_in2_out(alu_in2_execution),
 					.ALUSrc(ALUSrc_ID_EX),			
 					.ALUOp(ALUOp_ID_EX),
 					.forwardA(ForwardA),
-					.forwardB(ForwardB));
+					.forwardB(ForwardB),
+					.zero(zero_EX));
 					
 forwarding_unit forwarding_unit(.EX_MEM_RegWrite(EX_MEM_RegWrite), 
 								.EX_MEM_RegisterRd(write_register_EX_MEM), 
@@ -157,7 +157,7 @@ EX_MEM EX_MEM(.clock(clock),
 			  .reset(reset),
 			  .pc_in(add_pc),
 			  .pc_out(add_pc_EX_MEM),
-			  .zero_in(zero),
+			  .zero_in(zero_EX),
 			  .zero_out(zero_EX_MEM),
 			  .alu_result_in(alu_result),
 			  .alu_result_out(alu_result_EX_MEM),
@@ -207,7 +207,7 @@ MEM_WB MEM_WB(.read_data_in(read_data_data_memory),
 						
 				
 //instruction decode en ID_EX pipeline register
-n_mux n_mux_na_MEM_WB(.in1(alu_result_out_memory_MEM_WB),.in2(read_data_data_memory_MEM_WB),.out(write_back),.select(MemtoReg));
+n_mux n_mux_na_MEM_WB(.in1(alu_result_out_memory_MEM_WB),.in2(read_data_data_memory_MEM_WB),.out(write_back),.select(MemtoReg_MEM_WB));
 	
 
 endmodule

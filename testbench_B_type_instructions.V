@@ -34,10 +34,12 @@ initial begin
 	$monitor(test_singlecycleprocessor.scp.instruction_decode.registers.regfile[2],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[16],
 			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[18], 
-			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30], 
-			test_singlecycleprocessor.scp.instruction_decode.Branchlink, "      ",	
-			test_singlecycleprocessor.scp.instruction_fetch.PC_in_write, "      ",								
-			" %b",test_singlecycleprocessor.scp.instruction," ",clock); 
+			test_singlecycleprocessor.scp.instruction_decode.registers.regfile[30]," ",
+			test_singlecycleprocessor.scp.instruction_decode.Branchlink, " ",
+			test_singlecycleprocessor.scp.instruction_decode.Regwrite_reg, " ",
+			test_singlecycleprocessor.scp.instruction_decode.RegWrite, " ",			
+			test_singlecycleprocessor.scp.PC_out, " ",
+			" %b",test_singlecycleprocessor.scp.instruction_IF_ID," ",clock); 
 	
 			
 

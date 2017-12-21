@@ -1,19 +1,17 @@
-module hazard_detection_unit (clock, reset, ID_EX_MemRead, ID_EX_RegisterRd, IF_ID_RegisterRn1, IF_ID_RegisterRm2, stall);
-input clock, reset;
+module hazard_detection_unit (ID_EX_MemRead, ID_EX_RegisterRd, IF_ID_RegisterRn1, IF_ID_RegisterRm2, stall);
 input [4:0] ID_EX_RegisterRd, IF_ID_RegisterRn1, IF_ID_RegisterRm2;
 input ID_EX_MemRead;
 
 output stall;
 reg stall;
 
-always @(posedge clock)
+always @(ID_EX_MemRead or IF_ID_RegisterRn1 or ID_EX_RegisterRd or IF_ID_RegisterRm2)
 begin
-	if (reset) stall <= 0;
-	else begin 
-		if (ID_EX_MemRead && ((ID_EX_RegisterRd == IF_ID_RegisterRn1) || (ID_EX_RegisterRd == IF_ID_RegisterRm2)))
-			stall <= 1;
-		else stall <= 0;
-	end
+
+	if (ID_EX_MemRead && ((ID_EX_RegisterRd == IF_ID_RegisterRn1) || (ID_EX_RegisterRd == IF_ID_RegisterRm2)))begin
+		stall <= 1;
+		$display("gay");end
+	else stall <= 0;	
 end
 
 endmodule
